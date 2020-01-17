@@ -1,0 +1,13 @@
+.logo {
+  margin: 1rem;
+  position: relative;
+  float: left;
+  z-index: 10;
+  &__link {
+    padding: 2rem 0.5rem;
+    color: $color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+}

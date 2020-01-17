@@ -1,0 +1,171 @@
+.card {
+  & a:hover {
+    box-shadow: 0 0.8px 1.5px rgba($color-black, 0.88);
+  }
+  &-body {
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    color: $color-white;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+
+    font-family: Helvetica, Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  &-img {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    visibility: visible;
+    width: 100%;
+    height: 28.7rem; //temporary
+  }
+
+  & .container {
+    margin: 0px;
+  }
+
+  &-caption {
+    // backgroundImage:
+    // 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8))',
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .banner {
+    padding: 0 1rem;
+
+    &.open-house {
+      background-color: #03aa82;
+    }
+
+    &.banner-message {
+      background-color: $color-primary;
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: row; //combines flex-direction and flex-wrap into one property;
+    justify-content: space-around;
+    line-height: 1.2rem;
+
+    &-col {
+      flex-direction: column;
+    }
+
+    &-row {
+      flex-direction: row;
+    }
+
+    & .card-listing {
+      &-left-wrapper {
+        // background-color: orangered;
+        font-size: 0.9rem;
+        padding: 0 0 0.4rem 0.8rem;
+        display: flex;
+        align-content: flex-start;
+        flex-flow: column;
+        flex-grow: 6;
+        order: 1;
+
+        & div:first-child {
+          line-height: 2.5rem;
+          font-weight: 900;
+          font-size: 1.5rem;
+          &::before {
+            content: '$';
+          }
+        }
+        & div:nth-child(2) {
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+        & div:nth-child(3) {
+          font-size: 0.25rem;
+          font-weight: 300;
+        }
+      }
+      &-right-wrapper {
+        display: flex;
+        flex-direction: row;
+        order: 2;
+        flex-grow: 4;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        line-height: 1.7rem;
+
+        & div {
+          position: relative;
+          font-size: 1.4rem;
+          font-weight: 100;
+          padding: 0 0.5rem;
+          align-self: center;
+
+          & div {
+            // margin-top: -13px;
+            font-size: 1.1rem;
+          }
+
+          &:not(:last-child) {
+            &::after {
+              content: ' ';
+              position: absolute;
+              top: 3px;
+              right: 0;
+              bottom: 3px;
+              width: 1px;
+              border-right: 0.1px solid $color-white;
+              opacity: 0.4;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include respond(tab-port) {
+    & .banner {
+      margin-right: 1rem;
+    }
+  }
+
+  @include respond(phone) {
+    & .banner {
+      padding: 0.6rem 1rem;
+      border-radius: 3px;
+    }
+    & .flex .card-body .card {
+      &-listing {
+        &-left-wrapper {
+          & div:first-child {
+            line-height: 2.5rem;
+            letter-spacing: 1.7px;
+            font-size: 17px;
+            font-weight: 500;
+            transform: scale(1, 1.1);
+          }
+          & div:not(:first-child) {
+            line-height: 1.15;
+          }
+        }
+        &-right-wrapper {
+          & div {
+            font-size: 1.45rem;
+            & div {
+              margin-top: 2px;
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 8px;
+  margin: 0 auto;
+  @include respond(tab-land) {
+    margin: 0 2.4rem;
+  }
+}
+.wrapper {
+  display: grid; //use display grid to use CSS grid
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; // one equal fraction of the grid , ei 33% 33% 33%
+  //   grid-template-columns: 200px 200px 200px 200px;
+  grid-template-rows: auto 500px 200px auto;
+  //   grid-auto-rows: minmax(
+  //     200px,
+  //     auto
+  //   ); //200px min height, box will auto change height based on content length
+  //   justify-items: stretch; //justify / align the content of the each grid (horizontally)
+  //   align-items: stretch; //justify / align the content of the each grid (vertically)
+  //   justify-content: center; // it will justify the entire grid (horizontally) or add spacing between the grid or elements
+  grid-column-gap: 20px; // spacing btw columns
+  grid-row-gap: 15px; // spacing btw rows
+}
+.box-1 {
+  background: red;
+  grid-column: 1 /13;
+  grid-row: 1 /2;
+  padding: 20px;
+
+  & nav {
+    display: block;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100px;
+    margin: 0 auto;
+    & a {
+      background-color: black;
+      color: white;
+      margin: 0 2px;
+    }
+  }
+}
+
+.box-2 {
+  background: yellow;
+  padding: 20px;
+  grid-column: 10 / 13;
+}
+
+.box-3 {
+  background: purple;
+  padding: 20px;
+  grid-column: 1 / 7;
+}
+
+.box-4 {
+  background: blue;
+  grid-column: 1 / 10;
+  grid-row: 2 /3;
+  padding: 20px;
+}
+
+.box-5 {
+  background: orange;
+  padding: 20px;
+  grid-column: 1 /13;
+}
+.box-6 {
+  background: gray;
+  padding: 20px;
+  grid-row: 3 /4;
+  grid-column: 7 / 13;
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    grid-template-rows: auto auto 200px auto;
+    grid-auto-rows: minmax(200px, auto);
+    grid-row-gap: 15px; // spacing btw rows
+  }
+  .box-2 {
+    grid-column: 1/13;
+  }
+  .box-3 {
+    grid-column: 1/7;
+    grid-row: 3/4;
+  }
+  .box-4 {
+    grid-column: 1/13;
+  }
+  .box-5 {
+    grid-column: 1/13;
+  }
+  .box-6 {
+    grid-column: 7/13;
+  }
+}

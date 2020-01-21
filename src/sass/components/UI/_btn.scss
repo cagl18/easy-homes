@@ -1,0 +1,101 @@
+@include respond(tab-land) {
+  button {
+    color: inherit;
+    background-color: inherit;
+
+    &.active {
+      background-color: rgba($color-primary, 1);
+
+      &:hover {
+        background-color: rgba($color-secondary, 1);
+      }
+    }
+  }
+}
+
+//BTN CLOSED WITH ANIMATION
+
+.btn__closed {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  // opacity: 0;
+  animation: fade_move_down 3s ease-in-out infinite 1.1s;
+
+  //position on drawer
+  position: absolute;
+  right: 0%;
+  top: -0.5%;
+  // transform: translate(-0.5%, 0%);
+  padding: 1rem;
+}
+
+.btn__closed--animated {
+  position: relative;
+  // border: 1px solid #fff;
+  // margin: 1.1rem;
+  width: 5rem;
+  height: 5rem;
+  // border-radius: 50%;
+  opacity: 1;
+  // transform: translate(-3%, -10%);
+  // padding: 1rem 1rem 0 0;
+
+  &.closed-position span {
+    z-index: 999;
+    height: 2px;
+    margin: 1px;
+    padding: 1px;
+    width: 1.5rem;
+    // background: #fff;
+    background: black;
+    color: $color-black;
+    transition: 0.4s ease;
+    display: block;
+    position: absolute;
+    transform: rotate(225deg);
+  }
+
+  // CLOSED POSITION
+
+  &.closed-position > span:first-child {
+    left: 35%;
+    bottom: 35%;
+    transform: rotate(45deg);
+  }
+
+  &.closed-position span:nth-child(2) {
+    left: 35%;
+    bottom: 35%;
+    transform: rotate(-45deg);
+  }
+}
+
+.btn__closed--animated {
+  &.closed-position:hover {
+    // transform: rotate(45deg);
+    & span:nth-child(1) {
+      // transform: rotate(225deg);
+      background-color: $color-primary;
+      height: 3px;
+    }
+    & span:nth-child(2) {
+      // transform: rotate(135deg);
+      background-color: $color-primary;
+      height: 3px;
+    }
+  }
+}
+
+.btn__closed:hover {
+  cursor: pointer;
+  transition: all 0.3s;
+  animation-play-state: paused;
+
+  & .btn__closed--animated {
+    // background-color: rgba($color-primary, 0.9);
+    // border: $color-primary;
+    // box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    overflow: hidden;
+  }
+}

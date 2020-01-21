@@ -1,0 +1,19 @@
+.search {
+  & .sticky-nav {
+    background-color: blue;
+  }
+
+  &__content {
+    display: flex;
+    flex: wrap column;
+
+    & .map {
+      background-color: orangered;
+      flex-grow: 1;
+    }
+    & .listings {
+      background-color: aliceblue;
+      flex-grow: 1;
+    }
+  }
+}

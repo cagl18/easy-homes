@@ -11,7 +11,7 @@ const footer = () => {
               <h4 className='heading-quaternary'>
                 Company
                 <span className='caret'>
-                  <i class='fas fa-angle-down'></i>
+                  <i className='fas fa-angle-down'></i>
                 </span>
               </h4>
               <ul className='footer__links'>
@@ -59,7 +59,7 @@ const footer = () => {
               <h4 className='heading-quaternary'>
                 Explore
                 <span className='caret'>
-                  <i class='fas fa-angle-down'></i>
+                  <i className='fas fa-angle-down'></i>
                 </span>
               </h4>
               <ul className='footer__links'>
@@ -207,7 +207,7 @@ const footer = () => {
                 Notice for California Applicants
               </a>
             </div>
-            <p class='footer__legal-disclaimer'>
+            <div className='footer__legal-disclaimer'>
               Corporate Responsibility, Privacy &amp; Legal Notices: Easy Homes
               is a licensed real estate broker, licensed to do business as Easy
               Homes RE in Delaware, New Jersey, Pennsylvania and Tennessee, and
@@ -218,11 +218,11 @@ const footer = () => {
               independently verified, and Easy Homes expressly disclaims any
               liability in connection therewith. No financial or legal advice
               provided. Equal Housing Opportunity.
-              <span class='consumerFooter-TREC'>
+              <span className='consumerFooter-TREC'>
                 Texas Real Estate Commission:
               </span>
               <a
-                class='textIntent-caption2'
+                className='textIntent-caption2'
                 data-tn='footer-link-consumer-protection-notice'
                 href='//www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-2.pdf'
                 rel='nofollow noopener'
@@ -233,7 +233,7 @@ const footer = () => {
               </a>
               ,
               <a
-                class='footer__legal-links'
+                className='footer__legal-links'
                 data-tn='footer-link-info-brokerage-service'
                 href='/ucfe-assets/consumer-footer/5/IABS-May-2019.pdf'
                 rel='nofollow noopener'
@@ -243,7 +243,7 @@ const footer = () => {
                 Info About Brokerage Services
               </a>
               . &copy; Easy Homes 2020.
-              <span class='consumerFooter-phone'>212-913-9058.</span>
+              <span className='consumerFooter-phone'>212-913-9058.</span>
               <br />
               <div className='u-margin-top-small'>
                 <a className='footer-browserLink' href='/sitemap/'>
@@ -254,7 +254,7 @@ const footer = () => {
                   Recently Sold Homes
                 </a>
               </div>
-            </p>
+            </div>
           </section>
         </div>
       </div>

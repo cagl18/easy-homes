@@ -6,7 +6,7 @@ const card = props => {
   };
 
   return (
-    <a href='/1' className='card'>
+    <a href={`/${props.data.id}`} className='card'>
       <div key={props.data.id} className='card-body'>
         <div className='card-img' style={cardImageStyling} alt=''>
           <div className='container'>

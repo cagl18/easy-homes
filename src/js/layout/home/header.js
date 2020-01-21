@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/UI/navbar';
 import Button from '../../components/UI/button';
+import SearchBar from '../../components/searchBar';
 
 class Header extends Component {
   state = { isForSale: true };
@@ -10,6 +11,9 @@ class Header extends Component {
       ? (newState['isForSale'] = true)
       : (newState['isForSale'] = false);
     this.setState(newState);
+  };
+  onSearchSubmit = event => {
+    console.log(event);
   };
   render() {
     return (
@@ -39,16 +43,7 @@ class Header extends Component {
                     Rent
                   </Button>
                 </div>
-                <div className='homepage__search--input-box'>
-                  <input
-                    className='homepage__search--input'
-                    type='text'
-                    placeholder='City, Neighborhood, Address, School, ZIP, Agent, MLS #'
-                  ></input>
-                  <button className='homepage__search--input-btn primary'>
-                    <i className='fas fa-search'></i>
-                  </button>
-                </div>
+                <SearchBar />
               </div>
               {/* End of header Content  */}
             </div>

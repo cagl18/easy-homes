@@ -3,11 +3,37 @@
   position: relative;
   float: left;
   z-index: 10;
+
   &__link {
     padding: 2rem 0.5rem;
     color: $color-white;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.25rem;
+    i {
+      // display: none;
+    }
+  }
+}
+
+/* drawer nav menu */
+@include respond(tab-land) {
+  .logo {
+    &__link {
+      padding: 2rem 0.5rem;
+      color: $color-black;
+      // text-decoration: none;
+      // text-transform: uppercase;
+      // letter-spacing: 0.25rem;
+      i {
+        // display: none;
+      }
+    }
+    &__link {
+      i {
+        // display: block;
+        font-size: 2rem;
+      }
+    }
   }
 }

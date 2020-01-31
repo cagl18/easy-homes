@@ -1,6 +1,6 @@
 # Easy Homes
 
-[Easy Homes ](https://cagl18.github.io/easyhomes/)
+[Easy Homes ](https://cagl18.github.io/easy-homes/)
 
 A real estate app built using React JS.
 
@@ -23,7 +23,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```
-git clone https://github.com/cagl18/easyhomes.git
+git clone https://github.com/cagl18/easy-homes.git
 ```
 
 2. Run npm install inside project root directory

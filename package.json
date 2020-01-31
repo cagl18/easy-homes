@@ -1,8 +1,8 @@
 {
-  "name": "easyhomes",
+  "name": "easy-homes",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://cagl18.github.io/easyhomes",
+  "homepage": "http://cagl18.github.io/easy-homes",
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "axios": "^0.18.1",

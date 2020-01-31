@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/easy-homes/static/css/main.f41934c7.chunk.css",
-    "main.js": "/easy-homes/static/js/main.b32205cc.chunk.js",
-    "main.js.map": "/easy-homes/static/js/main.b32205cc.chunk.js.map",
-    "runtime-main.js": "/easy-homes/static/js/runtime-main.4a86b753.js",
-    "runtime-main.js.map": "/easy-homes/static/js/runtime-main.4a86b753.js.map",
-    "static/js/2.d1affb83.chunk.js": "/easy-homes/static/js/2.d1affb83.chunk.js",
-    "static/js/2.d1affb83.chunk.js.map": "/easy-homes/static/js/2.d1affb83.chunk.js.map",
-    "index.html": "/easy-homes/index.html",
-    "precache-manifest.d432f17e7d259978f90ba59148dfed2b.js": "/easy-homes/precache-manifest.d432f17e7d259978f90ba59148dfed2b.js",
-    "service-worker.js": "/easy-homes/service-worker.js",
-    "static/css/main.f41934c7.chunk.css.map": "/easy-homes/static/css/main.f41934c7.chunk.css.map",
-    "static/js/2.d1affb83.chunk.js.LICENSE": "/easy-homes/static/js/2.d1affb83.chunk.js.LICENSE",
-    "static/media/main.scss": "/easy-homes/static/media/hero_high_res.6e678a39.jpeg"
+    "main.css": "/easyhomes/static/css/main.29176265.chunk.css",
+    "main.js": "/easyhomes/static/js/main.9eb775a8.chunk.js",
+    "main.js.map": "/easyhomes/static/js/main.9eb775a8.chunk.js.map",
+    "runtime-main.js": "/easyhomes/static/js/runtime-main.ad7dcadc.js",
+    "runtime-main.js.map": "/easyhomes/static/js/runtime-main.ad7dcadc.js.map",
+    "static/js/2.be5efac4.chunk.js": "/easyhomes/static/js/2.be5efac4.chunk.js",
+    "static/js/2.be5efac4.chunk.js.map": "/easyhomes/static/js/2.be5efac4.chunk.js.map",
+    "index.html": "/easyhomes/index.html",
+    "precache-manifest.bb1fca9202f140a124ebb9540d304d7c.js": "/easyhomes/precache-manifest.bb1fca9202f140a124ebb9540d304d7c.js",
+    "service-worker.js": "/easyhomes/service-worker.js",
+    "static/css/main.29176265.chunk.css.map": "/easyhomes/static/css/main.29176265.chunk.css.map",
+    "static/js/2.be5efac4.chunk.js.LICENSE": "/easyhomes/static/js/2.be5efac4.chunk.js.LICENSE",
+    "static/media/main.scss": "/easyhomes/static/media/hero_high_res.6e678a39.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4a86b753.js",
-    "static/js/2.d1affb83.chunk.js",
-    "static/css/main.f41934c7.chunk.css",
-    "static/js/main.b32205cc.chunk.js"
+    "static/js/runtime-main.ad7dcadc.js",
+    "static/js/2.be5efac4.chunk.js",
+    "static/css/main.29176265.chunk.css",
+    "static/js/main.9eb775a8.chunk.js"
   ]
 }

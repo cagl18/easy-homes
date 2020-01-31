@@ -6,26 +6,27 @@ class SearchBar extends Component {
     e.preventDefault();
     this.onSearchSubmit();
   };
-  onInputChange = e => this.setState({ term: e.target.value });
-  onSearchSubmit = e => {
+  onInputChange = e => {
+    this.setState({ term: e.target.value });
+    this.onSearchSubmit(e.target.value);
+  };
+  onSearchSubmit = (term = this.state.term) => {
+    this.props.onSearch(term);
     //save keyword on url parameter or pass it as prop
   };
   render() {
     return (
-      <div className='homepage__search--input-box'>
+      <div className='search--input-box'>
         <form onSubmit={this.onFormSubmit}>
           <input
-            className='homepage__search--input'
+            className='search--input'
             type='text'
             placeholder='City, Neighborhood, Address, School, ZIP, Agent, MLS #'
             onChange={this.onInputChange}
             value={this.state.term}
           ></input>
-          {console.log(this.state.term)}
-          <button
-            className='homepage__search--input-btn primary'
-            // onClick={this.onSearchSubmit}
-          >
+
+          <button className='search--input-btn primary'>
             <i className='fas fa-search'></i>
           </button>
         </form>

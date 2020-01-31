@@ -1,7 +1,6 @@
 .header {
   position: relative;
   height: 61.3vh;
-  // height: 100vh;
   background-color: $color-grey-dark;
   background-image: linear-gradient(
       // to right bottom,
@@ -13,6 +12,10 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+
+  .nav {
+    color: $color-white;
+  }
 
   &__content {
     display: block;
@@ -29,81 +32,27 @@
 
 .homepage {
   &__search {
-    position: absolute;
-    top: 200%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     &__type {
-      position: relative;
-
       &--select {
         float: left;
         margin-bottom: -1px;
         z-index: 1;
         @include clearfix;
       }
-
-      &--btn {
-        width: 8rem;
-        padding: 0.9rem 0;
-        border: none;
-        outline: none;
-        font-size: 1.6rem;
-        font-weight: 500;
-        color: $color-white;
-        background-color: $color-primary;
-        // transition: all 0.2s;
-
-        &:not(.is_active) {
-          &:hover {
-            background-color: $color-secondary;
-            cursor: pointer;
-          }
-        }
-
-        &:first-child {
-          margin-right: -2px;
-        }
-
-        &:not(:first-child) {
-          padding-right: -2px;
-        }
-      }
     }
 
-    &--input {
-      padding: 2rem 10rem 2.5rem 2rem;
-      width: 67rem;
-      font-size: 1.9rem;
-      font-weight: 400;
-      border: none;
-      z-index: 10;
-      position: relative;
-      // transition: all 0.1s;
-      &::placeholder {
-        color: $color-grey-light-3;
-        font-size: 1.6rem;
-      }
-      &:focus {
-        outline: none;
-      }
-
-      &-btn {
-        position: absolute;
-        top: 43.5%;
-        right: 1.5%;
-        height: 48px;
-        width: 48px;
-        transform: rotateY(180deg);
-        transition: all 0.1s;
-
-        &:hover {
-          background-color: $color-secondary;
+    .search {
+      &--input {
+        padding: 2rem 10rem 2.5rem 2rem;
+        height: 100%;
+        width: 100%;
+        &-box {
+          width: 67rem;
         }
-
-        & i {
-          font-size: 1.4rem;
+        &-btn {
+          position: absolute;
+          top: 43.5%;
+          right: 1.5%;
         }
       }
     }
@@ -137,9 +86,11 @@
   .header {
     & .homepage {
       &__search {
-        &--input {
-          &-btn {
-            top: 41%;
+        .search {
+          &--input {
+            &-btn {
+              top: 41%;
+            }
           }
         }
       }
@@ -158,11 +109,16 @@
         margin-bottom: 2.3rem;
       }
     }
+
     & .homepage {
       &__search {
         width: 96%;
-        &--input {
-          width: 100%;
+        .search {
+          &--input {
+            &-box {
+              width: 100%;
+            }
+          }
         }
       }
     }

@@ -1,5 +1,5 @@
 .nav {
-  color: $color-white;
+  color: inherit;
   font-size: inherit;
   font-family: inherit;
   letter-spacing: 3px;
@@ -10,7 +10,6 @@
   // &::before {
   & .backdrop {
     //nav shadow gradient
-    // content: '';
     height: 25rem;
     display: block;
     position: absolute;
@@ -21,6 +20,10 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent);
 
     @include clearfix;
+  }
+
+  & .logo__link {
+    // color: $color-white;
   }
 
   &__menu {
@@ -62,7 +65,7 @@
     &:visited {
       color: inherit;
       text-decoration: none;
-      display: inline-block;
+      display: block;
     }
   }
 
@@ -83,7 +86,7 @@
         font-size: inherit;
         font-family: inherit;
         letter-spacing: 3px;
-        color: #ffffff;
+        color: inherit;
         border: none;
         padding: 1.5rem 1rem;
         // transition: all 0.4s;

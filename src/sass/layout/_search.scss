@@ -1,6 +1,68 @@
-.search {
-  & .sticky-nav {
-    background-color: blue;
+.searchpage {
+  &__nav {
+    color: $color-black;
+    height: 5rem;
+    & .header {
+      &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+    }
+
+    & .backdrop {
+      flex-grow: 1;
+      &:not(.is-active) {
+        height: 0;
+      }
+      & .search {
+        &--input {
+          &-box {
+            visibility: visible;
+            display: inline-block;
+          }
+          &-btn {
+            position: absolute;
+            top: 0.04rem;
+            right: 0%;
+            height: 39.5px;
+            width: 39.5px;
+          }
+        }
+      }
+    }
+
+    & .nav {
+      &--box {
+        border-bottom: 0.5px solid $color-grey-light-3;
+        & .logo {
+          color: $color-black;
+        }
+        margin: -1.1rem;
+        :not(.is-active) {
+          & .logo {
+            margin: 0.1rem 0 0 0.4rem;
+          }
+        }
+        &__item {
+          margin: 0rem;
+          padding: 0.8rem;
+        }
+        &__menu {
+          &--user {
+            padding: 0rem;
+            &--item {
+              padding: 1.05rem 0;
+              margin-top: -1.01rem;
+            }
+          }
+        }
+      }
+    }
+
+    & .mobile__menu--icon {
+      color: $color-black;
+    }
   }
 
   &__content {
@@ -8,12 +70,149 @@
     flex: wrap column;
 
     & .map {
-      background-color: orangered;
+      // background-color: orangered;
+      min-width: 66%;
       flex-grow: 1;
     }
     & .listings {
-      background-color: aliceblue;
+      // background-color: aliceblue;
+      padding: 2.5rem;
       flex-grow: 1;
+
+      & .MuiGrid-item {
+        max-width: 50%;
+        flex-basis: 50%;
+
+        & .card-body {
+          height: 20rem;
+        }
+      }
+    }
+  }
+
+  & .search {
+    &--input {
+      border: 1.2px solid rgb(218, 218, 218);
+      background: transparent;
+      height: 4rem;
+      padding: 1.1rem;
+
+      &-box {
+        flex-grow: 2;
+        display: none;
+        position: relative;
+        margin: 0.6rem;
+      }
+
+      &-btn {
+        position: absolute;
+        top: 0.04rem;
+        right: 0%;
+        height: 35px;
+        width: 35px;
+      }
+    }
+  }
+
+  @include respond(big-desktop) {
+    &__content {
+      & .map {
+        min-width: 66.5%;
+      }
+      & .card .flex .card-listing-right-wrapper {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+  @media (max-width: 1600px) {
+    .card .banner {
+      padding: 0 0.5rem;
+    }
+    &__content {
+      & .map {
+        min-width: 60%;
+      }
+    }
+  }
+  @include respond(tab-land) {
+    & .search {
+      &--input {
+        &-box {
+          visibility: visible;
+          display: block;
+        }
+      }
+    }
+    &__content {
+      & .map {
+        min-width: 45%;
+      }
+    }
+  }
+  @include respond(tab-port) {
+    &__content {
+      & .listings {
+        & .MuiGrid-item {
+          max-width: 100%;
+          flex-basis: 100%;
+        }
+      }
+      & .map {
+        min-width: 48%;
+      }
+    }
+  }
+  @include respond(phone) {
+    .card .banner {
+      padding: 0.5rem 0.8rem;
+    }
+    &__content {
+      & .map {
+        min-width: 0%;
+      }
+      & .listings {
+        & .MuiGrid-item {
+          max-width: 50%;
+          flex-basis: 50%;
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  &--box {
+    &.is-active {
+      margin: 0rem;
+      padding: 0rem 0.5rem;
+
+      & .logo {
+        margin: 2rem 1.2rem;
+      }
+
+      & .search {
+        &--input {
+          &-box {
+            display: none;
+          }
+        }
+      }
+      & .nav {
+        &__link {
+          padding: 0 0.3rem;
+        }
+        &__menu {
+          &--main {
+            padding: 0;
+          }
+          &--user {
+            padding: 2rem;
+            &--item {
+              padding: 0;
+            }
+          }
+        }
+      }
     }
   }
 }

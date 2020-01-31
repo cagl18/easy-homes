@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Link } from 'react-router-dom';
 import home from './js/layout/home';
 import search from './js/layout/search';
 
@@ -10,7 +10,7 @@ import './sass/main.scss';
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
+      <HashRouter basename='/'>
         <div>
           <Route path='/' exact component={home} />
           <Route path='/search' exact component={search} />
@@ -24,7 +24,7 @@ function App() {
         <Route path='/streams/show' exact component={streams.streamShow} /> */}
           {/* <div>StreamHubs</div> */}
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

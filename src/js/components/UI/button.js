@@ -2,7 +2,10 @@ import React from 'react';
 
 const button = props => {
   return (
-    <button className={props.className} onClick={props.onClick}>
+    <button
+      className={`btn ${props.className ? props.className : 'default'}`}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );

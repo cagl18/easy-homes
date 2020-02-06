@@ -1,0 +1,27 @@
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  & .priceFilters {
+    & .select {
+      display: inline-block;
+
+      width: 13.5rem;
+      & span {
+        border: 0.5px solid $color-secondary;
+      }
+      & div:first-child() {
+        border: 0.5px solid $color-grey-light-3;
+        border-radius: 0%;
+      }
+    }
+  }
+  & .btn {
+    align-self: center;
+    font-size: 1.5rem;
+    font-weight: 500 !important;
+    height: 32px;
+    width: 65px;
+    padding: 0;
+    margin-left: 1.5rem;
+  }
+}

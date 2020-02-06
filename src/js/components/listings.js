@@ -12,9 +12,12 @@ const listings = props => {
     : null;
 
   return (
-    <Grid container spacing={3}>
-      {listings}
-    </Grid>
+    <div>
+      <p>{props.data.length} Homes</p>
+      <Grid container spacing={3}>
+        {listings}
+      </Grid>
+    </div>
   );
 };
 

@@ -1,39 +1,47 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Map from '../../components/map';
 import SearchBar from '../../components/searchBar';
 import Nav from '../../components/UI/navbar';
 import Listings from '../../components/listings';
-import listing_data from '../../components/data/dummy_data';
+import ListingsFilter from '../../components/UI/filter';
+import listingData from '../../components/data/dummy_data';
+
+import * as actions from '../../../store/actions';
 
 class Search extends Component {
-  state = { listing_data, filtered_data: listing_data, searchText: '' };
+  state = {
+    listingData,
+    filteredData: listingData
+    // filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
+  };
 
-  filterData = kw => {
-    console.log('previous data ', this.state.listing_data);
-    console.log('previous search KW here: ', this.state.searchText);
-    console.log('new search KW here: ', kw);
+  filterData = filters => {
+    this.props.setFilters(filters); //updating redux state listing filter params
+    const updatedFilters = { ...this.props.filtersParams, ...filters };
 
-    const searchText = kw.trim().toLowerCase();
-    console.log('inside the if statement ', this.state.searchText);
-    const newData = this.state.listing_data.filter(l => {
-      const doesIdMatches = l.id.toString().match(searchText);
+    const term = updatedFilters.searchTerm;
+    const searchTerm = term.trim().toLowerCase();
+
+    let newData = this.state.listingData.filter(l => {
+      const doesIdMatches = l.id.toString().match(searchTerm);
 
       const address = l.address.toLowerCase();
-      const doesAddressMatches = address.match(searchText);
+      const doesAddressMatches = address.match(searchTerm);
 
       const neighborhood = l.neighborhood.toLowerCase();
-      const doesNeighborhoodMatches = neighborhood.match(searchText);
+      const doesNeighborhoodMatches = neighborhood.match(searchTerm);
 
       const city = l.city.toLowerCase();
-      const doesCityMatches = city.match(searchText);
+      const doesCityMatches = city.match(searchTerm);
 
       const agent = l.agent.name.toLowerCase();
-      const doesAgentMatches = agent.match(searchText);
+      const doesAgentMatches = agent.match(searchTerm);
 
       const zipcode = l.zipcode.toString();
-      const doesZipcodeMatches = zipcode.match(searchText);
+      const doesZipcodeMatches = zipcode.match(searchTerm);
 
-      console.log('filter :', doesAddressMatches);
       if (
         doesIdMatches !== null ||
         doesAddressMatches !== null ||
@@ -47,12 +55,16 @@ class Search extends Component {
         return false;
       }
     });
-    // console.log('new state data ', newData);
-    this.setState({ filtered_data: newData });
-  };
-  onSearch = kw => {
-    this.setState({ searchText: kw });
-    this.filterData(kw);
+
+    //filtering based on price select field
+    newData = newData.filter(l => {
+      return (
+        l.price >= updatedFilters.minPrice && l.price <= updatedFilters.maxPrice
+      );
+    });
+
+    this.setState({ filteredData: newData });
+    // this.props.setfilteredData(newData);
   };
 
   render() {
@@ -61,13 +73,16 @@ class Search extends Component {
         {/* <p> {this.props.searched_input} </p> */}
         <div className='searchpage__nav'>
           <Nav>
-            <SearchBar onSearch={this.onSearch} />
+            <SearchBar
+              onSearch={searchTerm => this.filterData({ searchTerm })}
+            />
           </Nav>
         </div>
         <div className='searchpage__content'>
           <Map zoom={14} />
           <div className='listings'>
-            <Listings data={this.state.filtered_data} />
+            <ListingsFilter onFiltersSelected={this.filterData} />
+            <Listings data={this.state.filteredData} />
           </div>
         </div>
       </div>
@@ -75,4 +90,18 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    filtersParams: state.search.filtersParams,
+    filteredData: state.search.filteredData
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setFilters: filters => dispatch(actions.setListingsFilter(filters)),
+    setfilteredData: newData => dispatch(actions.filterListingData(newData))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

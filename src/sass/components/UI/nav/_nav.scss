@@ -7,7 +7,6 @@
   padding: 1rem;
   z-index: 5;
 
-  // &::before {
   & .backdrop {
     //nav shadow gradient
     height: 25rem;
@@ -56,8 +55,14 @@
     cursor: pointer;
   }
 
-  &__menu--user--item--btn:focus {
-    outline: none;
+  &__menu--user--item--btn {
+    &.btn {
+      margin-left: 0;
+      padding: 1.6rem 1rem;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 
   &__link {
@@ -88,8 +93,6 @@
         letter-spacing: 3px;
         color: inherit;
         border: none;
-        padding: 1.5rem 1rem;
-        // transition: all 0.4s;
       }
     }
   }

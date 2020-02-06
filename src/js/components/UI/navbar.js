@@ -1,6 +1,9 @@
 import React from 'react';
-import Logo from './logo';
+import { Link } from 'react-router-dom';
+
+import Button from '../UI/button';
 import Drawer from '../UI/drawer';
+import Logo from './logo';
 
 const navbar = props => {
   return (
@@ -8,45 +11,49 @@ const navbar = props => {
       <div className='backdrop'>
         <nav className='nav'>
           <Drawer position='closed'>
-            <Logo />
+            <Logo iconClass='fas fa-home' />
             {props.children}
             <div className='nav__menu'>
               <ul className='nav__menu--main'>
                 <li className='nav__item'>
-                  <a className='nav__link' href='#exclusives'>
+                  <Link className='nav__link' to='#exclusives'>
                     Exclusives
-                  </a>
+                  </Link>
                 </li>
                 <li className='nav__item'>
-                  <a className='nav__link' href='/search'>
+                  <Link className='nav__link' to='/search'>
                     Buy
-                  </a>
+                  </Link>
                 </li>
                 <li className='nav__item'>
-                  <a className='nav__link' href='#rent'>
+                  <Link className='nav__link' to='#rent'>
                     Rent
-                  </a>
+                  </Link>
                 </li>
                 <li className='nav__item'>
-                  <a className='nav__link' href='#sell'>
+                  <Link className='nav__link' to='#sell'>
                     Sell
-                  </a>
+                  </Link>
                 </li>
                 <li className='nav__item'>
-                  <a className='nav__link' href='#agents'>
+                  <Link className='nav__link' to='#agents'>
                     Agents
-                  </a>
+                  </Link>
                 </li>
               </ul>
 
               <div className='nav__menu--user'>
                 <div className='nav__menu--user--item '>
-                  <button className='nav__menu--user--item--btn active'>
+                  {/* <button className='nav__menu--user--item--btn active'>
                     Sign Up
-                  </button>
+                  </button> */}
+                  <Button className='nav__menu--user--item--btn active'>
+                    Sign Up
+                  </Button>
                 </div>
                 <div className='nav__menu--user--item'>
-                  <button className='nav__menu--user--item--btn'>Log In</button>
+                  {/* <button className='nav__menu--user--item--btn'>Log In</button> */}
+                  <Button className='nav__menu--user--item--btn'>Log In</Button>
                 </div>
               </div>
             </div>

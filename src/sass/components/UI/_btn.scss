@@ -1,6 +1,7 @@
 .btn {
   padding: 1rem;
   margin-left: 1rem;
+  border: 0px solid transparent;
 
   &.default {
     border: 0.5px solid $color-grey-light-3;
@@ -16,8 +17,7 @@
   &.primary {
     @include clearfix;
     color: $color-white;
-    border: none;
-    outline: none;
+
     background-color: $color-primary;
     z-index: 10;
     transform: translate(-0%, 1%);
@@ -58,27 +58,20 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  // opacity: 0;
   animation: fade_move_down 3s ease-in-out infinite 1.1s;
 
   //position on drawer
   position: absolute;
   right: 0%;
   top: -0.5%;
-  // transform: translate(-0.5%, 0%);
   padding: 1rem;
 }
 
 .btn__closed--animated {
   position: relative;
-  // border: 1px solid #fff;
-  // margin: 1.1rem;
   width: 5rem;
   height: 5rem;
-  // border-radius: 50%;
   opacity: 1;
-  // transform: translate(-3%, -10%);
-  // padding: 1rem 1rem 0 0;
 
   &.closed-position span {
     z-index: 999;
@@ -86,8 +79,7 @@
     margin: 1px;
     padding: 1px;
     width: 1.5rem;
-    // background: #fff;
-    background: black;
+    background: $color-black;
     color: $color-black;
     transition: 0.4s ease;
     display: block;

@@ -30,7 +30,6 @@
       bottom: 0%;
       left: -100%;
       z-index: 1000;
-      transition: 0.3s all;
     }
 
     &__menu {
@@ -45,6 +44,7 @@
         display: flex;
         justify-content: space-around;
         margin: 2rem 0rem;
+        transition: none;
 
         &::before {
           display: none;
@@ -52,7 +52,7 @@
         &--item {
           color: inherit;
           background-color: inherit;
-          transition: all 0.01s;
+          // transition: all 0.01s;
           border-radius: 2px;
 
           &:nth-child(1) {
@@ -72,13 +72,15 @@
           }
 
           &--btn {
-            color: inherit;
-            padding: 1.2rem 2.4rem;
-            margin: 0;
+            &.btn {
+              color: inherit;
+              padding: 1.2rem 2.4rem;
+              margin: 0;
 
-            &:hover {
-              border: none;
-              background-color: $color-secondary;
+              &:hover {
+                border: none;
+                background-color: $color-secondary;
+              }
             }
           }
         }
@@ -106,6 +108,17 @@
 
   .is-active {
     &.nav {
+      &--box {
+        transition: 0.3s all;
+      }
+      &__menu {
+        &--user {
+          transition: none;
+          &--item {
+            transition: none;
+          }
+        }
+      }
       &--box {
         left: 0%;
         padding: 2rem 1.25rem 3rem 1.25rem;

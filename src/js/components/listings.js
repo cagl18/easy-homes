@@ -1,4 +1,6 @@
 import React from 'react';
+// import { connect } from 'react-redux';
+
 import Listing from '../components/listing';
 import Grid from '@material-ui/core/Grid';
 
@@ -12,8 +14,7 @@ const listings = props => {
     : null;
 
   return (
-    <div>
-      <p>{props.data.length} Homes</p>
+    <div className='listings__card--wrapper'>
       <Grid container spacing={3}>
         {listings}
       </Grid>

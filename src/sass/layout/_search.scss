@@ -68,23 +68,29 @@
   &__content {
     display: flex;
     flex: wrap column;
+    margin-top: 0.15rem;
 
     & .map {
-      // background-color: orangered;
       min-width: 66%;
       flex-grow: 1;
     }
     & .listings {
-      // background-color: aliceblue;
-      padding: 2.5rem;
       flex-grow: 1;
 
-      & .MuiGrid-item {
-        max-width: 50%;
-        flex-basis: 50%;
+      & .heading-quaternary {
+        padding: 1.5rem 2.2rem;
+        border-bottom: 0.5px solid $color-grey-light-3;
+      }
 
-        & .card-body {
-          height: 20rem;
+      & .listings__card--wrapper {
+        padding: 1.5rem 2.2rem;
+        & .MuiGrid-item {
+          max-width: 50%;
+          flex-basis: 50%;
+
+          & .card-body {
+            height: 20rem;
+          }
         }
       }
     }
@@ -92,7 +98,7 @@
 
   & .search {
     &--input {
-      border: 1.2px solid rgb(218, 218, 218);
+      border: 1.2px solid $color-grey-light-3;
       background: transparent;
       height: 4rem;
       padding: 1.1rem;
@@ -119,8 +125,20 @@
       & .map {
         min-width: 66.5%;
       }
+
       & .card .flex .card-listing-right-wrapper {
         flex-wrap: nowrap;
+      }
+    }
+    & .nav {
+      &--box {
+        & .search {
+          &--input {
+            &-box {
+              width: 45rem;
+            }
+          }
+        }
       }
     }
   }
@@ -135,11 +153,15 @@
     }
   }
   @include respond(tab-land) {
+    & .mobile__menu--icon {
+      display: inline-block;
+    }
     & .search {
       &--input {
         &-box {
           visibility: visible;
-          display: block;
+          display: inline-block;
+          width: 48%;
         }
       }
     }
@@ -147,6 +169,14 @@
       & .map {
         min-width: 45%;
       }
+
+      // & .filters {
+      //   & .priceFilters {
+      //     & .select {
+      //       width: 20rem;
+      //     }
+      //   }
+      // }
     }
   }
   @include respond(tab-port) {
@@ -158,11 +188,45 @@
         }
       }
       & .map {
-        min-width: 48%;
+        min-width: 41.5%;
+      }
+    }
+
+    & .search {
+      &--input {
+        &-box {
+          width: 18%;
+        }
       }
     }
   }
   @include respond(phone) {
+    .mobile__menu--icon {
+      // border: 1px solid;
+      display: inline-block;
+      border: 0.5px solid $color-grey-light-3;
+      & i {
+        margin: 1.4rem;
+      }
+    }
+    .logo__link {
+      display: none;
+    }
+    & .search {
+      &--input {
+        height: 5rem;
+        &-box {
+          width: 45rem;
+          margin: 0;
+          padding: 0rem;
+        }
+        &-btn {
+          color: $color-black;
+          height: 4.9rem;
+          background-color: transparent;
+        }
+      }
+    }
     .card .banner {
       padding: 0.5rem 0.8rem;
     }

@@ -3,8 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import home from './js/layout/home';
 import search from './js/layout/search';
 
-// import FlexBox from './js/layout/flexboxExample';
-// import CssGridExample from './js/layout/cssGridExample';
 import './sass/main.scss';
 
 function App() {
@@ -24,9 +22,7 @@ function App() {
         <Route path='/streams/show' exact component={streams.streamShow} /> */}
           {/* <div>StreamHubs</div> */}
         </Switch>
-        {/* </BrowserRouter> */}
       </div>
-      {/* </BrowserRouter> */}
     </div>
   );
 }

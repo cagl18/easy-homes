@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const footer = () => {
   return (
@@ -16,39 +17,39 @@ const footer = () => {
               </h4>
               <ul className='footer__links'>
                 <li>
-                  <a className='footer-item' href='#aboutUs'>
+                  <Link className='footer-item' to='#aboutUs'>
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#team'>
+                  <Link className='footer-item' to='#team'>
                     Team
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#careers'>
+                  <Link className='footer-item' to='#careers'>
                     Careers
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#investors'>
+                  <Link className='footer-item' to='#investors'>
                     Investors
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#contactUs'>
+                  <Link className='footer-item' to='#contactUs'>
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#offices'>
+                  <Link className='footer-item' to='#offices'>
                     Offices
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#agent'>
+                  <Link className='footer-item' to='#agent'>
                     Agent Experience
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </label>
@@ -64,59 +65,59 @@ const footer = () => {
               </h4>
               <ul className='footer__links'>
                 <li>
-                  <a className='footer-item' href='#concierge'>
+                  <Link className='footer-item' to='#concierge'>
                     Concierge
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#loan'>
+                  <Link className='footer-item' to='#loan'>
                     Bridge Loan Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#careers'>
+                  <Link className='footer-item' to='#comingSoon'>
                     Easy Homes Coming Soon
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#cares'>
+                  <Link className='footer-item' to='#cares'>
                     Easy Homes Cares
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#neighborhood'>
+                  <Link className='footer-item' to='#neighborhood'>
                     Neighborhood Guides
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#newdevelopment'>
+                  <Link className='footer-item' to='#newdevelopment'>
                     New Development
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#commercial'>
+                  <Link className='footer-item' to='#commercial'>
                     Commercial
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#entertainment'>
+                  <Link className='footer-item' to='#entertainment'>
                     Sports & Entertainment
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#marketresearch'>
+                  <Link className='footer-item' to='#marketresearch'>
                     Market Research
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#collections'>
+                  <Link className='footer-item' to='#collections'>
                     Collections
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className='footer-item' href='#smartsign'>
+                  <Link className='footer-item' to='#smartsign'>
                     Easy Homes Smart Sign
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </label>
@@ -126,33 +127,35 @@ const footer = () => {
             <h4 className='heading-quaternary u-margin-bottom-tiny'>
               Mobile Apps
             </h4>
-            <a href='#'>
+            <Link to='#ios'>
               <img
                 className='footer__mobileIcon'
                 src='https://images.ctfassets.net/x01lqw608u1m/3X7x96c8UYp8qoSgXRtVhE/5cde7194bab3e7ccb3d30be21112a522/appstore.png'
                 alt='EasyHomes Homes iOS'
               />
-            </a>
-            <a href='#'>
+            </Link>
+
+            <Link to='#android'>
               <img
                 className='footer__mobileIcon'
                 src='https://images.ctfassets.net/x01lqw608u1m/5IuqcWiWxI4ZhGAsBRGE7v/d78c00f0311bd3465720f7c574e1fb62/playstore.png'
                 alt='EasyHomes Homes Android'
               />
-            </a>
+            </Link>
           </section>
 
           <div className='footer__social'>
-            <a
+            <Link
               className='footer__social-Link'
-              href='//instagram.com/EasyHomes/'
+              href='http://instagram.com/EasyHomes/'
               rel='nofollow noopener'
               target='_blank'
               title='Instagram'
             >
               <i className='fab fa-instagram'></i>
-            </a>
-            <a
+            </Link>
+
+            <Link
               className='footer__social-Link'
               href='//facebook.com/EasyHomes/'
               rel='nofollow noopener'
@@ -160,8 +163,9 @@ const footer = () => {
               title='Facebook'
             >
               <i className='fab fa-facebook'></i>
-            </a>
-            <a
+            </Link>
+
+            <Link
               className='footer__social-Link'
               href='//twitter.com/EasyHomes/'
               rel='nofollow noopener'
@@ -169,8 +173,9 @@ const footer = () => {
               title='Twitter'
             >
               <i className='fab fa-twitter'></i>
-            </a>
-            <a
+            </Link>
+
+            <Link
               className='footer__social-Link'
               href='//medium.com/EasyHomes/'
               rel='nofollow noopener'
@@ -178,34 +183,34 @@ const footer = () => {
               title='Medium'
             >
               <i className='fab fa-medium'></i>
-            </a>
+            </Link>
           </div>
 
           <section className='footer__legal'>
             <div className='footer__legal-terms u-margin-bottom-tiny'>
-              <a
+              <Link
                 className='footer__legal-links'
                 href='/legal/terms-of-service'
                 data-tn='footer-link-terms-of-service'
               >
                 Terms of Service
-              </a>
+              </Link>
               ,
-              <a
+              <Link
                 className='footer__legal-links'
                 href='/legal/privacy-policy'
                 data-tn='footer-link-privacy-policy'
               >
                 Privacy Policy
-              </a>
+              </Link>
               , and
-              <a
+              <Link
                 className='footer__legal-links'
                 href='/ucfe-assets/consumer-footer/5/YCPR-Jan-2019.pdf'
                 data-tn='footer-link-california-applicant-notice'
               >
                 Notice for California Applicants
-              </a>
+              </Link>
             </div>
             <div className='footer__legal-disclaimer'>
               Corporate Responsibility, Privacy &amp; Legal Notices: Easy Homes
@@ -221,7 +226,7 @@ const footer = () => {
               <span className='consumerFooter-TREC'>
                 Texas Real Estate Commission:
               </span>
-              <a
+              <Link
                 className='textIntent-caption2'
                 data-tn='footer-link-consumer-protection-notice'
                 href='//www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-2.pdf'
@@ -230,9 +235,9 @@ const footer = () => {
                 data-label='Consumer Protection Notice'
               >
                 Consumer Protection Notice
-              </a>
+              </Link>
               ,
-              <a
+              <Link
                 className='footer__legal-links'
                 data-tn='footer-link-info-brokerage-service'
                 href='/ucfe-assets/consumer-footer/5/IABS-May-2019.pdf'
@@ -241,18 +246,18 @@ const footer = () => {
                 data-label='Info About Brokerage Services'
               >
                 Info About Brokerage Services
-              </a>
+              </Link>
               . &copy; Easy Homes 2020.
               <span className='consumerFooter-phone'>212-913-9058.</span>
               <br />
               <div className='u-margin-top-small'>
-                <a className='footer-browserLink' href='/sitemap/'>
+                <Link className='footer-browserLink' href='/sitemap/'>
                   Sitemap
-                </a>
+                </Link>
                 <span>|</span>
-                <a className='footer-browserLink' href='/recently-sold/'>
+                <Link className='footer-browserLink' href='/recently-sold/'>
                   Recently Sold Homes
-                </a>
+                </Link>
               </div>
             </div>
           </section>

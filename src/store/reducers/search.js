@@ -5,12 +5,19 @@ import listingData from '../../js/components/data/dummy_data';
 const initialState = {
   listingData,
   filteredData: listingData,
-  filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
+  filtersParams: {
+    searchTerm: '',
+    minPrice: 0,
+    maxPrice: 9999999999,
+    minBeds: -1,
+    maxBeds: 7,
+    minBaths: 0
+  }
 };
 
 const setListingsFilters = (state, action) => {
   const updatedFilters = updateObject(state.filtersParams, action.filters);
-  console.log('redux state', updatedFilters, 'action', action);
+  //   console.log('redux state', updatedFilters, 'action', action);
   return updateObject(state, { filtersParams: updatedFilters });
 };
 

@@ -4,15 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import searchReducer from './store/reducers/search';
 
 const composeEnhancers =
-  process.env.NODE_ENV === 'development'
+  (process.env.NODE_ENV === 'development'
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose; //try to find redux_devtool or simply default to redux compose without devtools functionality
+    : null) || compose; //try to find redux_devtool or simply default to redux compose without devtools functionality
 
 const rootReducer = combineReducers({
   search: searchReducer

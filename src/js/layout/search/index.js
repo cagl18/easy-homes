@@ -6,25 +6,25 @@ import SearchBar from '../../components/searchBar';
 import Nav from '../../components/UI/navbar';
 import Listings from '../../components/listings';
 import ListingsFilter from '../../components/UI/filter';
-import listingData from '../../components/data/dummy_data';
 
 import * as actions from '../../../store/actions';
 
 class Search extends Component {
-  state = {
-    listingData,
-    filteredData: listingData
-    // filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
-  };
+  // state = {
+  //   listingData,
+  //   filteredData: listingData
+  //   // filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
+  // };
 
-  filterData = filters => {
-    this.props.setFilters(filters); //updating redux state listing filter params
+  filterData = async filters => {
+    await this.props.setFilters(filters); //updating redux state listing filter params
     const updatedFilters = { ...this.props.filtersParams, ...filters };
+    // console.log('updatedFilters', updatedFilters);
 
     const term = updatedFilters.searchTerm;
     const searchTerm = term.trim().toLowerCase();
 
-    let newData = this.state.listingData.filter(l => {
+    let newData = this.props.listingData.filter(l => {
       const doesIdMatches = l.id.toString().match(searchTerm);
 
       const address = l.address.toLowerCase();
@@ -59,12 +59,16 @@ class Search extends Component {
     //filtering based on price select field
     newData = newData.filter(l => {
       return (
-        l.price >= updatedFilters.minPrice && l.price <= updatedFilters.maxPrice
+        l.price >= updatedFilters.minPrice &&
+        l.price <= updatedFilters.maxPrice &&
+        l.beds >= updatedFilters.minBeds &&
+        l.beds <= updatedFilters.maxBeds &&
+        l.baths >= updatedFilters.minBaths
       );
     });
 
-    this.setState({ filteredData: newData });
-    // this.props.setfilteredData(newData);
+    // this.setState({ filteredData: newData });
+    this.props.setfilteredData(newData);
   };
 
   render() {
@@ -81,8 +85,12 @@ class Search extends Component {
         <div className='searchpage__content'>
           <Map zoom={14} />
           <div className='listings'>
-            <ListingsFilter onFiltersSelected={this.filterData} />
-            <Listings data={this.state.filteredData} />
+            <h4 className='heading-quaternary'>Explore This Neighborhood</h4>
+            <ListingsFilter
+              filteredData={this.props.filteredData}
+              onFiltersSelected={this.filterData}
+            />
+            <Listings data={this.props.filteredData} />
           </div>
         </div>
       </div>
@@ -92,8 +100,9 @@ class Search extends Component {
 
 const mapStateToProps = state => {
   return {
-    filtersParams: state.search.filtersParams,
-    filteredData: state.search.filteredData
+    listingData: state.search.listingData,
+    filteredData: state.search.filteredData,
+    filtersParams: state.search.filtersParams
   };
 };
 

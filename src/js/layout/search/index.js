@@ -8,6 +8,7 @@ import Listings from '../../components/listings';
 import ListingsFilter from '../../components/UI/filter';
 
 import * as actions from '../../../store/actions';
+import { setParams } from '../../../shared/utility';
 
 class Search extends Component {
   // state = {
@@ -15,6 +16,25 @@ class Search extends Component {
   //   filteredData: listingData
   //   // filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
   // };
+
+  componentDidMount() {
+    // const searchTerm = this.props.searchTerm;
+    // if (searchTerm !== null) {
+    //   this.props.setfilteredData(searchTerm);
+    // }
+    // this.filterData(this.props.filtersParams);
+  }
+
+  componentDidUpdate() {
+    //   this.filterData(this.props.filtersParams);
+    console.log('componentDidUpdate');
+  }
+
+  updateURL = () => {
+    const url = setParams({ query: this.state.inputValue });
+    //do not forget the "?" !
+    this.props.history.push(`?${url}`);
+  };
 
   filterData = async filters => {
     await this.props.setFilters(filters); //updating redux state listing filter params
@@ -50,6 +70,7 @@ class Search extends Component {
         doesAgentMatches !== null ||
         doesZipcodeMatches !== null
       ) {
+        // this.props.history.push({ pathname: 'search/?q=' + searchTerm });
         return true;
       } else {
         return false;

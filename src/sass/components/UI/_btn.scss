@@ -1,7 +1,9 @@
 .btn {
+  position: relative;
   padding: 1rem;
   margin-left: 1rem;
   border: 0px solid transparent;
+  outline: none;
 
   &.default {
     border: 0.5px solid $color-grey-light-3;
@@ -12,6 +14,10 @@
       background-color: $color-primary;
       color: $color-white;
       border: 0.5px solid transparent;
+    }
+    &:active {
+      margin-top: 0.1rem;
+      overflow-y: hidden;
     }
   }
   &.primary {
@@ -35,6 +41,14 @@
     background-color: $color-white;
     outline: none;
   }
+  & .activeFilters-count {
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.7rem;
+    margin-left: 0.5rem;
+    background-color: $color-grey-light-3;
+    color: $color-black;
+  }
 }
 
 @include respond(tab-land) {
@@ -51,6 +65,8 @@
     }
   }
 }
+
+//BTN LABEL
 
 //BTN CLOSED WITH ANIMATION
 

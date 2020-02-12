@@ -22,6 +22,9 @@ class Filter extends Component {
       this.toogleDrawer();
     }
   }
+  componentDidUpdate() {
+    console.log('Filter-componentDidUpdate');
+  }
   toogleDrawer = () => {
     this.setState({
       isAdvancedFiltersOpened: !this.state.isAdvancedFiltersOpened
@@ -116,7 +119,7 @@ class Filter extends Component {
     // console.log('selected filters', this.getSelectedFilters().size);
     return (
       <div className={`filters ${is_active['className']}`}>
-        <div className='filters__item'>
+        <div className='filters__item prices'>
           <Select
             className='select'
             name='min-price'
@@ -145,13 +148,15 @@ class Filter extends Component {
             value={this.state.fields.maxPrice}
           />
           <Button onClick={this.toogleDrawer}>
-            <b>
-              {`${this.state.isAdvancedFiltersOpened ? 'Closed' : ''} Filters ${
-                this.state.selectedFiltersCounter > 0
-                  ? this.state.selectedFiltersCounter
-                  : ''
-              }`}
-            </b>
+            {`${this.state.isAdvancedFiltersOpened ? 'Closed' : ''} Filters `}
+
+            {this.state.selectedFiltersCounter > 0 ? (
+              <span className='activeFilters-count'>
+                {this.state.selectedFiltersCounter}
+              </span>
+            ) : (
+              ''
+            )}
           </Button>
         </div>
         <div className='results'>

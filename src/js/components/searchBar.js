@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
+
 class SearchBar extends Component {
   state = { term: '' };
   onFormSubmit = e => {
@@ -35,4 +38,16 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => {
+  return {
+    filtersParams: state.search.filtersParams
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setFilters: filters => dispatch(actions.setListingsFilter(filters))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

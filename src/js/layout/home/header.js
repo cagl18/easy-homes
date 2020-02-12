@@ -15,6 +15,11 @@ class Header extends Component {
   onSearchSubmit = event => {
     console.log(event);
   };
+  componentDidUpdate() {
+    // console.log('filtersParams: ', this.props.filtersParams);
+    // console.log('match', this.props.match);
+  }
+
   render() {
     return (
       <header className='header'>
@@ -43,7 +48,10 @@ class Header extends Component {
                     Rent
                   </Button>
                 </div>
-                <SearchBar />
+                <SearchBar
+                  onSearch={this.props.onSearchSubmited}
+                  // onSearch={searchTerm => this.props.setFilters({ searchTerm })}
+                />
               </div>
               {/* End of header Content  */}
             </div>

@@ -147,7 +147,7 @@ const footer = () => {
           <div className='footer__social'>
             <Link
               className='footer__social-Link'
-              href='http://instagram.com/EasyHomes/'
+              to='http://instagram.com/EasyHomes/'
               rel='nofollow noopener'
               target='_blank'
               title='Instagram'
@@ -157,7 +157,7 @@ const footer = () => {
 
             <Link
               className='footer__social-Link'
-              href='//facebook.com/EasyHomes/'
+              to='//facebook.com/EasyHomes/'
               rel='nofollow noopener'
               target='_blank'
               title='Facebook'
@@ -167,7 +167,7 @@ const footer = () => {
 
             <Link
               className='footer__social-Link'
-              href='//twitter.com/EasyHomes/'
+              to='//twitter.com/EasyHomes/'
               rel='nofollow noopener'
               target='_blank'
               title='Twitter'
@@ -177,7 +177,7 @@ const footer = () => {
 
             <Link
               className='footer__social-Link'
-              href='//medium.com/EasyHomes/'
+              to='//medium.com/EasyHomes/'
               rel='nofollow noopener'
               target='_blank'
               title='Medium'
@@ -190,7 +190,7 @@ const footer = () => {
             <div className='footer__legal-terms u-margin-bottom-tiny'>
               <Link
                 className='footer__legal-links'
-                href='/legal/terms-of-service'
+                to='/legal/terms-of-service'
                 data-tn='footer-link-terms-of-service'
               >
                 Terms of Service
@@ -198,7 +198,7 @@ const footer = () => {
               ,
               <Link
                 className='footer__legal-links'
-                href='/legal/privacy-policy'
+                to='/legal/privacy-policy'
                 data-tn='footer-link-privacy-policy'
               >
                 Privacy Policy
@@ -206,7 +206,7 @@ const footer = () => {
               , and
               <Link
                 className='footer__legal-links'
-                href='/ucfe-assets/consumer-footer/5/YCPR-Jan-2019.pdf'
+                to='/ucfe-assets/consumer-footer/5/YCPR-Jan-2019.pdf'
                 data-tn='footer-link-california-applicant-notice'
               >
                 Notice for California Applicants
@@ -229,7 +229,7 @@ const footer = () => {
               <Link
                 className='textIntent-caption2'
                 data-tn='footer-link-consumer-protection-notice'
-                href='//www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-2.pdf'
+                to='//www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-2.pdf'
                 rel='nofollow noopener'
                 target='_blank'
                 data-label='Consumer Protection Notice'
@@ -240,7 +240,7 @@ const footer = () => {
               <Link
                 className='footer__legal-links'
                 data-tn='footer-link-info-brokerage-service'
-                href='/ucfe-assets/consumer-footer/5/IABS-May-2019.pdf'
+                to='/ucfe-assets/consumer-footer/5/IABS-May-2019.pdf'
                 rel='nofollow noopener'
                 target='_blank'
                 data-label='Info About Brokerage Services'
@@ -251,11 +251,11 @@ const footer = () => {
               <span className='consumerFooter-phone'>212-913-9058.</span>
               <br />
               <div className='u-margin-top-small'>
-                <Link className='footer-browserLink' href='/sitemap/'>
+                <Link className='footer-browserLink' to='/sitemap/'>
                   Sitemap
                 </Link>
                 <span>|</span>
-                <Link className='footer-browserLink' href='/recently-sold/'>
+                <Link className='footer-browserLink' to='/recently-sold/'>
                   Recently Sold Homes
                 </Link>
               </div>

@@ -5,6 +5,19 @@ const updateObject = (oldObject, updatedProperties) => {
   };
 };
 
+export const getParams = location => {
+  const searchParams = new URLSearchParams(location.search);
+  return {
+    query: searchParams.get('q') || ''
+  };
+};
+
+export const setParams = ({ query = '' }) => {
+  const searchParams = new URLSearchParams();
+  searchParams.set('q', query);
+  return searchParams.toString();
+};
+
 export default updateObject;
 
 //   export const checkValidity = (value, rules) => {

@@ -1,4 +1,5 @@
 .filters {
+  transition: 0.2 all;
   & .advanceFilters {
     display: none;
   }
@@ -21,6 +22,7 @@
     & .advanceFilters__item {
       padding: 1.3rem 2.2rem;
       border: none;
+
       & .select {
         // display: inline-block;
 
@@ -37,10 +39,21 @@
   justify-content: flex-start;
   border-bottom: 0.5px solid $color-grey-light-3;
 
+  &__item {
+    display: flex;
+    &.prices {
+      height: 58px;
+      padding: 1rem 2.2rem;
+    }
+  }
+
   &__item,
   & .advanceFilters__item {
+    // display: flex;
+    align-self: center;
     padding: 0.4rem 2.2rem;
     border-bottom: 0.5px solid $color-grey-light-3;
+
     & .select {
       display: inline-block;
 
@@ -49,25 +62,32 @@
         border-radius: 0px;
         padding-top: 0;
         padding-bottom: 0;
+        border-color: $color-grey-dark-4;
       }
       & span {
         border: 0.5px solid $color-secondary;
-      }
-      & div:first-child() {
-        border: 0.5px solid $color-grey-light-3;
-        // border-radius: 0%;
-        padding: 0 2px;
       }
     }
   }
 
   & .btn {
-    align-self: center;
     font-size: 1.5rem;
-    font-weight: 500 !important;
-    min-height: 32px;
-    margin-left: 1.5rem;
+    font-weight: 600 !important;
+    height: 38px;
+    min-width: 75px;
+    margin: 0rem 1.5rem;
     background-color: $color-white;
+
+    &.default {
+      border-color: $color-grey-dark-4;
+
+      &:hover,
+      &:active {
+        border-color: $color-grey-dark-4;
+        background-color: $color-grey-light;
+        color: $color-primary;
+      }
+    }
   }
 
   & .results {

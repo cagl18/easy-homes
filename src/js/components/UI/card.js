@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const card = props => {
   const cardImageStyling = {
@@ -6,7 +7,7 @@ const card = props => {
   };
 
   return (
-    <a href={`/${props.data.id}`} className='card'>
+    <Link className='card' to={`/${props.data.id}`}>
       <div key={props.data.id} className='card-body'>
         <div className='card-img' style={cardImageStyling} alt=''>
           <div className='container'>
@@ -49,7 +50,7 @@ const card = props => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

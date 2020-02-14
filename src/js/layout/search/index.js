@@ -8,7 +8,7 @@ import Listings from '../../components/listings';
 import ListingsFilter from '../../components/UI/filter';
 
 import * as actions from '../../../store/actions';
-import { setParams } from '../../../shared/utility';
+import { setURLParams, getURLParams } from '../../../shared/utility';
 
 class Search extends Component {
   // state = {
@@ -22,16 +22,16 @@ class Search extends Component {
     // if (searchTerm !== null) {
     //   this.props.setfilteredData(searchTerm);
     // }
-    // this.filterData(this.props.filtersParams);
+    this.filterData(this.props.filtersParams);
   }
 
   componentDidUpdate() {
     //   this.filterData(this.props.filtersParams);
-    console.log('componentDidUpdate');
+    console.log('search props', this.props);
   }
 
   updateURL = () => {
-    const url = setParams({ query: this.state.inputValue });
+    const url = setURLParams({ query: this.state.inputValue });
     //do not forget the "?" !
     this.props.history.push(`?${url}`);
   };
@@ -41,7 +41,9 @@ class Search extends Component {
     const updatedFilters = { ...this.props.filtersParams, ...filters };
     // console.log('updatedFilters', updatedFilters);
 
-    const term = updatedFilters.searchTerm;
+    // const term = updatedFilters.searchTerm;
+    const term = getURLParams('q', this.props.location);
+
     const searchTerm = term.trim().toLowerCase();
 
     let newData = this.props.listingData.filter(l => {
@@ -100,6 +102,7 @@ class Search extends Component {
           <Nav>
             <SearchBar
               onSearch={searchTerm => this.filterData({ searchTerm })}
+              autoSearch
             />
           </Nav>
         </div>

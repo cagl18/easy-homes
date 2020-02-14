@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions/index';
+import { getURLParams, updateURLParams } from '../../shared/utility';
 
 class SearchBar extends Component {
   state = { term: '' };
@@ -9,14 +9,24 @@ class SearchBar extends Component {
     e.preventDefault();
     this.onSearchSubmit();
   };
-  onInputChange = e => {
-    this.setState({ term: e.target.value });
-    this.onSearchSubmit(e.target.value);
+  onInputChange = async e => {
+    await this.setState({ term: e.target.value });
+    if (this.props.autoSearch) {
+      this.onSearchSubmit(this.state.term);
+    }
   };
   onSearchSubmit = (term = this.state.term) => {
+    updateURLParams({ q: this.state.term }, this.props.history);
     this.props.onSearch(term);
-    //save keyword on url parameter or pass it as prop
   };
+
+  componentDidMount() {
+    const path = this.props.location.pathname;
+    if (path.includes('search')) {
+      const prevSearchParam = getURLParams('q', this.props.location);
+      this.setState({ term: prevSearchParam }); //setting search input value for redirects
+    }
+  }
   render() {
     return (
       <div className='search--input-box'>
@@ -38,16 +48,4 @@ class SearchBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    filtersParams: state.search.filtersParams
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setFilters: filters => dispatch(actions.setListingsFilter(filters))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default withRouter(SearchBar);

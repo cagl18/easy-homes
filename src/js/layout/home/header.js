@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import Navbar from '../../components/UI/navbar';
 import Button from '../../components/UI/button';
 import SearchBar from '../../components/searchBar';
+import { withRouter } from 'react-router-dom';
+
+import { updateURLParams } from '../../../shared/utility';
 
 class Header extends Component {
-  state = { isForSale: true };
-  toogleListingType = listing_type => {
+  state = { isForSale: true, isForRent: false };
+  toogleListingType = async listing_type => {
     let newState = {};
-    listing_type === 'forSale'
+    listing_type === 'for-sale'
       ? (newState['isForSale'] = true)
       : (newState['isForSale'] = false);
-    this.setState(newState);
+    newState['isForRent'] = !newState['isForSale'];
+    await this.setState(newState);
+    updateURLParams({ type: listing_type }, this.props.history);
   };
-  onSearchSubmit = event => {
-    console.log(event);
-  };
-  componentDidUpdate() {
-    // console.log('filtersParams: ', this.props.filtersParams);
-    // console.log('match', this.props.match);
-  }
 
   render() {
     return (
@@ -35,7 +33,7 @@ class Header extends Component {
                     className={`homepage__search__type--btn  ${
                       this.state.isForSale ? 'is_active ' : null
                     }`}
-                    onClick={() => this.toogleListingType('forSale')}
+                    onClick={() => this.toogleListingType('for-sale')}
                   >
                     Buy
                   </Button>
@@ -43,13 +41,14 @@ class Header extends Component {
                     className={`homepage__search__type--btn  ${
                       !this.state.isForSale ? 'is_active' : null
                     }`}
-                    onClick={() => this.toogleListingType('forRent')}
+                    onClick={() => this.toogleListingType('for-rent')}
                   >
                     Rent
                   </Button>
                 </div>
                 <SearchBar
                   onSearch={this.props.onSearchSubmited}
+                  autoSearch={false}
                   // onSearch={searchTerm => this.props.setFilters({ searchTerm })}
                 />
               </div>
@@ -63,4 +62,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

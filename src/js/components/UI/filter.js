@@ -21,6 +21,7 @@ class Filter extends Component {
     if (this.props.position === 'open') {
       this.toogleDrawer();
     }
+    console.log('filter props', this.props);
   }
   componentDidUpdate() {
     console.log('Filter-componentDidUpdate');

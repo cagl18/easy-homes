@@ -5,18 +5,25 @@ import Cities from '../../components/cities';
 import Market from '../../components/market';
 import FeautedListings from '../../components/featured_listings';
 
-import { connect } from 'react-redux';
-import * as actions from '../../../store/actions';
+import { redirectToURL, getURLParams } from '../../../shared/utility';
 
 class Home extends Component {
   redirectToSearchPage = () => {
-    console.log('redicting to Search page');
+    const searchTerm = getURLParams('q', this.props.location);
+    if (searchTerm.length) {
+      redirectToURL('/search', this.props.history);
+    }
   };
+
+  componentDidUpdate() {
+    this.redirectToSearchPage();
+    // console.log('homepage - params', this.props);
+  }
 
   render() {
     return (
       <div>
-        <Header onSearchSubmited={this.redirectToSearchPage} />
+        <Header onSearchSubmited={() => this.redirectToSearchPage()} />
         <FeautedListings />
         <Cities />
         <Market />
@@ -26,18 +33,4 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    listingData: state.search.listingData,
-    filteredData: state.search.filteredData,
-    filtersParams: state.search.filtersParams
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setFilters: filters => dispatch(actions.setListingsFilter(filters))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

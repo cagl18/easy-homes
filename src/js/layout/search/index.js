@@ -8,7 +8,7 @@ import Listings from '../../components/listings';
 import ListingsFilter from '../../components/UI/filter';
 
 import * as actions from '../../../store/actions';
-import { setURLParams, getURLParams } from '../../../shared/utility';
+import { getAllUrlParams } from '../../../shared/utility';
 
 class Search extends Component {
   // state = {
@@ -22,7 +22,7 @@ class Search extends Component {
     // if (searchTerm !== null) {
     //   this.props.setfilteredData(searchTerm);
     // }
-    this.filterData(this.props.filtersParams);
+    // this.filterData(this.props.filtersParams);
   }
 
   componentDidUpdate() {
@@ -30,64 +30,88 @@ class Search extends Component {
     console.log('search props', this.props);
   }
 
-  updateURL = () => {
-    const url = setURLParams({ query: this.state.inputValue });
-    //do not forget the "?" !
-    this.props.history.push(`?${url}`);
-  };
-
   filterData = async filters => {
     await this.props.setFilters(filters); //updating redux state listing filter params
-    const updatedFilters = { ...this.props.filtersParams, ...filters };
+    // const updatedFilters = { ...this.props.filtersParams, ...filters };
     // console.log('updatedFilters', updatedFilters);
 
     // const term = updatedFilters.searchTerm;
-    const term = getURLParams('q', this.props.location);
 
-    const searchTerm = term.trim().toLowerCase();
+    console.log('filters passed from filter component', filters);
+    const URLParmsObj = getAllUrlParams(this.props.location.search);
+    const updatedFilters = { ...URLParmsObj, ...filters };
+    const queryTerm = updatedFilters.q;
 
-    let newData = this.props.listingData.filter(l => {
-      const doesIdMatches = l.id.toString().match(searchTerm);
+    // delete URLParmsObj.q;
+    let newData = this.props.listingData;
+    console.log('queryTerm - newData', newData);
+    console.log('queryTerm - URLParmsObj', updatedFilters);
+    if (queryTerm && queryTerm.trim().length) {
+      const searchTerm = queryTerm.trim().toLowerCase();
 
-      const address = l.address.toLowerCase();
-      const doesAddressMatches = address.match(searchTerm);
+      newData = newData.filter(l => {
+        const doesIdMatches = l.id.toString().match(searchTerm);
 
-      const neighborhood = l.neighborhood.toLowerCase();
-      const doesNeighborhoodMatches = neighborhood.match(searchTerm);
+        const address = l.address.toLowerCase();
+        const doesAddressMatches = address.match(searchTerm);
 
-      const city = l.city.toLowerCase();
-      const doesCityMatches = city.match(searchTerm);
+        const neighborhood = l.neighborhood.toLowerCase();
+        const doesNeighborhoodMatches = neighborhood.match(searchTerm);
 
-      const agent = l.agent.name.toLowerCase();
-      const doesAgentMatches = agent.match(searchTerm);
+        const city = l.city.toLowerCase();
+        const doesCityMatches = city.match(searchTerm);
 
-      const zipcode = l.zipcode.toString();
-      const doesZipcodeMatches = zipcode.match(searchTerm);
+        const agent = l.agent.name.toLowerCase();
+        const doesAgentMatches = agent.match(searchTerm);
 
-      if (
-        doesIdMatches !== null ||
-        doesAddressMatches !== null ||
-        doesNeighborhoodMatches !== null ||
-        doesCityMatches !== null ||
-        doesAgentMatches !== null ||
-        doesZipcodeMatches !== null
-      ) {
-        // this.props.history.push({ pathname: 'search/?q=' + searchTerm });
-        return true;
-      } else {
-        return false;
-      }
-    });
+        const zipcode = l.zipcode.toString();
+        const doesZipcodeMatches = zipcode.match(searchTerm);
 
-    //filtering based on price select field
+        if (
+          doesIdMatches !== null ||
+          doesAddressMatches !== null ||
+          doesNeighborhoodMatches !== null ||
+          doesCityMatches !== null ||
+          doesAgentMatches !== null ||
+          doesZipcodeMatches !== null
+        ) {
+          // this.props.history.push({ pathname: 'search/?q=' + searchTerm });
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+    console.log('listing_type - newData', newData);
+    console.log('listing_type - URLParmsObj', updatedFilters);
+    //filtering based on type
+
+    const listing_type = updatedFilters.type;
+    if (listing_type) {
+      newData = newData.filter(l => {
+        return l.type === listing_type;
+      });
+    }
+
+    // filtering based on price select field
     newData = newData.filter(l => {
-      return (
-        l.price >= updatedFilters.minPrice &&
-        l.price <= updatedFilters.maxPrice &&
-        l.beds >= updatedFilters.minBeds &&
-        l.beds <= updatedFilters.maxBeds &&
-        l.baths >= updatedFilters.minBaths
-      );
+      let isAMatch = true;
+      if (updatedFilters.minprice) {
+        isAMatch = isAMatch && l.price >= parseInt(updatedFilters.minprice);
+      }
+      if (updatedFilters.maxprice) {
+        isAMatch = isAMatch && l.price <= parseInt(updatedFilters.maxprice);
+      }
+      if (updatedFilters.minbeds) {
+        isAMatch = isAMatch && l.beds >= parseInt(updatedFilters.minbeds);
+      }
+      if (updatedFilters.maxbeds) {
+        isAMatch = isAMatch && l.beds <= parseInt(updatedFilters.maxbeds);
+      }
+      if (updatedFilters.minbaths) {
+        isAMatch = isAMatch && l.baths >= parseFloat(updatedFilters.minbaths);
+      }
+      return isAMatch;
     });
 
     // this.setState({ filteredData: newData });
@@ -138,3 +162,33 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
+// if (updatedFilters.minprice) {
+//   newData = newData.filter(l => {
+//     return l.price >= parseInt(updatedFilters.minprice);
+//   });
+// }
+
+// if (updatedFilters.maxprice) {
+//   newData = newData.filter(l => {
+//     return l.price <= parseInt(updatedFilters.maxprice);
+//   });
+// }
+
+// if (updatedFilters.minbeds) {
+//   newData = newData.filter(l => {
+//     return l.beds >= parseInt(updatedFilters.minbeds);
+//   });
+// }
+
+// if (updatedFilters.maxbeds) {
+//   newData = newData.filter(l => {
+//     return l.beds <= parseInt(updatedFilters.maxbeds);
+//   });
+// }
+
+// if (updatedFilters.minbaths) {
+//   newData = newData.filter(l => {
+//     return l.baths >= parseFloat(updatedFilters.minbaths);
+//   });
+// }

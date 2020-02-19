@@ -89,12 +89,17 @@ export const setURLParams = (params = null) => {
 // };
 
 export const updateURLParams = (query = null, history) => {
-  const paramsObj = getAllUrlParams(history.location.search);
-  let key = Object.keys(query);
-  // console.log('paramsObj', paramsObj);
-  paramsObj[key] = query[key]; //updating searchTerm on existing URLParams
-  const paramsString = setURLParams(paramsObj);
-  history.push({ search: `${paramsString}` });
+  if (query) {
+    const paramsObj = getAllUrlParams(history.location.search);
+    query = Object.keys(query).reduce(
+      (c, k) => ((c[k.toLowerCase()] = query[k]), c),
+      {}
+    ); //converting key to lowercase to match URL string
+
+    const updatedParams = updateObject(paramsObj, query);
+    const paramsString = setURLParams(updatedParams); //converting URL params into a URL string
+    history.push({ search: `${paramsString}` });
+  }
 };
 
 export const redirectToURL = (pathname = '', history = '') => {

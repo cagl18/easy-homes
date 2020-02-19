@@ -4,16 +4,18 @@ import listingData from '../../../components/data/dummy_data';
 class listingDetail extends Component {
   state = { listing: '' };
   componentDidMount() {
-    const listingID = this.props.location.params.id;
+    const listingID = this.props.match.params.id;
     console.log('listingDetail Page', listingID);
-    const listing = this.ComponentgetListingByID(listingID);
+    const listing = this.getListingByID(listingID);
+    console.log('listing', listing);
     this.setState({ listing });
   }
 
   getListingByID = id => {
-    const listing = listingData.map(l => l.id === id);
+    const listing = listingData.find(l => l.id.toString() === id);
     return listing;
   };
+
   render() {
     return (
       <div className='listing__detailView'>

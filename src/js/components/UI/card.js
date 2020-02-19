@@ -7,7 +7,7 @@ const card = props => {
   };
 
   return (
-    <Link className='card' to={`/${props.data.id}`}>
+    <Link className='card' to={`listing/${props.data.id}`}>
       <div key={props.data.id} className='card-body'>
         <div className='card-img' style={cardImageStyling} alt=''>
           <div className='container'>

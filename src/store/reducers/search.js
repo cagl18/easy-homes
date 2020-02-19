@@ -4,15 +4,15 @@ import listingData from '../../js/components/data/dummy_data';
 
 const initialState = {
   listingData,
-  filteredData: listingData,
-  filtersParams: {
-    searchTerm: '',
-    minPrice: 0,
-    maxPrice: 9999999999,
-    minBeds: -1,
-    maxBeds: 7,
-    minBaths: 0
-  }
+  filteredData: listingData
+  // filtersParams: {
+  //   searchTerm: '',
+  //   minPrice: 0,
+  //   maxPrice: 9999999999,
+  //   minBeds: -1,
+  //   maxBeds: 7,
+  //   minBaths: 0
+  // }
 };
 
 const setListingsFilters = (state, action) => {

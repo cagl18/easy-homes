@@ -21,12 +21,12 @@ const navbar = props => {
                   </Link>
                 </li>
                 <li className='nav__item'>
-                  <Link className='nav__link' to='/search'>
+                  <Link className='nav__link' to='/search?type=for-sale'>
                     Buy
                   </Link>
                 </li>
                 <li className='nav__item'>
-                  <Link className='nav__link' to='#rent'>
+                  <Link className='nav__link' to='/search?type=for-rent'>
                     Rent
                   </Link>
                 </li>

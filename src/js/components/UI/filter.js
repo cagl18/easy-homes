@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import Button from './button';
 import Select from 'react-select';
+import { withRouter } from 'react-router-dom';
 // import 'react-select/dist/react-select.css';
 
+import Sort from './sort';
+import {
+  updateURLParams,
+  getAllUrlParams,
+  getURLParams
+} from '../../../shared/utility';
+
 const defaultFields = {
-  minPrice: { value: 0, label: 'No Min Price' },
-  maxPrice: { value: 9999999999, label: 'No Max Price' },
-  minBeds: { value: -1, label: 'No Min' },
-  maxBeds: { value: 7, label: 'No Max' },
-  minBaths: { value: 0, label: 'No Min' }
+  minprice: { value: 0, label: 'No Min Price' },
+  maxprice: { value: 9999999999, label: 'No Max Price' },
+  minbeds: { value: -1, label: 'No Min' },
+  maxbeds: { value: 7, label: 'No Max' },
+  minbaths: { value: 0, label: 'No Min' }
 };
 
 class Filter extends Component {
   state = {
-    fields: defaultFields,
+    fields: { ...JSON.parse(JSON.stringify(defaultFields)) }, //Deep copying defaultFields Obj
     selectedFiltersCounter: 0,
     isAdvancedFiltersOpened: false
   };
@@ -21,26 +29,115 @@ class Filter extends Component {
     if (this.props.position === 'open') {
       this.toogleDrawer();
     }
-    console.log('filter props', this.props);
+    this.populateUIFilterFieldsFromURLParams();
+
+    // for (let key in params) {
+    //   if (key.includes('price')) {
+    //     let newVal = parseInt(params.key);
+    //     newFieldsState.key = {
+    //       value: params.key,
+    //       label: this.getPriceOptions(newVal)
+    //     };
+    //   }
+    // }
+
+    // this.setState({ fields: newFieldsState });
   }
   componentDidUpdate() {
-    console.log('Filter-componentDidUpdate');
+    // console.log('Filter-componentDidUpdate', 'current state', this.state);
+    // console.log('getSelectedFilters', this.getSelectedFilters());
   }
+  populateUIFilterFieldsFromURLParams = () => {
+    const updatedFields = JSON.parse(JSON.stringify(this.state.fields));
+    const URLparams = getAllUrlParams();
+
+    for (let key in URLparams) {
+      if (updatedFields[key]) {
+        updatedFields[key].value = key.includes('baths')
+          ? parseFloat(URLparams[key])
+          : parseInt(URLparams[key]);
+        const fieldName = key.replace(/min|max/, '');
+        if (
+          (fieldName === 'baths' &&
+            updatedFields[key].value >
+              defaultFields[`min${fieldName}`].value) ||
+          (updatedFields[key].value > defaultFields[`min${fieldName}`].value &&
+            updatedFields[key].value < defaultFields[`max${fieldName}`].value)
+        ) {
+          if (key.includes('price')) {
+            updatedFields[key].label = this.getLabelOfValue(
+              updatedFields[key].value,
+              this.getPriceOptions()
+            );
+          }
+          if (
+            key.includes('bed') &&
+            updatedFields[key].value > defaultFields.minprice.value &&
+            updatedFields[key].value < defaultFields.maxprice.value
+          ) {
+            updatedFields[key].label = this.getLabelOfValue(
+              updatedFields[key].value,
+              this.getBedsOptions()
+            );
+          }
+          if (key.includes('bath')) {
+            updatedFields[key].label = this.getLabelOfValue(
+              updatedFields[key].value,
+              this.getBathsOptions()
+            );
+          }
+        }
+        //try to convert values to numbers
+      }
+      // updateURLParams
+    }
+
+    const selectedFiltersCounter = this.getSelectedFilters().length;
+
+    const filterDataFromURLParams = () => {
+      const listing_type = getURLParams('type', this.props.location);
+      if (listing_type.trim().length) {
+        this.onChangeHandler('type', { value: listing_type });
+      }
+    };
+
+    this.setState(
+      { selectedFiltersCounter, fields: updatedFields },
+      filterDataFromURLParams
+    );
+  };
   toogleDrawer = () => {
     this.setState({
       isAdvancedFiltersOpened: !this.state.isAdvancedFiltersOpened
     });
   };
 
+  getLabelOfValue = (value, arr) => {
+    if (!value || !arr.length) {
+      return '';
+    }
+    for (let entry of arr) {
+      if (entry.value === value) {
+        return entry.label;
+      }
+    }
+
+    return '';
+  };
+
   getSelectedFilters = () => {
-    // console.log('getSelectedFilters state', this.state);
     const selectedFields = new Set();
+
     for (let key in this.state.fields) {
-      if (defaultFields[key].value !== this.state.fields[key].value) {
+      if (
+        key !== 'type' &&
+        defaultFields[key].value !== this.state.fields[key].value
+      ) {
         const newKey = key.replace(/min|max/, '');
         selectedFields.add(newKey);
       }
     }
+
     return [...selectedFields];
   };
 
@@ -100,6 +197,8 @@ class Filter extends Component {
 
   onChangeHandler = async (name, event) => {
     const newState = { [name]: event };
+
+    updateURLParams({ [name]: event.value }, this.props.history);
     this.props.onFiltersSelected({ [name]: event.value });
 
     await this.setState({
@@ -115,9 +214,7 @@ class Filter extends Component {
     is_active.onClick = this.state.isAdvancedFiltersOpened
       ? this.toogleDrawer
       : null;
-    // console.log('minBaths, filter comp', this.state.fields.minBaths);
-    // console.log('filter state', this.state.fields, this.state.fields.minBaths);
-    // console.log('selected filters', this.getSelectedFilters().size);
+
     return (
       <div className={`filters ${is_active['className']}`}>
         <div className='filters__item prices'>
@@ -130,9 +227,9 @@ class Filter extends Component {
               ...this.getPriceOptions()
             ]}
             // defaultValue={{ value: 0, label: 'No Min Price' }}
-            onChange={e => this.onChangeHandler('minPrice', e)}
+            onChange={e => this.onChangeHandler('minprice', e)}
             // getOptionLabel={this.state.minPrice}
-            value={this.state.fields.minPrice}
+            value={this.state.fields.minprice}
           />
 
           <span style={{ padding: '0 8px' }}>-</span>
@@ -145,8 +242,8 @@ class Filter extends Component {
               ...this.getPriceOptions()
             ]}
             // defaultValue={{ value: 0, label: 'No Max Price' }}
-            onChange={e => this.onChangeHandler('maxPrice', e)}
-            value={this.state.fields.maxPrice}
+            onChange={e => this.onChangeHandler('maxprice', e)}
+            value={this.state.fields.maxprice}
           />
           <Button onClick={this.toogleDrawer}>
             {`${this.state.isAdvancedFiltersOpened ? 'Closed' : ''} Filters `}
@@ -165,7 +262,7 @@ class Filter extends Component {
             <b>{this.props.filteredData.length} </b>
             Homes
           </span>
-          <span className='results__sorted_by'>Sort By Recommended</span>
+          <Sort />
         </div>
         <div className='advanceFilters'>
           <div className='advanceFilters__section'>
@@ -179,9 +276,9 @@ class Filter extends Component {
                   { value: -1, label: 'No Min' },
                   ...this.getBedsOptions()
                 ]}
-                defaultValue={this.state.fields.minBeds}
-                onChange={e => this.onChangeHandler('minBeds', e)}
-                value={this.state.fields.minBeds}
+                defaultValue={this.state.fields.minbeds}
+                onChange={e => this.onChangeHandler('minbeds', e)}
+                value={this.state.fields.minbeds}
               />
               <span style={{ padding: '0 8px' }}>-</span>
               <Select
@@ -193,8 +290,8 @@ class Filter extends Component {
                   ...this.getBedsOptions()
                 ]}
                 defaultValue={this.state.fields.maxBeds}
-                onChange={e => this.onChangeHandler('maxBeds', e)}
-                value={this.state.fields.maxBeds}
+                onChange={e => this.onChangeHandler('maxbeds', e)}
+                value={this.state.fields.maxbeds}
               />
             </div>
             <div className='advanceFilters__item'>
@@ -208,8 +305,8 @@ class Filter extends Component {
                   ...this.getBathsOptions()
                 ]}
                 defaultValue={this.state.fields.minBaths}
-                onChange={e => this.onChangeHandler('minBaths', e)}
-                value={this.state.fields.minBaths}
+                onChange={e => this.onChangeHandler('minbaths', e)}
+                value={this.state.fields.minbaths}
               />
             </div>
           </div>
@@ -219,4 +316,18 @@ class Filter extends Component {
   }
 }
 
-export default Filter;
+export default withRouter(Filter);
+
+// setSelectedFiltersOnURL = () => {
+//   // console.log('getSelectedFilters state', this.state);
+//   const selectedFields = new Set();
+//   for (let key in this.state.fields) {
+//     if (defaultFields[key].value !== this.state.fields[key].value) {
+//       const fieldName = key.replace(/min|max/, '');
+//       this.state.fields.filter(f => f.includes(fieldName))
+//       selectedFields.add(fieldName);
+//     }
+//   }
+//   console.log('selectedFields', selectedFields);
+//   return [...selectedFields];
+// };

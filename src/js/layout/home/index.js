@@ -17,7 +17,6 @@ class Home extends Component {
 
   componentDidUpdate() {
     this.redirectToSearchPage();
-    // console.log('homepage - params', this.props);
   }
 
   render() {

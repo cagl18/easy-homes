@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={home} />
           <Route path='/search/' exact component={search} />
-          <Route path='/listing/:id' exact component={search} />
+          <Route path='/listing/:id' exact component={listingDetails} />
           <Route component={noFound} />
           {/* <Route path='/streams/new' exact component={streams.streamCreate} />
         <Route path='/streams/edit' exact component={streams.streamEdit} />

@@ -4,6 +4,7 @@
   margin-left: 1rem;
   border: 0px solid transparent;
   outline: none;
+  user-select: none;
 
   &.default {
     border: 0.5px solid $color-grey-light-3;

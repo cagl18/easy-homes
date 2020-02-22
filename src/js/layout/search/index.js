@@ -32,20 +32,16 @@ class Search extends Component {
 
   filterData = async filters => {
     await this.props.setFilters(filters); //updating redux state listing filter params
-    // const updatedFilters = { ...this.props.filtersParams, ...filters };
-    // console.log('updatedFilters', updatedFilters);
 
+    // const updatedFilters = { ...this.props.filtersParams, ...filters };
     // const term = updatedFilters.searchTerm;
 
-    console.log('filters passed from filter component', filters);
     const URLParmsObj = getAllUrlParams(this.props.location.search);
     const updatedFilters = { ...URLParmsObj, ...filters };
     const queryTerm = updatedFilters.q;
 
-    // delete URLParmsObj.q;
     let newData = this.props.listingData;
-    console.log('queryTerm - newData', newData);
-    console.log('queryTerm - URLParmsObj', updatedFilters);
+
     if (queryTerm && queryTerm.trim().length) {
       const searchTerm = queryTerm.trim().toLowerCase();
 
@@ -75,17 +71,14 @@ class Search extends Component {
           doesAgentMatches !== null ||
           doesZipcodeMatches !== null
         ) {
-          // this.props.history.push({ pathname: 'search/?q=' + searchTerm });
           return true;
         } else {
           return false;
         }
       });
     }
-    console.log('listing_type - newData', newData);
-    console.log('listing_type - URLParmsObj', updatedFilters);
-    //filtering based on type
 
+    //filtering based on type
     const listing_type = updatedFilters.type;
     if (listing_type) {
       newData = newData.filter(l => {
@@ -114,6 +107,25 @@ class Search extends Component {
       return isAMatch;
     });
 
+    //sorting data
+    const sortBy = updatedFilters.sort;
+
+    if (sortBy) {
+      const [sortDirection, sortByField] = sortBy.includes('-')
+        ? sortBy.split('-')
+        : ['asc', sortBy];
+
+      newData.sort((a, b) => {
+        return typeof a[sortByField] === 'string'
+          ? a[sortByField].localeCompare(b[sortByField])
+          : a[sortByField] - b[sortByField];
+      });
+
+      if (sortDirection === 'desc') {
+        newData.reverse();
+      }
+    }
+
     // this.setState({ filteredData: newData });
     this.props.setfilteredData(newData);
   };
@@ -138,6 +150,7 @@ class Search extends Component {
               filteredData={this.props.filteredData}
               onFiltersSelected={this.filterData}
             />
+
             <Listings data={this.props.filteredData} />
           </div>
         </div>
@@ -162,33 +175,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
-
-// if (updatedFilters.minprice) {
-//   newData = newData.filter(l => {
-//     return l.price >= parseInt(updatedFilters.minprice);
-//   });
-// }
-
-// if (updatedFilters.maxprice) {
-//   newData = newData.filter(l => {
-//     return l.price <= parseInt(updatedFilters.maxprice);
-//   });
-// }
-
-// if (updatedFilters.minbeds) {
-//   newData = newData.filter(l => {
-//     return l.beds >= parseInt(updatedFilters.minbeds);
-//   });
-// }
-
-// if (updatedFilters.maxbeds) {
-//   newData = newData.filter(l => {
-//     return l.beds <= parseInt(updatedFilters.maxbeds);
-//   });
-// }
-
-// if (updatedFilters.minbaths) {
-//   newData = newData.filter(l => {
-//     return l.baths >= parseFloat(updatedFilters.minbaths);
-//   });
-// }

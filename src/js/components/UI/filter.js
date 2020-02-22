@@ -94,17 +94,16 @@ class Filter extends Component {
 
     const selectedFiltersCounter = this.getSelectedFilters().length;
 
-    const filterDataFromURLParams = () => {
-      const listing_type = getURLParams('type', this.props.location);
-      if (listing_type.trim().length) {
-        this.onChangeHandler('type', { value: listing_type });
-      }
-    };
-
     this.setState(
       { selectedFiltersCounter, fields: updatedFields },
-      filterDataFromURLParams
+      this.filterDataFromURLParams
     );
+  };
+  filterDataFromURLParams = () => {
+    const listing_type = getURLParams('type', this.props.location);
+    if (listing_type.trim().length) {
+      this.onChangeHandler('type', { value: listing_type });
+    }
   };
   toogleDrawer = () => {
     this.setState({
@@ -196,6 +195,7 @@ class Filter extends Component {
   };
 
   onChangeHandler = async (name, event) => {
+    console.log('filter onChange method was called');
     const newState = { [name]: event };
 
     updateURLParams({ [name]: event.value }, this.props.history);
@@ -262,7 +262,7 @@ class Filter extends Component {
             <b>{this.props.filteredData.length} </b>
             Homes
           </span>
-          <Sort />
+          <Sort onChange={this.filterDataFromURLParams} />
         </div>
         <div className='advanceFilters'>
           <div className='advanceFilters__section'>

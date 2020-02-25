@@ -15,7 +15,7 @@ class FeaturedListings extends Component {
         <p className='paragraph u-margin-bottom-small'>
           Listings we think you’ll love.
         </p>
-        <Listings data={data} />
+        <Listings data={data.slice(0, 6)} />
       </div>
     );
   }

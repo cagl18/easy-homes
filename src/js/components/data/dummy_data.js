@@ -113,6 +113,44 @@ const data = [
     beds: 2,
     baths: 2,
     sq: 1113
+  },
+  {
+    id: 5006,
+    agent: {
+      name: 'Steve Gold',
+      img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800'
+    },
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/2f3f54cea7c6ab18e795b73bf0a326397d5f2c9c/640x480.jpg',
+    type: 'for-sale',
+    comingsoon: 'Listed by Easy Homes',
+    price: 1469000,
+    address: '505 West 47th Street, Unit 2GS',
+    neighborhood: "Hell's Kithen",
+    city: 'Manhattan',
+    zipcode: 10036,
+    beds: 2,
+    baths: 2,
+    sq: 967
+  },
+  {
+    id: 5007,
+    agent: {
+      name: 'Steve Gold',
+      img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800'
+    },
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/ac43b79c39c614876ff08b86f721ad7f20a1c2a0/640x480.jpg',
+    type: 'for-sale',
+    comingsoon: 'Listed by Easy Homes',
+    price: 3850000,
+    address: '710 Broadway, Fl 2',
+    neighborhood: 'NoHo',
+    city: 'Manhattan',
+    zipcode: 10003,
+    beds: 2,
+    baths: 2,
+    sq: null
   }
 ];
 

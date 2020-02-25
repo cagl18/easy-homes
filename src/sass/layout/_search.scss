@@ -1,4 +1,5 @@
 .searchpage {
+  overflow: hidden;
   &__nav {
     color: $color-black;
     height: 5rem;
@@ -66,6 +67,7 @@
   }
 
   &__content {
+    position: relative;
     display: flex;
     flex: wrap column;
     margin-top: 0.15rem;
@@ -73,9 +75,16 @@
     & .map {
       min-width: 66%;
       flex-grow: 1;
+      height: auto !important;
+      border-right: 1px solid rgba(0, 0, 0, 0.08);
     }
     & .listings {
       flex-grow: 1;
+      overflow-y: scroll;
+      // overflow-x: hidden;
+      height: 92vh;
+
+      // width: 65.8rem;
 
       & .heading-quaternary {
         padding: 1.5rem 2.2rem;
@@ -89,7 +98,7 @@
           flex-basis: 50%;
 
           & .card-body {
-            height: 20rem;
+            height: 22rem;
           }
         }
       }
@@ -153,6 +162,18 @@
     }
   }
   @include respond(tab-land) {
+    &__content {
+      & .listings {
+        & .MuiGrid-item {
+          max-width: 50%;
+          flex-basis: 50%;
+        }
+      }
+      & .map {
+        min-width: 47%;
+      }
+    }
+
     & .mobile__menu--icon {
       display: inline-block;
     }
@@ -165,30 +186,20 @@
         }
       }
     }
-    &__content {
-      & .map {
-        min-width: 45%;
-      }
-
-      // & .filters {
-      //   & .priceFilters {
-      //     & .select {
-      //       width: 20rem;
-      //     }
-      //   }
-      // }
-    }
   }
+
   @include respond(tab-port) {
     &__content {
       & .listings {
-        & .MuiGrid-item {
-          max-width: 100%;
-          flex-basis: 100%;
+        & .listings__card--wrapper {
+          & .MuiGrid-item {
+            max-width: 50%;
+            flex-basis: 50%;
+          }
         }
       }
       & .map {
-        min-width: 41.5%;
+        min-width: 35%;
       }
     }
 
@@ -200,29 +211,82 @@
       }
     }
   }
+  @media (max-width: 889px) {
+    &__content {
+      & .listings {
+        & .filters__item .select,
+        .filters .advanceFilters__item .select {
+          width: 13rem;
+          font-size: 1.4rem;
+        }
+        & .listings__card--wrapper {
+          & .MuiGrid-item {
+            max-width: 100%;
+            flex-basis: 100%;
+          }
+        }
+      }
+      & .map {
+        min-width: 36%;
+      }
+    }
+  }
+  @media (max-width: 648px) {
+    &__content {
+      & .listings {
+        & .filters__item .select,
+        .filters .advanceFilters__item .select {
+          width: 14rem;
+          font-size: 1.6rem;
+        }
+        & .listings__card--wrapper {
+          & .MuiGrid-item {
+            max-width: 50%;
+            flex-basis: 50%;
+          }
+        }
+      }
+      & .map {
+        min-width: 0%;
+      }
+    }
+  }
   @include respond(phone) {
+    .nav {
+      // padding: 1.6rem;
+    }
     .mobile__menu--icon {
-      // border: 1px solid;
-      display: inline-block;
-      border: 0.5px solid $color-grey-light-3;
+      height: 5.2rem;
+      display: flex;
+      border: 0.5px solid $color-grey-dark-2;
       & i {
-        margin: 1.4rem;
+        padding-left: 0.3rem;
       }
     }
     .logo__link {
       display: none;
     }
+    .nav--box {
+      &.is-active {
+        .logo__link {
+          display: block;
+        }
+      }
+    }
+
     & .search {
       &--input {
-        height: 5rem;
+        height: 5.5rem;
+        border: none;
+        border-left: 1.2px solid $color-grey-light-3;
         &-box {
-          width: 45rem;
+          width: 74%;
           margin: 0;
           padding: 0rem;
         }
         &-btn {
-          color: $color-black;
-          height: 4.9rem;
+          color: $color-primary;
+          height: 5.5rem;
           background-color: transparent;
         }
       }
@@ -230,14 +294,38 @@
     .card .banner {
       padding: 0.5rem 0.8rem;
     }
+
     &__content {
       & .map {
         min-width: 0%;
       }
       & .listings {
-        & .MuiGrid-item {
-          max-width: 50%;
-          flex-basis: 50%;
+        padding-bottom: 10rem;
+
+        &__header {
+          display: flex;
+          flex-direction: column-reverse;
+
+          padding: 0;
+          margin: 0;
+          & h4 {
+            background-color: $color-grey-light;
+            color: $color-grey-dark-2;
+            font-size: 1.3rem;
+            font-weight: 100;
+            line-height: 0.4;
+          }
+        }
+        & .listings__card--wrapper {
+          padding: 1.5rem 1.6rem;
+          & .MuiGrid-item {
+            max-width: 100%;
+            flex-basis: 100%;
+            padding: 0.22rem 0rem;
+            & .card-body {
+              height: 23rem;
+            }
+          }
         }
       }
     }

@@ -128,4 +128,20 @@
       }
     }
   }
+  @include respond(phone) {
+    &__search {
+      & .search {
+        &--input {
+          display: flex;
+          padding: 1.5rem 5rem 1.5rem 1.5rem !important;
+
+          &-btn {
+            top: 40.1% !important;
+            right: 0% !important;
+            height: 5.35rem;
+          }
+        }
+      }
+    }
+  }
 }

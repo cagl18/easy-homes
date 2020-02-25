@@ -1,12 +1,19 @@
 .sort {
   border: none;
-
+  height: auto;
+  width: auto;
+  transition: 0.1s all;
+  position: relative;
   &.is-active {
     background-color: transparent;
+    & .popUpMenu {
+      display: flex; //show the popUpMenu
+    }
   }
   & .results__sorted_by {
     text-transform: capitalize;
     cursor: pointer;
+
     &:hover {
       text-decoration: underline;
     }
@@ -19,17 +26,21 @@
     }
   }
   & .popUpMenu {
-    background-color: $color-white;
-    z-index: 2000;
     position: absolute;
-    margin-left: 6rem;
-    box-shadow: 0 1px 1px rgba($color-black, 0.8);
+    left: 0;
+    background-color: $color-white;
+    box-shadow: 0 1px 3px rgba($color-black, 0.8);
+    z-index: 2000;
     & .advanceFilters__item {
       padding: 0;
+      border: none;
     }
     & .sort-direction {
+      font-weight: 500;
+      font-size: 1.5rem;
       & span {
-        padding: 0.4rem 2.2rem;
+        padding: 0.4rem 2rem;
+        color: $color-grey-dark-3;
         &.is-active {
           color: $color-primary;
           border-bottom: 2px solid $color-primary;
@@ -38,19 +49,37 @@
           text-decoration: underline;
           color: $color-primary;
         }
-        &:first-child {
-          margin-right: 2rem;
-        }
       }
     }
 
     & p {
-      padding: 0 2.2rem;
+      padding: 0.5rem 2.2rem;
       text-transform: capitalize;
 
       &:hover {
         background-color: rgba($color-grey-dark-4, 0.15);
         color: $color-primary;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    & .results__sorted_by {
+      &--FieldName {
+        display: none;
+      }
+    }
+
+    & .popUpMenu {
+      margin: 1rem 0 0 -15rem;
+      padding-top: 1rem;
+
+      & .sort-direction {
+        font-weight: 600;
+      }
+      & p {
+        margin: 2rem 0rem;
+        font-size: 2rem;
       }
     }
   }

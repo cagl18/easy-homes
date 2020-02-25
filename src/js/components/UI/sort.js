@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
-
 import { withRouter } from 'react-router-dom';
-// import popUpMenu from './popUpMenu_notUsed';
 
 import { updateURLParams } from '../../../shared/utility';
 
@@ -33,22 +31,22 @@ class sort extends Component {
     sortBy = this.state.sortBy,
     sortDirection = this.state.sortDirection
   ) => {
-    // console.log('sortBy', sortBy, 'sortDirection', sortDirection);
     const sortByURLParam = sortDirection
       ? `${sortDirection}-${sortBy}`
       : sortBy;
 
     updateURLParams({ sort: sortByURLParam }, this.props.history);
     this.setState({ sortBy, sortDirection });
+    this.handleClickOutside(); //auto closing menu after selecting
     this.props.onChange(); //function reference to sorting data
   };
+
   handleClickOutside = () => {
     //closing menu when user click outside component
     if (this.state.isOptionsMenuOpened) {
       this.setState({ isOptionsMenuOpened: false });
     }
   };
-
   render() {
     // filters is-active
     let is_active = {};
@@ -69,9 +67,13 @@ class sort extends Component {
       </p>
     ));
     return (
-      <span className={`sort filters ${is_active['className']}`}>
+      <span className={`sort ${is_active['className']}`}>
         <span className='results__sorted_by' onClick={this.toogleMenu}>
-          Sort By {this.state.sortBy} <i className='fas fa-chevron-down'></i>
+          {'Sort By '}
+          <span className='results__sorted_by--FieldName'>
+            {this.state.sortBy}
+          </span>
+          <i className='fas fa-chevron-down'></i>
         </span>
 
         <div className='popUpMenu advanceFilters'>

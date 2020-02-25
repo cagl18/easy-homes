@@ -40,7 +40,9 @@ const card = props => {
                       {props.data.baths} <div>Baths</div>
                     </div>
                     <div>
-                      {Number(props.data.sq).toLocaleString()}{' '}
+                      {Number(props.data.sq) === 0
+                        ? '-'
+                        : Number(props.data.sq).toLocaleString()}
                       <div>Sq. Ft.</div>
                     </div>
                   </div>

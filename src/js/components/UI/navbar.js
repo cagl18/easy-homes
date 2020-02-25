@@ -44,15 +44,11 @@ const navbar = props => {
 
               <div className='nav__menu--user'>
                 <div className='nav__menu--user--item '>
-                  {/* <button className='nav__menu--user--item--btn active'>
-                    Sign Up
-                  </button> */}
                   <Button className='nav__menu--user--item--btn active'>
                     Sign Up
                   </Button>
                 </div>
                 <div className='nav__menu--user--item'>
-                  {/* <button className='nav__menu--user--item--btn'>Log In</button> */}
                   <Button className='nav__menu--user--item--btn'>Log In</Button>
                 </div>
               </div>

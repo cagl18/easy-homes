@@ -50,7 +50,7 @@
         height: 100%;
         width: 100%;
         &-box {
-          width: 67rem;
+          width: 65rem;
         }
         &-btn {
           position: absolute;
@@ -63,20 +63,13 @@
 }
 
 .primary {
-  @include clearfix;
-  color: $color-white;
-  border: none;
-  outline: none;
-  background-color: $color-primary;
-  z-index: 10;
-  transform: translate(-0%, 1%);
-
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    margin-bottom: -1rem;
-  }
+  // @include clearfix;
+  // color: $color-white;
+  // border: none;
+  // outline: none;
+  // background-color: $color-primary;
+  // z-index: 10;
+  // transform: translate(-0%, 1%);
 }
 
 .is_active {
@@ -127,7 +120,7 @@
     }
   }
   .primary {
-    transform: translate(5%, 1%);
+    transition: none;
   }
 }
 
@@ -138,8 +131,5 @@
         width: 100%;
       }
     }
-  }
-  .primary {
-    transform: translate(0%, 1%);
   }
 }

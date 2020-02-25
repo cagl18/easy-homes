@@ -102,8 +102,15 @@ body {
   border: 0.5px solid $color-primary-light;
 }
 
-// TRUNCATE TEXT
+// TRUNCATE SINGLE LINE TEXT
 
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// TRUNCATE MULTI-LINE TEXT
 .truncate-overflow {
   --max-lines: 6;
   --lh: 2.5rem;

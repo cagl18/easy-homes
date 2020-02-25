@@ -133,7 +133,6 @@ class Search extends Component {
   render() {
     return (
       <div className='searchpage'>
-        {/* <p> {this.props.searched_input} </p> */}
         <div className='searchpage__nav'>
           <Nav>
             <SearchBar
@@ -145,11 +144,13 @@ class Search extends Component {
         <div className='searchpage__content'>
           <Map zoom={14} />
           <div className='listings'>
-            <h4 className='heading-quaternary'>Explore This Neighborhood</h4>
-            <ListingsFilter
-              filteredData={this.props.filteredData}
-              onFiltersSelected={this.filterData}
-            />
+            <div className='listings__header'>
+              <h4 className='heading-quaternary'>Explore This Neighborhood</h4>
+              <ListingsFilter
+                filteredData={this.props.filteredData}
+                onFiltersSelected={this.filterData}
+              />
+            </div>
 
             <Listings data={this.props.filteredData} />
           </div>

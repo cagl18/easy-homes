@@ -6,6 +6,9 @@
   &.is-active {
     height: 100vh;
     background-color: $color-grey-light;
+    position: absolute;
+    z-index: 800;
+    width: 100%;
 
     & .advanceFilters {
       display: block;
@@ -13,7 +16,7 @@
         display: flex;
       }
       &__item {
-        flex-grow: 1;
+        // flex-grow: 1;
         // flex-shrink: 0;
       }
     }
@@ -24,8 +27,6 @@
       border: none;
 
       & .select {
-        // display: inline-block;
-
         width: 12rem;
       }
     }
@@ -100,6 +101,78 @@
       font-size: 1.5rem;
       font-weight: 500;
       color: $color-primary;
+    }
+  }
+  @include respond(phone) {
+    display: flex;
+    // flex-direction: row-reverse;
+    & .btn {
+      margin: 0;
+      border-radius: 2px;
+    }
+    & .price_filter {
+      display: none;
+    }
+    .results,
+    .filters__item {
+      max-width: 50%;
+      flex-basis: 50%;
+    }
+    & .results {
+      display: flex;
+      justify-content: flex-end;
+      align-self: center;
+
+      &__found {
+        display: none;
+      }
+
+      &__sorted_by {
+        justify-self: flex-start;
+      }
+    }
+    &.is-active {
+      // position: relative;
+      bottom: 0;
+      top: 0rem;
+      .price_filter {
+        // display: flex;
+        // position: relative;
+      }
+      & .filters__item {
+        position: absolute;
+        // display: block;
+        // width: 100%;
+      }
+      & .advanceFilters {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        // flex-wrap: wrap;
+        background-color: yellow;
+        // width: 100%;
+        &__section {
+          display: flex;
+          justify-items: flex-start;
+          background-color: greenyellow;
+
+          &__item {
+            display: flex;
+            flex-direction: row;
+            min-width: 100% !important;
+            flex-basis: 0%;
+          }
+        }
+      }
+    }
+
+    // advanceFilters__item
+    & .select {
+      // display: flex;
+
+      // width: 50% !important;
+      // flex-basis: 50% !important;
+      justify-self: flex-start !important;
     }
   }
 }

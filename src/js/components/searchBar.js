@@ -32,14 +32,14 @@ class SearchBar extends Component {
       <div className='search--input-box'>
         <form onSubmit={this.onFormSubmit}>
           <input
-            className='search--input'
+            className='search--input truncate'
             type='text'
             placeholder='City, Neighborhood, Address, School, ZIP, Agent, MLS #'
             onChange={this.onInputChange}
             value={this.state.term}
           ></input>
 
-          <button className='search--input-btn primary'>
+          <button className='search--input-btn btn primary'>
             <i className='fas fa-search'></i>
           </button>
         </form>

@@ -16,7 +16,9 @@ const defaultFields = {
   maxprice: { value: 9999999999, label: 'No Max Price' },
   minbeds: { value: -1, label: 'No Min' },
   maxbeds: { value: 7, label: 'No Max' },
-  minbaths: { value: 0, label: 'No Min' }
+  minbaths: { value: 0, label: 'No Min' },
+  minSqft: { value: 0, label: 'No Min' },
+  maxSqft: { value: 8000, label: 'No Max' }
 };
 
 class Filter extends Component {
@@ -184,8 +186,25 @@ class Filter extends Component {
     return bath_value_options;
   };
 
+  getSquareFootOptions = () => {
+    const sq_value_options = [];
+    let sq_label = '';
+    for (let i = 500; i <= 8000; ) {
+      sq_label = `${i.toLocaleString()}`;
+      sq_value_options.push({ value: i, label: sq_label });
+      if (i < 3000) {
+        i += 250;
+      } else if (i < 4000) {
+        i += 500;
+      } else {
+        i += 1000;
+      }
+    }
+    return sq_value_options;
+  };
+
   onChangeHandler = async (name, event) => {
-    console.log('filter onChange method was called');
+    // console.log('filter onChange method was called');
     const newState = { [name]: event };
 
     updateURLParams({ [name]: event.value }, this.props.history);
@@ -207,101 +226,148 @@ class Filter extends Component {
 
     return (
       <div className={`filters ${is_active['className']}`}>
-        <div className='filters__item prices'>
-          <div className='price_filter'>
-            <Select
-              className='select'
-              name='min-price'
-              components={{ IndicatorSeparator: null }}
-              options={[
-                { value: 0, label: 'No Min Price' },
-                ...this.getPriceOptions()
-              ]}
-              // defaultValue={{ value: 0, label: 'No Min Price' }}
-              onChange={e => this.onChangeHandler('minprice', e)}
-              // getOptionLabel={this.state.minPrice}
-              value={this.state.fields.minprice}
-            />
+        <div className='filters__wrapper'>
+          <h2 className='heading'>Filters</h2>
+          <div className='basicFilters__section'>
+            <div className='filters__item prices'>
+              <div className='price_filter'>
+                <Select
+                  className='select'
+                  name='min-price'
+                  components={{ IndicatorSeparator: null }}
+                  options={[
+                    { value: 0, label: 'No Min Price' },
+                    ...this.getPriceOptions()
+                  ]}
+                  // defaultValue={{ value: 0, label: 'No Min Price' }}
+                  onChange={e => this.onChangeHandler('minprice', e)}
+                  // getOptionLabel={this.state.minPrice}
+                  value={this.state.fields.minprice}
+                />
 
-            <span style={{ padding: '0 8px' }}>-</span>
-            <Select
-              className='select'
-              name='max-price'
-              components={{ IndicatorSeparator: null }}
-              options={[
-                { value: 9999999999, label: 'No Max Price' },
-                ...this.getPriceOptions()
-              ]}
-              // defaultValue={{ value: 0, label: 'No Max Price' }}
-              onChange={e => this.onChangeHandler('maxprice', e)}
-              value={this.state.fields.maxprice}
-            />
-          </div>
-          <Button onClick={this.toogleDrawer}>
-            {`${this.state.isAdvancedFiltersOpened ? 'Closed' : ''} Filters `}
-
-            {this.state.selectedFiltersCounter > 0 ? (
-              <span className='activeFilters-count'>
-                {this.state.selectedFiltersCounter}
-              </span>
-            ) : (
-              ''
-            )}
-          </Button>
-        </div>
-        <div className='results'>
-          <span className='results__found'>
-            <b>{this.props.filteredData.length} </b>
-            Homes
-          </span>
-          <Sort onChange={this.filterDataFromURLParams} />
-        </div>
-        <div className='advanceFilters'>
-          <div className='advanceFilters__section'>
-            <div className='advanceFilters__item'>
-              <h4 className='heading'>Beds</h4>
-
-              <Select
-                className='select'
-                name='min-beds'
-                components={{ IndicatorSeparator: null }}
-                options={[
-                  { value: -1, label: 'No Min' },
-                  ...this.getBedsOptions()
-                ]}
-                defaultValue={this.state.fields.minbeds}
-                onChange={e => this.onChangeHandler('minbeds', e)}
-                value={this.state.fields.minbeds}
-              />
-              <span style={{ padding: '0 8px' }}>-</span>
-              <Select
-                className='select'
-                name='max-beds'
-                components={{ IndicatorSeparator: null }}
-                options={[
-                  { value: 7, label: 'No Max' },
-                  ...this.getBedsOptions()
-                ]}
-                defaultValue={this.state.fields.maxBeds}
-                onChange={e => this.onChangeHandler('maxbeds', e)}
-                value={this.state.fields.maxbeds}
-              />
+                <span style={{ padding: '0 8px' }}>-</span>
+                <Select
+                  className='select'
+                  name='max-price'
+                  components={{ IndicatorSeparator: null }}
+                  options={[
+                    { value: 9999999999, label: 'No Max Price' },
+                    ...this.getPriceOptions()
+                  ]}
+                  // defaultValue={{ value: 0, label: 'No Max Price' }}
+                  onChange={e => this.onChangeHandler('maxprice', e)}
+                  value={this.state.fields.maxprice}
+                />
+              </div>
             </div>
+            <div className='filters__item'>
+              <Button onClick={this.toogleDrawer}>
+                {`${
+                  this.state.isAdvancedFiltersOpened ? 'Closed' : ''
+                } Filters `}
 
-            <div className='advanceFilters__item'>
-              <h4 className='heading'>Baths</h4>
-              <Select
-                className='select'
-                name='Baths'
-                components={{ IndicatorSeparator: null }}
-                options={[
-                  { value: 0, label: 'No Min' },
-                  ...this.getBathsOptions()
-                ]}
-                defaultValue={this.state.fields.minBaths}
-                onChange={e => this.onChangeHandler('minbaths', e)}
-                value={this.state.fields.minbaths}
-              />
+                {this.state.selectedFiltersCounter > 0 ? (
+                  <span className='activeFilters-count'>
+                    {this.state.selectedFiltersCounter}
+                  </span>
+                ) : (
+                  ''
+                )}
+              </Button>
+            </div>
+          </div>
+          <div className='results'>
+            <span className='results__found'>
+              <b>{this.props.filteredData.length} </b>
+              Homes
+            </span>
+            <Sort onChange={this.filterDataFromURLParams} />
+          </div>
+          <div className='advanceFilters'>
+            <div className='advanceFilters__section'>
+              <div className='advanceFilters__item beds'>
+                <h4 className='heading'>Beds</h4>
+                <div className='advanceFilters__item--field'>
+                  <Select
+                    className='select'
+                    name='min-beds'
+                    components={{ IndicatorSeparator: null }}
+                    options={[
+                      { value: -1, label: 'No Min' },
+                      ...this.getBedsOptions()
+                    ]}
+                    defaultValue={this.state.fields.minbeds}
+                    onChange={e => this.onChangeHandler('minbeds', e)}
+                    value={this.state.fields.minbeds}
+                  />
+                  <span style={{ padding: '0 8px' }}>-</span>
+                  <Select
+                    className='select'
+                    name='max-beds'
+                    components={{ IndicatorSeparator: null }}
+                    options={[
+                      { value: 7, label: 'No Max' },
+                      ...this.getBedsOptions()
+                    ]}
+                    defaultValue={this.state.fields.maxBeds}
+                    onChange={e => this.onChangeHandler('maxbeds', e)}
+                    value={this.state.fields.maxbeds}
+                  />
+                </div>
+              </div>
+
+              <div className='advanceFilters__item baths'>
+                <h4 className='heading'>Baths</h4>
+                <div className='advanceFilters__item--field'>
+                  <Select
+                    className='select select--single'
+                    name='Baths'
+                    components={{ IndicatorSeparator: null }}
+                    options={[
+                      { value: 0, label: 'No Min' },
+                      ...this.getBathsOptions()
+                    ]}
+                    defaultValue={this.state.fields.minBaths}
+                    onChange={e => this.onChangeHandler('minbaths', e)}
+                    value={this.state.fields.minbaths}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className='advanceFilters__section'>
+              <div>
+                <h2 className='heading'>Property Facts</h2>
+                <div className='advanceFilters__item'>
+                  <h4 className='heading'>Square Feet</h4>
+                  <div className='advanceFilters__item--field'>
+                    <Select
+                      className='select'
+                      name='min-sqft'
+                      components={{ IndicatorSeparator: null }}
+                      options={[
+                        { value: -1, label: 'No Min' },
+                        ...this.getSquareFootOptions()
+                      ]}
+                      defaultValue={this.state.fields.minSqft}
+                      onChange={e => this.onChangeHandler('minSqft', e)}
+                      value={this.state.fields.minSqft}
+                    />
+                    <span style={{ padding: '0 8px' }}>-</span>
+                    <Select
+                      className='select'
+                      name='max-sqft'
+                      components={{ IndicatorSeparator: null }}
+                      options={[
+                        { value: 7, label: 'No Max' },
+                        ...this.getSquareFootOptions()
+                      ]}
+                      defaultValue={this.state.fields.maxSqft}
+                      onChange={e => this.onChangeHandler('maxSqft', e)}
+                      value={this.state.fields.maxSqft}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

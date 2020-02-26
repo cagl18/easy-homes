@@ -1,33 +1,98 @@
 .filters {
   transition: 0.2 all;
-  & .advanceFilters {
-    display: none;
+
+  &:not(.is-active) {
+    .basicFilters__section {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 0.5px solid #dadada;
+
+      & .filters__item {
+        border-bottom: none;
+      }
+    }
+    & .advanceFilters {
+      display: none;
+    }
+    & h2 {
+      display: none;
+    }
   }
+
   &.is-active {
-    height: 100vh;
     background-color: $color-grey-light;
     position: absolute;
-    z-index: 800;
-    width: 100%;
+    top: 0;
+    bottom: -15rem;
+    right: 0;
+    left: 0;
+
+    height: 100vh;
+
+    & .filters__wrapper {
+      // background-color: yellowgreen;
+    }
+
+    & h2 {
+      display: block;
+      padding: 1.5rem 2.2rem;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    .basicFilters__section {
+      & .filters__item {
+        & .btn {
+          align-items: center;
+          position: fixed;
+          bottom: 1rem;
+          right: 0rem;
+        }
+      }
+    }
 
     & .advanceFilters {
       display: block;
       &__section {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+          'beds baths'
+          'sqft sqft';
       }
+
       &__item {
-        // flex-grow: 1;
-        // flex-shrink: 0;
+        & .heading {
+          line-height: 1.8;
+          font-size: 1.6rem;
+          font-weight: 500;
+          color: #333;
+        }
+        &--field {
+          display: flex;
+        }
+        &.beds {
+          grid-area: beds;
+        }
+        &.baths {
+          grid-area: baths;
+        }
+        &.sqft {
+          grid-area: sqft;
+        }
       }
     }
 
     & .filters__item,
     & .advanceFilters__item {
-      padding: 1.3rem 2.2rem;
+      padding: 1rem 2.2rem;
       border: none;
 
       & .select {
-        width: 12rem;
+        width: 13rem;
+
+        &--single {
+          width: 100%;
+        }
       }
     }
 
@@ -36,7 +101,6 @@
     }
   }
 
-  // display: flex;
   justify-content: flex-start;
   border-bottom: 0.5px solid $color-grey-light-3;
 
@@ -50,7 +114,6 @@
 
   &__item,
   & .advanceFilters__item {
-    // display: flex;
     align-self: center;
     padding: 0.4rem 2.2rem;
     border-bottom: 0.5px solid $color-grey-light-3;
@@ -104,8 +167,6 @@
     }
   }
   @include respond(phone) {
-    display: flex;
-    // flex-direction: row-reverse;
     & .btn {
       margin: 0;
       border-radius: 2px;
@@ -131,48 +192,39 @@
         justify-self: flex-start;
       }
     }
+    .prices {
+      border: none;
+    }
     &.is-active {
-      // position: relative;
-      bottom: 0;
+      position: absolute;
+      bottom: 0rem;
       top: 0rem;
-      .price_filter {
-        // display: flex;
-        // position: relative;
+      & .price_filter {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+      & .results {
+        display: block;
+        position: absolute;
+        bottom: 1rem;
+        right: 0;
       }
       & .filters__item {
-        position: absolute;
-        // display: block;
-        // width: 100%;
-      }
-      & .advanceFilters {
         display: flex;
-        width: 100%;
-        flex-direction: column;
-        // flex-wrap: wrap;
-        background-color: yellow;
-        // width: 100%;
-        &__section {
-          display: flex;
-          justify-items: flex-start;
-          background-color: greenyellow;
 
-          &__item {
-            display: flex;
-            flex-direction: row;
-            min-width: 100% !important;
-            flex-basis: 0%;
-          }
+        &.prices {
+          max-width: 100%;
+          flex-basis: 100%;
         }
       }
-    }
 
-    // advanceFilters__item
-    & .select {
-      // display: flex;
-
-      // width: 50% !important;
-      // flex-basis: 50% !important;
-      justify-self: flex-start !important;
+      & .advanceFilters {
+        &__section {
+          display: block;
+        }
+      }
     }
   }
 }

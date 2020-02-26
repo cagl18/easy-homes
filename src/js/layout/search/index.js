@@ -145,7 +145,9 @@ class Search extends Component {
           <Map zoom={14} />
           <div className='listings'>
             <div className='listings__header'>
-              <h4 className='heading-quaternary'>Explore This Neighborhood</h4>
+              <header className='heading-quaternary'>
+                <h4>Explore This Neighborhood</h4>
+              </header>
               <ListingsFilter
                 filteredData={this.props.filteredData}
                 onFiltersSelected={this.filterData}

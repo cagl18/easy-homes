@@ -1,5 +1,6 @@
 .searchpage {
   overflow: hidden;
+
   &__nav {
     color: $color-black;
     height: 5rem;
@@ -68,27 +69,35 @@
 
   &__content {
     position: relative;
+    bottom: 0;
     display: flex;
     flex: wrap column;
-    margin-top: 0.15rem;
 
     & .map {
       min-width: 66%;
       flex-grow: 1;
       height: auto !important;
       border-right: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
     & .listings {
+      position: relative;
+      bottom: 0;
       flex-grow: 1;
-      overflow-y: scroll;
-      // overflow-x: hidden;
-      height: 92vh;
 
-      // width: 65.8rem;
+      overflow-y: scroll;
+      height: 92vh;
 
       & .heading-quaternary {
         padding: 1.5rem 2.2rem;
         border-bottom: 0.5px solid $color-grey-light-3;
+      }
+
+      &__header {
+        background-color: $color-white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
 
       & .listings__card--wrapper {

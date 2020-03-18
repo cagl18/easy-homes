@@ -3,7 +3,7 @@
   font-size: inherit;
   font-family: inherit;
   letter-spacing: 3px;
-  height: 4.8rem;
+  height: 5.15rem;
   padding: 1rem;
   z-index: 5;
 
@@ -19,10 +19,6 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent);
 
     @include clearfix;
-  }
-
-  & .logo__link {
-    // color: $color-white;
   }
 
   &__menu {
@@ -115,38 +111,237 @@
   }
 }
 
-/* Sticky Nav */
-div.sticky {
-  padding: 0rem 0 0 8rem;
-  width: 100%;
-  position: fixed; /* nav will stay at the same point with respect to our scrooling */
-  top: 0;
-  left: 0;
-  background-color: rgba($color-grey-light-4, 0.98);
-  box-shadow: 0 0.8px 1.5px rgba($color-white, 0.88); //#efefef;
-  z-index: 9999; /* nav is the highest vertical stacking of all elements*/
+.sticky {
+  /* Sticky Nav */
+  overflow: hidden;
+  color: $color-black;
+  & .header {
+    &__nav {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
 
-  & .logo > .logo__box {
-    border: none;
-    box-shadow: none;
-    height: 6.4rem;
+  & .backdrop {
+    flex-grow: 1;
+    &:not(.is-active) {
+      height: 0;
+    }
+    & .search {
+      &--input {
+        &-box {
+          visibility: visible;
+          display: inline-block;
+        }
+        &-btn {
+          position: absolute;
+          top: 0.04rem;
+          right: 0%;
+          height: 39.5px;
+          width: 39.5px;
+        }
+      }
+    }
   }
 
   & .nav {
-    padding: 0.3rem 0;
+    &--box {
+      border-bottom: 0.5px solid $color-grey-light-3;
+      & .logo {
+        color: $color-black;
+      }
+      margin: -1.1rem;
+      :not(.is-active) {
+        & .logo {
+          margin: 0.1rem 0 0 0.4rem;
+        }
+      }
+      &__item {
+        margin: 0rem;
+        padding: 0.8rem;
+      }
+      &__menu {
+        &--user {
+          padding: 0rem;
+          &--item {
+            padding: 1.05rem 0;
+            margin-top: -1.01rem;
+          }
+        }
+      }
+    }
+  }
 
-    &__menu {
-      margin-top: 1rem;
+  & .mobile__menu--icon {
+    color: $color-black;
+  }
 
-      & li {
-        & a:link,
-        & a:visited {
-          color: $color-grey-dark;
+  //styling searchbar when mobile menu is opened
+  .nav {
+    &--box {
+      &.is-active {
+        margin: 0rem;
+        padding: 0rem 0.5rem;
+
+        & .logo {
+          margin: 2rem 1.2rem;
+        }
+
+        & .search {
+          &--input {
+            &-box {
+              display: none;
+            }
+          }
+        }
+        & .nav {
+          &__link {
+            padding: 0 0.3rem;
+          }
+          &__menu {
+            &--main {
+              padding: 0;
+            }
+            &--user {
+              padding: 2rem;
+              &--item {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include respond(tab-land) {
+    &.header {
+      &__nav {
+        height: 6.1rem !important;
+
+        border-bottom: 0.5px solid #dadada;
+        & .is-active .search--input {
+          padding: 0rem 0rem 0.2rem 1.1rem !important;
+          &-box {
+            display: none;
+          }
+        }
+        .search--input {
+          padding: 0rem 0rem 0.2rem 1.1rem !important;
+          &-box {
+            display: block;
+            width: 70%;
+            top: 0.7%;
+            position: absolute;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    & .nav {
+      &--box {
+        & .search--input {
+          padding: 0rem 0rem 0.2rem 1.1rem !important;
+          &-box {
+            & input {
+              height: 4.9rem !important;
+            }
+          }
+          &-btn {
+            margin-top: -0.5px;
+            height: 42.5px !important;
+            width: 42.5px !important;
+          }
+        }
+      }
+    }
+  }
+  @include respond(phone) {
+    &.header {
+      &__nav {
+        & .search--input {
+          &-box {
+            margin: 0 !important;
+            margin-left: 6rem !important;
+            width: 100%;
+            position: relative;
+            border-left: 0.5px solid $color-grey-dark-4;
+
+            & input {
+              height: 6.1rem !important;
+              border: none;
+            }
+          }
+          &-btn {
+            right: 13% !important;
+            height: 52.5px !important;
+            width: 52.5px !important;
+            background-color: transparent !important;
+            & i {
+              color: $color-primary;
+            }
+          }
+        }
+      }
+    }
+    & .mobile__menu--icon {
+      height: 5.9rem;
+      display: flex;
+
+      & i {
+        padding-left: 0.3rem;
+      }
+    }
+    & .logo__link {
+      display: none;
+    }
+
+    & .nav--box {
+      &.is-active {
+        .logo__link {
+          display: block;
+        }
+        & .search--input-box {
+          display: none;
         }
       }
     }
   }
 }
+
+// div.sticky {
+//   padding: 0rem 0 0 8rem;
+//   width: 100%;
+//   position: fixed; /* nav will stay at the same point with respect to our scrooling */
+//   top: 0;
+//   left: 0;
+//   background-color: rgba($color-grey-light-4, 0.98);
+//   box-shadow: 0 0.8px 1.5px rgba($color-white, 0.88); //#efefef;
+//   z-index: 9999; /* nav is the highest vertical stacking of all elements*/
+
+//   & .logo > .logo__box {
+//     border: none;
+//     box-shadow: none;
+//     height: 6.4rem;
+//   }
+
+//   & .nav {
+//     padding: 0.3rem 0;
+
+//     &__menu {
+//       margin-top: 1rem;
+
+//       & li {
+//         & a:link,
+//         & a:visited {
+//           color: $color-grey-dark;
+//         }
+//       }
+//     }
+//   }
+// }
 
 /* Mobile Nav */
 // .mobile-nav-icon {

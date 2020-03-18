@@ -145,3 +145,29 @@
     }
   }
 }
+
+.sticky {
+  & .search {
+    &--input {
+      border: 1.2px solid $color-grey-light-3;
+      background: transparent;
+      height: 4rem;
+      padding: 1.1rem;
+
+      &-box {
+        flex-grow: 2;
+        display: none;
+        position: relative;
+        margin: 0.6rem;
+      }
+
+      &-btn {
+        position: absolute;
+        top: 0.04rem;
+        right: 0%;
+        height: 35px;
+        width: 35px;
+      }
+    }
+  }
+}

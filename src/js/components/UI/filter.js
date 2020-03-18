@@ -259,11 +259,9 @@ class Filter extends Component {
                   value={this.state.fields.maxprice}
                 />
               </div>
-            </div>
-            <div className='filters__item'>
               <Button onClick={this.toogleDrawer}>
                 {`${
-                  this.state.isAdvancedFiltersOpened ? 'Closed' : ''
+                  this.state.isAdvancedFiltersOpened ? 'Close' : ''
                 } Filters `}
 
                 {this.state.selectedFiltersCounter > 0 ? (
@@ -369,6 +367,14 @@ class Filter extends Component {
                 </div>
               </div>
             </div>
+            <div className='advanceFilters__footer'>
+              <div className='advanceFilters__footer--wrapper'>
+                <Button className='btn primary' onClick={this.toogleDrawer}>
+                  See {`${this.props.filteredData.length.toLocaleString()} `}
+                  Homes
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -377,17 +383,3 @@ class Filter extends Component {
 }
 
 export default withRouter(onClickOutside(Filter));
-
-// setSelectedFiltersOnURL = () => {
-//   // console.log('getSelectedFilters state', this.state);
-//   const selectedFields = new Set();
-//   for (let key in this.state.fields) {
-//     if (defaultFields[key].value !== this.state.fields[key].value) {
-//       const fieldName = key.replace(/min|max/, '');
-//       this.state.fields.filter(f => f.includes(fieldName))
-//       selectedFields.add(fieldName);
-//     }
-//   }
-//   console.log('selectedFields', selectedFields);
-//   return [...selectedFields];
-// };

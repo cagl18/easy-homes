@@ -4,6 +4,11 @@
   width: auto;
   transition: 0.1s all;
   position: relative;
+
+  & .popUpMenu {
+    display: none;
+  }
+
   &.is-active {
     background-color: transparent;
     & .popUpMenu {
@@ -31,7 +36,7 @@
     background-color: $color-white;
     box-shadow: 0 1px 3px rgba($color-black, 0.8);
     z-index: 2000;
-    & .advanceFilters__item {
+    & .popUpMenu__items {
       padding: 0;
       border: none;
     }

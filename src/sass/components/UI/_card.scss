@@ -12,7 +12,6 @@
 
     &:hover {
       box-shadow: 0 3px 4px rgba($color-black, 0.88);
-      // box-shadow: 5px 10px #888888;
     }
   }
 
@@ -41,14 +40,6 @@
 
   .banner {
     padding: 0 1rem;
-
-    &.open-house {
-      background-color: #03aa82;
-    }
-
-    &.banner-message {
-      background-color: $color-primary;
-    }
   }
 
   .flex {
@@ -67,7 +58,6 @@
 
     & .card-listing {
       &-left-wrapper {
-        // background-color: orangered;
         font-size: 0.9rem;
         padding: 0 0 0.4rem 0.8rem;
         display: flex;
@@ -112,7 +102,6 @@
           align-self: center;
 
           & div {
-            // margin-top: -13px;
             font-size: 1.1rem;
           }
 
@@ -134,9 +123,9 @@
   }
 
   @include respond(tab-port) {
-    & .banner {
-      margin-right: 1rem;
-    }
+    // & .banner {
+    //   margin-right: 1rem;
+    // }
   }
 
   @include respond(phone) {

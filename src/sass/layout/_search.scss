@@ -1,84 +1,21 @@
 .searchpage {
   overflow: hidden;
 
-  &__nav {
-    color: $color-black;
-    height: 5rem;
-    & .header {
-      &__nav {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-      }
-    }
-
-    & .backdrop {
-      flex-grow: 1;
-      &:not(.is-active) {
-        height: 0;
-      }
-      & .search {
-        &--input {
-          &-box {
-            visibility: visible;
-            display: inline-block;
-          }
-          &-btn {
-            position: absolute;
-            top: 0.04rem;
-            right: 0%;
-            height: 39.5px;
-            width: 39.5px;
-          }
-        }
-      }
-    }
-
-    & .nav {
-      &--box {
-        border-bottom: 0.5px solid $color-grey-light-3;
-        & .logo {
-          color: $color-black;
-        }
-        margin: -1.1rem;
-        :not(.is-active) {
-          & .logo {
-            margin: 0.1rem 0 0 0.4rem;
-          }
-        }
-        &__item {
-          margin: 0rem;
-          padding: 0.8rem;
-        }
-        &__menu {
-          &--user {
-            padding: 0rem;
-            &--item {
-              padding: 1.05rem 0;
-              margin-top: -1.01rem;
-            }
-          }
-        }
-      }
-    }
-
-    & .mobile__menu--icon {
-      color: $color-black;
-    }
-  }
-
   &__content {
     position: relative;
     bottom: 0;
     display: flex;
     flex: wrap column;
+    margin-top: -0.7rem;
+    margin-bottom: -0.3rem;
 
     & .map {
+      height: 95vh;
       min-width: 66%;
       flex-grow: 1;
       height: auto !important;
-      border-right: 1px solid rgba(0, 0, 0, 0.08);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-right: 1px solid rgba($color-black, 0.08);
+      border-top: 1px solid rgba($color-black, 0.08);
     }
     & .listings {
       position: relative;
@@ -114,30 +51,6 @@
     }
   }
 
-  & .search {
-    &--input {
-      border: 1.2px solid $color-grey-light-3;
-      background: transparent;
-      height: 4rem;
-      padding: 1.1rem;
-
-      &-box {
-        flex-grow: 2;
-        display: none;
-        position: relative;
-        margin: 0.6rem;
-      }
-
-      &-btn {
-        position: absolute;
-        top: 0.04rem;
-        right: 0%;
-        height: 35px;
-        width: 35px;
-      }
-    }
-  }
-
   @include respond(big-desktop) {
     &__content {
       & .map {
@@ -146,17 +59,6 @@
 
       & .card .flex .card-listing-right-wrapper {
         flex-wrap: nowrap;
-      }
-    }
-    & .nav {
-      &--box {
-        & .search {
-          &--input {
-            &-box {
-              width: 45rem;
-            }
-          }
-        }
       }
     }
   }
@@ -186,15 +88,6 @@
     & .mobile__menu--icon {
       display: inline-block;
     }
-    & .search {
-      &--input {
-        &-box {
-          visibility: visible;
-          display: inline-block;
-          width: 48%;
-        }
-      }
-    }
   }
 
   @include respond(tab-port) {
@@ -209,14 +102,6 @@
       }
       & .map {
         min-width: 35%;
-      }
-    }
-
-    & .search {
-      &--input {
-        &-box {
-          width: 18%;
-        }
       }
     }
   }
@@ -261,31 +146,8 @@
     }
   }
   @include respond(phone) {
-    .nav {
-      // padding: 1.6rem;
-    }
-    .mobile__menu--icon {
-      height: 5.2rem;
-      display: flex;
-      border: 0.5px solid $color-grey-dark-2;
-      & i {
-        padding-left: 0.3rem;
-      }
-    }
-    .logo__link {
-      display: none;
-    }
-    .nav--box {
-      &.is-active {
-        .logo__link {
-          display: block;
-        }
-      }
-    }
-
     & .search {
       &--input {
-        height: 5.5rem;
         border: none;
         border-left: 1.2px solid $color-grey-light-3;
         &-box {
@@ -305,6 +167,8 @@
     }
 
     &__content {
+      margin-top: 0.1rem;
+
       & .map {
         min-width: 0%;
       }
@@ -322,7 +186,7 @@
             color: $color-grey-dark-2;
             font-size: 1.3rem;
             font-weight: 100;
-            line-height: 0.4;
+            line-height: 1;
           }
         }
         & .listings__card--wrapper {
@@ -333,43 +197,6 @@
             padding: 0.22rem 0rem;
             & .card-body {
               height: 23rem;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.nav {
-  &--box {
-    &.is-active {
-      margin: 0rem;
-      padding: 0rem 0.5rem;
-
-      & .logo {
-        margin: 2rem 1.2rem;
-      }
-
-      & .search {
-        &--input {
-          &-box {
-            display: none;
-          }
-        }
-      }
-      & .nav {
-        &__link {
-          padding: 0 0.3rem;
-        }
-        &__menu {
-          &--main {
-            padding: 0;
-          }
-          &--user {
-            padding: 2rem;
-            &--item {
-              padding: 0;
             }
           }
         }

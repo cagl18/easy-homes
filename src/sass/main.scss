@@ -12,8 +12,9 @@
 @import 'components/UI/backdrop';
 @import 'components/UI/searchBar';
 @import 'components/UI/sort';
-@import 'components/flexbox';
+@import 'components/agent/agent_card';
 @import 'components/css_grid';
+// @import 'components/flexbox';
 // @import 'base/animations';
 @import 'base/base';
 @import 'base/typography';
@@ -22,6 +23,7 @@
 @import 'layout/grid';
 @import 'layout/home';
 @import 'layout/search';
+@import 'layout/listing/details_view';
 @import 'components/footer';
 @import 'components/market';
 @import 'components/featured_listings';

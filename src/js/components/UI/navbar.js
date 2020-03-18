@@ -7,9 +7,9 @@ import Logo from './logo';
 
 const navbar = props => {
   return (
-    <div className='header__nav'>
+    <div className={`header__nav ${props.className}`}>
       <div className='backdrop'>
-        <nav className='nav'>
+        <nav className={`nav `}>
           <Drawer position='closed'>
             <Logo iconClass='fas fa-home' />
             {props.children}

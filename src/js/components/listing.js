@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './UI/card';
+import Card from './listing/listView/listingCard';
 
 const listing = props => <Card data={props.data}></Card>;
 

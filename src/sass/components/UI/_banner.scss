@@ -6,4 +6,29 @@
   font-weight: 400;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
+  padding: 0rem 1rem;
+  &.open-house {
+    background-color: #03aa82;
+  }
+  &.status {
+    background-color: #fff1d9;
+    color: #944504;
+  }
+
+  &.banner-message {
+    background-color: $color-primary;
+  }
+}
+
+@include respond(tab-port) {
+  & .banner {
+    margin-right: 1rem;
+  }
+}
+
+@include respond(phone) {
+  & .banner {
+    // padding: 0.6rem 1rem;
+    border-radius: 3px;
+  }
 }

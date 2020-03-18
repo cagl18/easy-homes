@@ -1,11 +1,13 @@
 .filters {
   transition: 0.2 all;
+  justify-content: flex-start;
+  border-bottom: 0.5px solid $color-grey-light-3;
 
   &:not(.is-active) {
     .basicFilters__section {
       display: flex;
       flex-direction: row;
-      border-bottom: 0.5px solid #dadada;
+      border-bottom: 0.5px solid $color-grey-light-3;
 
       & .filters__item {
         border-bottom: none;
@@ -26,28 +28,13 @@
     bottom: -15rem;
     right: 0;
     left: 0;
-
     height: 100vh;
-
-    & .filters__wrapper {
-      // background-color: yellowgreen;
-    }
 
     & h2 {
       display: block;
       padding: 1.5rem 2.2rem;
       font-size: 2rem;
       font-weight: 500;
-    }
-    .basicFilters__section {
-      & .filters__item {
-        & .btn {
-          align-items: center;
-          position: fixed;
-          bottom: 1rem;
-          right: 0rem;
-        }
-      }
     }
 
     & .advanceFilters {
@@ -65,7 +52,7 @@
           line-height: 1.8;
           font-size: 1.6rem;
           font-weight: 500;
-          color: #333;
+          color: $color-grey-dark;
         }
         &--field {
           display: flex;
@@ -78,6 +65,31 @@
         }
         &.sqft {
           grid-area: sqft;
+        }
+      }
+
+      &__footer {
+        align-items: center;
+        position: absolute;
+        bottom: 6.5rem;
+        right: 0rem;
+        height: 80px;
+        width: 100%;
+
+        &--wrapper {
+          background-color: $color-white;
+          padding: 1.2rem 2rem;
+          border: 1px solid rgba($color-black, 0.18);
+          display: flex;
+          // justify-content: space-between;
+          justify-content: flex-end;
+          align-items: center;
+
+          & .btn {
+            &:hover {
+              background-color: rgba($color-primary, 0.8);
+            }
+          }
         }
       }
     }
@@ -100,9 +112,6 @@
       display: none;
     }
   }
-
-  justify-content: flex-start;
-  border-bottom: 0.5px solid $color-grey-light-3;
 
   &__item {
     display: flex;
@@ -174,11 +183,15 @@
     & .price_filter {
       display: none;
     }
-    .results,
-    .filters__item {
-      max-width: 50%;
-      flex-basis: 50%;
+
+    &:not(.is-active) {
+      & .filters__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
+
     & .results {
       display: flex;
       justify-content: flex-end;
@@ -211,18 +224,53 @@
         bottom: 1rem;
         right: 0;
       }
-      & .filters__item {
-        display: flex;
 
-        &.prices {
-          max-width: 100%;
-          flex-basis: 100%;
+      & .filters {
+        bottom: 0;
+        overflow: hidden;
+        &__wrapper {
+          position: sticky;
+          top: 0;
+        }
+        &__item {
+          display: flex;
+
+          &.prices,
+          .select {
+            max-width: 100%;
+            flex-basis: 100%;
+
+            & .btn {
+              display: none;
+            }
+          }
         }
       }
 
       & .advanceFilters {
         &__section {
           display: block;
+        }
+        & .select {
+          max-width: 50%;
+          flex-basis: 50%;
+
+          &--single {
+            max-width: 100%;
+            flex-basis: 100%;
+          }
+        }
+        &__footer {
+          position: fixed;
+          bottom: 0rem;
+          &--wrapper {
+            background-color: transparent;
+            border: none;
+
+            & .btn {
+              width: 100%;
+            }
+          }
         }
       }
     }

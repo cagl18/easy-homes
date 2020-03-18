@@ -1,0 +1,36 @@
+.agent_card {
+  margin-top: 3rem;
+
+  &--title {
+    font-weight: 600;
+  }
+  &__container {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+  & .agent {
+    &__photo {
+      align-self: center;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-size: 100%;
+      background-size: cover !important;
+    }
+    &__info {
+      align-self: center;
+      margin-left: 1.5rem;
+
+      &--name {
+        font-size: 1.7rem;
+        line-height: 1;
+        color: $color-primary-light;
+      }
+      &--contact {
+        margin-top: 0.3rem;
+        line-height: 1.4;
+        color: $color-grey-dark-2;
+      }
+    }
+  }
+}

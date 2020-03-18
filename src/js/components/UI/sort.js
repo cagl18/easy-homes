@@ -76,9 +76,9 @@ class sort extends Component {
           <i className='fas fa-chevron-down'></i>
         </span>
 
-        <div className='popUpMenu advanceFilters'>
-          <div className='advanceFilters__section'>
-            <div className='advanceFilters__item'>
+        <div className='popUpMenu'>
+          <div className='popUpMenu__wrapper'>
+            <div className='popUpMenu__items'>
               <h5 className='sort-direction'>
                 <span
                   className={

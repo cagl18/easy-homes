@@ -134,7 +134,7 @@ class Search extends Component {
     return (
       <div className='searchpage'>
         <div className='searchpage__nav'>
-          <Nav>
+          <Nav className='sticky'>
             <SearchBar
               onSearch={searchTerm => this.filterData({ searchTerm })}
               autoSearch
@@ -145,8 +145,10 @@ class Search extends Component {
           <Map zoom={14} />
           <div className='listings'>
             <div className='listings__header'>
-              <header className='heading-quaternary'>
-                <h4>Explore This Neighborhood</h4>
+              <header>
+                <h4 className='heading-quaternary'>
+                  Explore This Neighborhood
+                </h4>
               </header>
               <ListingsFilter
                 filteredData={this.props.filteredData}

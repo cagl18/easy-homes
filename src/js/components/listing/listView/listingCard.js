@@ -11,15 +11,15 @@ const card = props => {
       <div key={props.data.id} className='card-body'>
         <div className='card-img' style={cardImageStyling} alt=''>
           <div className='container'>
-            {props.data.openhouse ? (
-              <div className='banner open-house'>{props.data.openhouse}</div>
-            ) : (
-              ''
-            )}
             {props.data.comingsoon ? (
               <div className='banner banner-message'>
                 {props.data.comingsoon}
               </div>
+            ) : (
+              ''
+            )}
+            {props.data.openhouse ? (
+              <div className='banner open-house'>{props.data.openhouse}</div>
             ) : (
               ''
             )}
@@ -40,9 +40,9 @@ const card = props => {
                       {props.data.baths} <div>Baths</div>
                     </div>
                     <div>
-                      {Number(props.data.sq) === 0
+                      {Number(props.data.sqft) === 0
                         ? '-'
-                        : Number(props.data.sq).toLocaleString()}
+                        : Number(props.data.sqft).toLocaleString()}
                       <div>Sq. Ft.</div>
                     </div>
                   </div>

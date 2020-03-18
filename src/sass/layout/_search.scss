@@ -142,6 +142,7 @@
       }
       & .map {
         min-width: 0%;
+        display: none;
       }
     }
   }
@@ -171,6 +172,7 @@
 
       & .map {
         min-width: 0%;
+        display: none;
       }
       & .listings {
         padding-bottom: 10rem;

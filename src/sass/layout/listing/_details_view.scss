@@ -177,8 +177,6 @@
       &:last-child {
         margin-top: 0.8rem;
       }
-      //   display: flex;
-      //   flex-direction: column;
     }
     &--wrapper {
       width: 100%;
@@ -225,6 +223,7 @@
   }
   &__amenities {
     grid-area: amenities;
+    overflow-x: hidden;
 
     &--container {
       display: grid;
@@ -232,7 +231,6 @@
       column-gap: 24px;
     }
     & .cell_item {
-      // flex-direction: row;
       padding: 0.6rem 0;
       & {
         &:not(:nth-last-child(2)):not(:last-child) {
@@ -508,6 +506,9 @@
   }
 
   @include respond(phone) {
+    &__nav {
+      display: none;
+    }
     &__slider {
       & .banner {
         padding: 0.8rem 1rem;

@@ -8,37 +8,44 @@ import Nav from '../../UI/navbar';
 import Button from '../../UI/button';
 import Footer from '../../footer';
 import AgentCard from '../../agent/agentCard';
+import AgentContact from '../../agent/agentContact';
+import Agents from '../../agent/agents';
 
 class listingDetail extends Component {
   state = { listing: '' };
   componentDidMount() {
     const listingID = this.props.match.params.id;
-    console.log('listingDetail Page', listingID);
     const listing = this.getListingByID(listingID);
+    // console.log('listingDetail Page', listingID);
     // console.log('listing', listing);
     this.setState({ listing });
   }
 
   getListingByID = id => {
     const listing = listingData.find(l => l.id.toString() === id);
-    console.log(listing);
+    // console.log(listing);
     return listing;
   };
 
   render() {
     let description = null;
     if (this.state.listing.description) {
-      description = this.state.listing.description.map(el => <p>{el}</p>);
+      description = this.state.listing.description.map((el, index) => (
+        <p key={index}>{el}</p>
+      ));
     }
     let amenities = null;
     if (this.state.listing.description) {
-      amenities = this.state.listing.amenities.map(el => (
-        <span className='cell_item'>{el}</span>
+      amenities = this.state.listing.amenities.map((el, index) => (
+        <span key={index} className='cell_item'>
+          {el}
+        </span>
       ));
     }
-    let agent = this.state.listing.agent || {};
+    let agents = this.state.listing.agents || [];
     let keyDetails = this.state.listing.keyDetails || {};
     let listing = this.state.listing || {};
+    // console.log('agents', agents);
     return (
       <div>
         <Nav className='sticky'>
@@ -200,7 +207,7 @@ class listingDetail extends Component {
                       <td className='value'>{keyDetails.common || '--'}</td>
                     </tr>
                   ) : (
-                    ''
+                    <tr></tr>
                   )}
 
                   {keyDetails.status === 'for-sale' ? (
@@ -209,7 +216,7 @@ class listingDetail extends Component {
                       <td className='value'>{keyDetails.min_down_p || '--'}</td>
                     </tr>
                   ) : (
-                    ''
+                    <tr></tr>
                   )}
                   {keyDetails.status === 'for-sale' ? (
                     <tr>
@@ -229,7 +236,11 @@ class listingDetail extends Component {
                 </tbody>
               </table>
             </div>
-            <AgentCard agent={agent} />
+
+            <div className='agent'>
+              <AgentCard title='Listing Agent' agent={agents[0]} />
+              <AgentContact addresss={keyDetails.address} />
+            </div>
           </div>
           <div className='listingDetails__description'>
             <h2 className='description__header u-margin-top-small'>
@@ -250,16 +261,20 @@ class listingDetail extends Component {
             <h2>Location</h2>
             <ul className='location__list u-padding-bottom-small'>
               <li>
-                <a href='#'>New York City</a>
+                <Link to={`/search?type=${listing.type}`}>New York City</Link>
               </li>
               <li>
-                <a href='#'>{listing.city}</a>
+                <Link to={`/search?q=${listing.city}`}>{listing.city}</Link>
               </li>
               <li>
-                <a href='#'>{listing.zipcode}</a>
+                <Link to={`/search?q=${listing.zipcode}`}>
+                  {listing.zipcode}
+                </Link>
               </li>
               <li>
-                <a href='#'>{listing.neighborhood}</a>
+                <Link to={`/search?q=${listing.neighborhood}`}>
+                  {listing.neighborhood}
+                </Link>
               </li>
               <li>
                 <p>{listing.address}</p>
@@ -267,9 +282,9 @@ class listingDetail extends Component {
             </ul>
 
             <Map zoom={14} />
-            {/* <iframe
-              src={`http://maps.google.com/maps?output=embed&amp;q=${this.state.listing.address}`}
-            ></iframe> */}
+          </div>
+          <div className='listingDetails__listing_agents u-margin-top-big'>
+            <Agents agents={agents} />
           </div>
           <div className='listingDetails__disclaimer u-margin-top-medium'>
             <p>

@@ -3,9 +3,10 @@ import Header from './header';
 import Footer from '../../components/footer';
 import Cities from '../../components/cities';
 import Market from '../../components/market';
-import FeautedListings from '../../components/featured_listings';
+import FeautedListings from '../../components/listing/featured_listings';
 
 import { redirectToURL, getURLParams } from '../../../shared/utility';
+// import { redirectToSearchPage } from '../search/search_utils';
 
 class Home extends Component {
   redirectToSearchPage = () => {

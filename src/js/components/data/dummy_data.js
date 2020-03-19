@@ -1,14 +1,26 @@
 const data = [
   {
     id: 5000,
-    agent: {
-      name: 'Morgan Munsey',
-      img:
-        'https://d2787ndpv5cwhz.cloudfront.net/bd91f1ca65bec692ea095c75a1c3d04ad2e9bfb5/300x300.jpg',
-      company: 'Easy Homes',
-      email: 'morgan.munsey@easyhomes.com',
-      phone: '917.941.8670'
-    },
+    agents: [
+      {
+        name: 'Morgan Munsey',
+        agent_type: 'Listing Agent',
+        img:
+          'https://d2787ndpv5cwhz.cloudfront.net/bd91f1ca65bec692ea095c75a1c3d04ad2e9bfb5/300x300.jpg',
+        company: 'Easy Homes',
+        email: 'morgan.munsey@easyhomes.com',
+        phone: '917.941.8670'
+      },
+      {
+        name: 'Marie Bromberg',
+        agent_type: 'Listing Agent',
+        img:
+          'https://d2787ndpv5cwhz.cloudfront.net/6d5d354e14b9aef931dc1e5bd6ba2692d08f189d/300x300.jpg',
+        company: 'Easy Homes',
+        email: 'marie.bromberg@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/adffcbb5b9d2a5017707c82bd16c1f78da04a690/640x480.jpg',
     type: 'for-sale',
@@ -50,14 +62,17 @@ const data = [
   },
   {
     id: 5001,
-    agent: {
-      name: 'Scott Savory',
-      img:
-        'https://d2787ndpv5cwhz.cloudfront.net/d4cb589ad7e859ccd3fcda2004e77c610eaa2c83/300x300.jpg',
-      company: 'Easy Homes',
-      email: 'scott.savory@easyhomes.com',
-      phone: '347.553.1685'
-    },
+    agents: [
+      {
+        name: 'Scott Savory',
+        agent_type: 'Listing Agent',
+        img:
+          'https://d2787ndpv5cwhz.cloudfront.net/d4cb589ad7e859ccd3fcda2004e77c610eaa2c83/300x300.jpg',
+        company: 'Easy Homes',
+        email: 'scott.savory@easyhomes.com',
+        phone: '347.553.1685'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/cc8c46bf27e2467506af0001069ffdffe56d58a8/1500x1000.jpg',
     type: 'for-sale',
@@ -103,13 +118,16 @@ const data = [
   },
   {
     id: 5002,
-    agent: {
-      name: 'Steve Gold',
-      img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
-      company: 'Easy Homes',
-      email: 'steve@easyhomes.com',
-      phone: '646.461.7594'
-    },
+    agents: [
+      {
+        name: 'Steve Gold',
+        agent_type: 'Listing Agent',
+        img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
+        company: 'Easy Homes',
+        email: 'steve@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/319a781d92ce2524b72600b986732e7da95612ff/640x480.jpg',
     type: 'for-sale',
@@ -153,14 +171,17 @@ const data = [
   },
   {
     id: 5003,
-    agent: {
-      name: 'Fredrik Eklund',
-      img:
-        'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
-      company: 'Easy Homes',
-      email: 'fredrik@easyhomes.com',
-      phone: '646.461.7594'
-    },
+    agents: [
+      {
+        name: 'Fredrik Eklund',
+        agent_type: 'Listing Agent',
+        img:
+          'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
+        company: 'Easy Homes',
+        email: 'fredrik@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/0fe47fe3eadfb6e40897bf1c70290e84d39c8bd3/1500x1000.jpg',
     type: 'for-sale',
@@ -204,14 +225,17 @@ const data = [
   },
   {
     id: 5004,
-    agent: {
-      name: 'Fredrik Eklund',
-      img:
-        'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
-      company: 'Easy Homes',
-      email: 'fredrik@easyhomes.com',
-      phone: '646.461.7594'
-    },
+    agents: [
+      {
+        name: 'Fredrik Eklund',
+        agent_type: 'Listing Agent',
+        img:
+          'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
+        company: 'Easy Homes',
+        email: 'fredrik@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/2aea5f18e0803ecff8eeb1151f4d019c70344651.jpg',
     type: 'for-sale',
@@ -256,14 +280,17 @@ const data = [
   },
   {
     id: 5005,
-    agent: {
-      name: 'Marie Bromberg',
-      img:
-        'https://d2787ndpv5cwhz.cloudfront.net/6d5d354e14b9aef931dc1e5bd6ba2692d08f189d/300x300.jpg',
-      company: 'Easy Homes',
-      email: 'marie.bromberg@easyhomes.com',
-      phone: '646.461.7594'
-    },
+    agents: [
+      {
+        name: 'Marie Bromberg',
+        agent_type: 'Listing Agent',
+        img:
+          'https://d2787ndpv5cwhz.cloudfront.net/6d5d354e14b9aef931dc1e5bd6ba2692d08f189d/300x300.jpg',
+        company: 'Easy Homes',
+        email: 'marie.bromberg@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/73d4d7018c50a81e542e5bcf9c9589655a6cba49/1500x1000.jpg',
     type: 'for-sale',
@@ -309,14 +336,17 @@ const data = [
   },
   {
     id: 5006,
-    agent: {
-      name: 'Fernando Canale',
-      img:
-        'https://d2787ndpv5cwhz.cloudfront.net/e61f0602490c6605da21c53a4e6a9fa22ecadcdd/300x300.jpg',
-      company: 'Easy Homes',
-      email: 'fernando.canale@easyhomes.com',
-      phone: '786.546.6102'
-    },
+    agents: [
+      {
+        name: 'Fernando Canale',
+        agent_type: 'Listing Agent',
+        img:
+          'https://d2787ndpv5cwhz.cloudfront.net/e61f0602490c6605da21c53a4e6a9fa22ecadcdd/300x300.jpg',
+        company: 'Easy Homes',
+        email: 'fernando.canale@easyhomes.com',
+        phone: '786.546.6102'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/2f3f54cea7c6ab18e795b73bf0a326397d5f2c9c/640x480.jpg',
     type: 'for-sale',
@@ -361,13 +391,16 @@ const data = [
   },
   {
     id: 5007,
-    agent: {
-      name: 'Steve Gold',
-      img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
-      company: 'Easy Homes',
-      email: 'steve@easyhomes.com',
-      phone: '646.461.7594'
-    },
+    agents: [
+      {
+        name: 'Steve Gold',
+        agent_type: 'Listing Agent',
+        img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
+        company: 'Easy Homes',
+        email: 'steve@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/ac43b79c39c614876ff08b86f721ad7f20a1c2a0/640x480.jpg',
     type: 'for-sale',
@@ -411,13 +444,25 @@ const data = [
   },
   {
     id: 5008,
-    agent: {
-      name: 'Jessica Campbell',
-      img: 'https://thumbs.nestseekers.com/DYvNnAeyDjfB.jpg',
-      company: 'Easy Homes',
-      email: 'jessicac@easyhomes.com',
-      phone: '917.621.7815'
-    },
+    agents: [
+      {
+        name: 'Jessica Campbell',
+        agent_type: 'Listing Agent',
+        img: 'https://thumbs.nestseekers.com/DYvNnAeyDjfB.jpg',
+        company: 'Easy Homes',
+        email: 'jessicac@easyhomes.com',
+        phone: '917.621.7815'
+      },
+      {
+        name: 'Fredrik Eklund',
+        agent_type: 'Listing Agent',
+        img:
+          'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
+        company: 'Easy Homes',
+        email: 'fredrik@easyhomes.com',
+        phone: '646.461.7594'
+      }
+    ],
     img:
       'https://d2787ndpv5cwhz.cloudfront.net/68e8bd332c75ad51b96b38c64788949322202f7e/1500x1000.jpg',
     type: 'for-rent',

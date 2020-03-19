@@ -1,0 +1,30 @@
+.agents {
+  & .agent {
+    &_card {
+      padding-top: 1.5rem;
+      margin-top: 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid $color-grey-light-3;
+        padding-bottom: 2.5rem;
+      }
+    }
+    &__photo {
+      flex-shrink: 0;
+    }
+    &__info {
+      display: flex;
+
+      width: 90%;
+      justify-content: space-between;
+
+      &--name {
+        line-height: 1.55;
+      }
+      &--company,
+      &--agent_type {
+        line-height: 1.35;
+        color: rgba($color-black, 0.9);
+      }
+    }
+  }
+}

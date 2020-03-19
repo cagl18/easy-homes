@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Listing from '../components/listing';
+import Listing from './listing';
 import Grid from '@material-ui/core/Grid';
 
 const listings = props => {

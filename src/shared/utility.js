@@ -67,7 +67,7 @@ export const getAllUrlParams = url => {
   return obj;
 };
 
-export const getURLParams = (param, location) => {
+export const getURLParams = (param, location = window.location) => {
   const searchParams = new URLSearchParams(location.search);
   return searchParams.get(param) || '';
 };

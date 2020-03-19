@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Listings from './listings';
-import data from './data/dummy_data';
+import data from '../data/dummy_data';
 
 class FeaturedListings extends Component {
   componentDidMount() {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Map from '../../components/map';
 import SearchBar from '../../components/searchBar';
 import Nav from '../../components/UI/navbar';
-import Listings from '../../components/listings';
+import Listings from '../../components/listing/listings';
 import ListingsFilter from '../../components/UI/filter';
 
 import * as actions from '../../../store/actions';
@@ -23,12 +23,27 @@ class Search extends Component {
     //   this.props.setfilteredData(searchTerm);
     // }
     // this.filterData(this.props.filtersParams);
+    this.autoFilterURLData();
   }
 
   componentDidUpdate() {
     //   this.filterData(this.props.filtersParams);
-    console.log('search props', this.props);
+    // this.filterData({ term: '' });
+    this.autoFilterURLData();
   }
+
+  autoFilterURLData = async () => {
+    const URLParmsObj = getAllUrlParams(this.props.location.search);
+    if (this.props.filtersParams) {
+      if (
+        (URLParmsObj.type &&
+          URLParmsObj.type !== this.props.filtersParams.type) ||
+        (URLParmsObj.q && URLParmsObj.q !== this.props.filtersParams.q)
+      ) {
+        await this.filterData(URLParmsObj);
+      }
+    }
+  };
 
   filterData = async filters => {
     await this.props.setFilters(filters); //updating redux state listing filter params
@@ -38,6 +53,7 @@ class Search extends Component {
 
     const URLParmsObj = getAllUrlParams(this.props.location.search);
     const updatedFilters = { ...URLParmsObj, ...filters };
+    // console.log('updatedFilters', neighborhood, 'searchTerm', searchTerm);
     const queryTerm = updatedFilters.q;
 
     let newData = this.props.listingData;
@@ -53,12 +69,16 @@ class Search extends Component {
 
         const neighborhood = l.neighborhood.toLowerCase();
         const doesNeighborhoodMatches = neighborhood.match(searchTerm);
+        // console.log('neighborhood', neighborhood, 'searchTerm', searchTerm);
 
         const city = l.city.toLowerCase();
         const doesCityMatches = city.match(searchTerm);
 
-        const agent = l.agent.name.toLowerCase();
+        const agent = l.agents[0].name.toLowerCase();
         const doesAgentMatches = agent.match(searchTerm);
+
+        // const agent = l.agent.name.toLowerCase();
+        // const doesAgentMatches = agent.match(searchTerm);
 
         const zipcode = l.zipcode.toString();
         const doesZipcodeMatches = zipcode.match(searchTerm);

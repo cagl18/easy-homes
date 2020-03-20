@@ -1,4 +1,5 @@
 .listingDetails {
+  // overflow-x: hidden;
   display: grid;
   grid-template-columns: calc((100% - 24px) * 0.666667) calc(
       (100% - 24px) * 0.333333
@@ -277,7 +278,7 @@
   }
   &__disclaimer {
     grid-area: disclaimer;
-    color: $color-grey-dark-4;
+    color: $color-grey-dark-3;
     font-weight: 100;
     font-size: 1.5rem;
     line-height: 1.4;
@@ -289,6 +290,10 @@
       display: grid;
       align-items: center;
       grid-template: 'left bottom' 'right right';
+    }
+
+    &__nav {
+      display: none;
     }
 
     & .header {
@@ -357,6 +362,16 @@
       }
     }
 
+    &__slider {
+      & .card-img {
+        height: 50rem !important;
+      }
+
+      &--wrapper {
+        //   width: 100%;
+      }
+    }
+
     .btn {
       &__label {
         display: none;
@@ -369,7 +384,7 @@
       'slider slider'
       'header header'
       'sidebar sidebar'
-      'listing_agents listing_agents'
+      // 'listing_agents listing_agents'
       'amenities amenities'
       'location location'
       'description description'
@@ -378,6 +393,14 @@
     &__slider {
       margin: 0 -3.5rem;
       margin-top: -0.8rem;
+
+      & .card-img {
+        height: 45rem !important;
+
+        & .container {
+          margin: 0 1.4rem;
+        }
+      }
 
       &--wrapper {
         //   width: 100%;
@@ -495,7 +518,7 @@
       margin-top: 3rem;
       & .agent {
         margin-top: 3rem;
-        display: none;
+        // display: none;
         & .__contact {
           max-width: 36.6rem;
         }
@@ -516,6 +539,7 @@
     }
     & .agents {
       margin-top: 3rem;
+      display: none;
       & .agent {
         &__info {
           font-size: 1.6rem;
@@ -547,6 +571,13 @@
       display: none;
     }
     &__slider {
+      & .card-img {
+        height: 30rem !important;
+
+        & .container {
+          margin: 0 1.4rem;
+        }
+      }
       & .banner {
         padding: 0.8rem 1rem;
       }

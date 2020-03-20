@@ -2,23 +2,4 @@
   border: 1px solid $color-grey-light-3;
   margin-top: 3.5rem;
   padding: 1.5rem;
-
-  & form {
-    display: flex;
-    flex-direction: column;
-  }
-  & input,
-  textarea {
-    // width: 100%;
-    margin-top: 0.8rem;
-    border: 1px solid $color-grey-light-2;
-    color: $color-grey-light-4;
-    padding: 1rem;
-    font-size: 1.7rem;
-  }
-
-  & .btn {
-    margin: 1rem 0 0 0rem;
-    font-size: 1.75rem;
-  }
 }

@@ -1,0 +1,112 @@
+.modal {
+  position: relative;
+  & .backdrop {
+    display: none;
+
+    & .modal--box {
+      transition: 0.9s all;
+      opacity: 0;
+      // display: none;
+    }
+    &.is-active {
+      display: block;
+
+      & .modal--box {
+        position: fixed;
+        // display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        background-color: $color-white;
+        color: $color-black;
+        min-height: 25rem;
+        min-width: 40rem;
+        opacity: 1;
+        & .container {
+          padding: 2rem 2.5rem;
+
+          & .authentication {
+            & input {
+              border: 1px solid $color-grey-dark-4;
+              border-radius: 0px;
+              color: $color-black;
+              outline: none !important;
+              border-style: solid;
+              // font-size: 1.9em;
+              border-radius: 3px;
+              user-select: auto;
+
+              &:focus {
+                border: 1px solid $color-primary-light-2;
+              }
+              &:hover {
+                border: 1px solid $color-primary-light;
+              }
+            }
+            & h1 {
+              font-weight: 100;
+              text-align: center;
+            }
+            &-footer {
+              margin: 3rem 0 1rem 0;
+              letter-spacing: 1px;
+
+              text-align: center;
+
+              & span {
+                margin-right: 0.5rem;
+                font-size: 1.45rem;
+              }
+              & button {
+                color: $color-primary;
+                text-decoration: none;
+                font-size: 1.35rem;
+                border: none;
+                background: transparent;
+
+                &:hover {
+                  text-decoration: underline;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+        & .btn__closed {
+          display: flex;
+          padding: 0;
+          height: 4.5rem;
+        }
+      }
+    }
+  }
+
+  @include respond(phone) {
+    & .backdrop {
+      & .modal--box {
+        top: 0%;
+        left: 0%;
+        height: 100vh;
+        width: 100vw;
+
+        & .container {
+          margin-top: 6rem;
+          padding: 0 !important;
+
+          & .authentication {
+            & h1 {
+              margin-bottom: 2rem;
+            }
+          }
+
+          & .btn__closed {
+            position: relative;
+            right: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}

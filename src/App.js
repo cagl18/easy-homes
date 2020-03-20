@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import home from './js/layout/home';
 import search from './js/layout/search';
+
 import listingDetails from './js/components/listing/detailView/listingDetails';
 import noFound from './js/layout/noFound';
 

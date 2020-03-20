@@ -25,7 +25,8 @@
     transform: translate(-50%, -50%);
     text-align: center;
     width: 90%;
-    z-index: 100;
+    // z-index: 100;
+    z-index: 9;
     // animation: moveInBottom 1s ease-out;
   }
 }
@@ -56,6 +57,7 @@
           position: absolute;
           top: 43.5%;
           right: 1.5%;
+          z-index: 10;
         }
       }
     }

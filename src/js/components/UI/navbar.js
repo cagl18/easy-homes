@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '../UI/button';
 import Drawer from '../UI/drawer';
 import Logo from './logo';
+
+import Auth from '../../layout/auth';
 
 const navbar = props => {
   return (
@@ -44,12 +45,18 @@ const navbar = props => {
 
               <div className='nav__menu--user'>
                 <div className='nav__menu--user--item '>
-                  <Button className='nav__menu--user--item--btn active'>
-                    Sign Up
-                  </Button>
+                  <Auth
+                    signup
+                    btnClass='nav__menu--user--item--btn active'
+                    btnText='Sign Up'
+                  ></Auth>
                 </div>
                 <div className='nav__menu--user--item'>
-                  <Button className='nav__menu--user--item--btn'>Log In</Button>
+                  <Auth
+                    login
+                    btnClass='nav__menu--user--item--btn'
+                    btnText='Log In'
+                  ></Auth>
                 </div>
               </div>
             </div>

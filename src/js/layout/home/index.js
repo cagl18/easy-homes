@@ -5,25 +5,25 @@ import Cities from '../../components/cities';
 import Market from '../../components/market';
 import FeautedListings from '../../components/listing/featured_listings';
 
-import { redirectToURL, getURLParams } from '../../../shared/utility';
+// import { redirectToURL, getURLParams } from '../../../shared/utility';
 // import { redirectToSearchPage } from '../search/search_utils';
 
 class Home extends Component {
-  redirectToSearchPage = () => {
-    const searchTerm = getURLParams('q', this.props.location);
-    if (searchTerm.length) {
-      redirectToURL('/search', this.props.history);
-    }
-  };
+  // redirectToSearchPage = () => {
+  //   const searchTerm = getURLParams('q', this.props.location);
+  //   if (searchTerm.length) {
+  //     redirectToURL('/search', this.props.history);
+  //   }
+  // };
 
   componentDidUpdate() {
-    this.redirectToSearchPage();
+    // this.redirectToSearchPage();
   }
 
   render() {
     return (
       <div>
-        <Header onSearchSubmited={() => this.redirectToSearchPage()} />
+        <Header /* onSearchSubmited={() => this.redirectToSearchPage()} */ />
         <FeautedListings />
         <Cities />
         <Market />

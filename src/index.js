@@ -9,6 +9,8 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import searchReducer from './store/reducers/search';
 
+import ScrollToTop from './shared/scrollToTop';
+
 const composeEnhancers =
   (process.env.NODE_ENV === 'development'
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -28,7 +30,9 @@ const store = createStore(
 const app = (
   <Provider store={store}>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </BrowserRouter>
   </Provider>
 );

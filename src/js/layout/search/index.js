@@ -30,6 +30,8 @@ class Search extends Component {
     //   this.filterData(this.props.filtersParams);
     // this.filterData({ term: '' });
     this.autoFilterURLData();
+
+    // console.log('');
   }
 
   autoFilterURLData = async () => {

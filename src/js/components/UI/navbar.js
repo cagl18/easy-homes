@@ -11,8 +11,8 @@ const navbar = props => {
     <div className={`header__nav ${props.className}`}>
       <div className='backdrop'>
         <nav className={`nav `}>
-          <Drawer position='closed'>
-            <Logo iconClass='fas fa-home' />
+          <Drawer brand='Easy Homes' position='closed'>
+            <Logo brand='Easy Homes' iconClass='fas fa-home' />
             {props.children}
             <div className='nav__menu'>
               <ul className='nav__menu--main'>

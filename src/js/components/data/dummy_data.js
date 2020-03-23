@@ -3,6 +3,7 @@ const data = [
     id: 5000,
     agents: [
       {
+        id: 1,
         name: 'Morgan Munsey',
         agent_type: 'Listing Agent',
         img:
@@ -12,6 +13,7 @@ const data = [
         phone: '917.941.8670'
       },
       {
+        id: 2,
         name: 'Marie Bromberg',
         agent_type: 'Listing Agent',
         img:
@@ -64,6 +66,7 @@ const data = [
     id: 5001,
     agents: [
       {
+        id: 3,
         name: 'Scott Savory',
         agent_type: 'Listing Agent',
         img:
@@ -120,6 +123,7 @@ const data = [
     id: 5002,
     agents: [
       {
+        id: 4,
         name: 'Steve Gold',
         agent_type: 'Listing Agent',
         img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
@@ -173,6 +177,7 @@ const data = [
     id: 5003,
     agents: [
       {
+        id: 5,
         name: 'Fredrik Eklund',
         agent_type: 'Listing Agent',
         img:
@@ -227,6 +232,7 @@ const data = [
     id: 5004,
     agents: [
       {
+        id: 5,
         name: 'Fredrik Eklund',
         agent_type: 'Listing Agent',
         img:
@@ -282,6 +288,7 @@ const data = [
     id: 5005,
     agents: [
       {
+        id: 2,
         name: 'Marie Bromberg',
         agent_type: 'Listing Agent',
         img:
@@ -338,6 +345,7 @@ const data = [
     id: 5006,
     agents: [
       {
+        id: 6,
         name: 'Fernando Canale',
         agent_type: 'Listing Agent',
         img:
@@ -393,6 +401,7 @@ const data = [
     id: 5007,
     agents: [
       {
+        id: 4,
         name: 'Steve Gold',
         agent_type: 'Listing Agent',
         img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
@@ -446,6 +455,7 @@ const data = [
     id: 5008,
     agents: [
       {
+        id: 7,
         name: 'Jessica Campbell',
         agent_type: 'Listing Agent',
         img: 'https://thumbs.nestseekers.com/DYvNnAeyDjfB.jpg',
@@ -454,6 +464,7 @@ const data = [
         phone: '917.621.7815'
       },
       {
+        id: 5,
         name: 'Fredrik Eklund',
         agent_type: 'Listing Agent',
         img:
@@ -508,3 +519,129 @@ const data = [
 ];
 
 export default data;
+
+export const agents = [
+  {
+    id: 1,
+    name: 'Morgan Munsey',
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    agent_type: 'Listing Agent',
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/bd91f1ca65bec692ea095c75a1c3d04ad2e9bfb5/300x300.jpg',
+    company: 'Easy Homes',
+    email: 'morgan.munsey@easyhomes.com',
+    phone: '917.941.8670'
+  },
+  {
+    id: 2,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Marie Bromberg',
+    agent_type: 'Listing Agent',
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/6d5d354e14b9aef931dc1e5bd6ba2692d08f189d/300x300.jpg',
+    company: 'Easy Homes',
+    email: 'marie.bromberg@easyhomes.com',
+    phone: '646.461.7594'
+  },
+  {
+    id: 3,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Scott Savory',
+    agent_type: 'Listing Agent',
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/d4cb589ad7e859ccd3fcda2004e77c610eaa2c83/300x300.jpg',
+    company: 'Easy Homes',
+    email: 'scott.savory@easyhomes.com',
+    phone: '347.553.1685'
+  },
+  {
+    id: 4,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Steve Gold',
+    agent_type: 'Listing Agent',
+    img: 'https://mediarouting.vestahub.com/Media/94094261/box/600x800',
+    company: 'Easy Homes',
+    email: 'steve@easyhomes.com',
+    phone: '646.461.7594'
+  },
+  {
+    id: 5,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Fredrik Eklund',
+    agent_type: 'Listing Agent',
+    img: 'https://brookspr.com/wp-content/uploads/2017/09/fredrik_bio_pic.png',
+    company: 'Easy Homes',
+    email: 'fredrik@easyhomes.com',
+    phone: '646.461.7594'
+  },
+  {
+    id: 6,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Fernando Canale',
+    agent_type: 'Listing Agent',
+    img:
+      'https://d2787ndpv5cwhz.cloudfront.net/e61f0602490c6605da21c53a4e6a9fa22ecadcdd/300x300.jpg',
+    company: 'Easy Homes',
+    email: 'fernando.canale@easyhomes.com',
+    phone: '786.546.6102'
+  },
+  {
+    id: 7,
+    title: 'Licensed Associate Real Estate Broker',
+    biography: [
+      'Fouad Rahmé has enjoyed great success in real estate since 2003, when he started at a reputable Manhattan-based firm. There he represented and advised his clientele in the acquisition, financing, development, management, and disposition of their portfolios. Several years later, Fouad led the company’s expansion into Brooklyn, and built their new development as well as resale divisions. Leveraging his reputation, he started his own brokerage firm in 2015 which specialized in new developments and resales.',
+      'Fouad ultimately decided to join forces with one of the fastest-growing real estate technology firms, , whose vision aligned perfectly with how he sees the future of real estate. He draws on his keen understanding of the market, expertise in all aspects of residential and commercial real estate matters, and acumen for sales and negotiations to help his discerning clients achieve their lifestyle, business and investment goals.',
+      'Coming from a family of real estate developers and engineers, Fouad’s passion for the industry grew organically. Born in the U.S. to a Lebanese father and German mother, his family moved him abroad at an early age to pursue development opportunities. Educated in Switzerland and Germany, followed by a lucrative decade-long career in finance, Fouad’s international background affords him unique opportunities to connect with potential clients and investors globally. Returning to the U.S. after living in various cities across Europe and the Middle East, he excelled in NYC real estate and remains involved with luxury developments overseas.',
+      'Fouad is known to go above and beyond for his clients to meet their needs and get the deal done. He strives to be extremely informative, patient, efficient, and most of all, fun to work with to help streamline what can be a complex process. No matter how large or small the transaction, his team gives the same attention to each and every client.',
+      'Residing in Bay Ridge with his wife and business partner, Fouad primarily services the Brooklyn market. Having also resided in Carroll Gardens and the West Village, his reach and knowledge extend broadly. Fluent in English and German, and conversant in Arabic and French, Fouad loves the diversity of Brooklyn and the clientele he represents. He likes spending free time with his daughter and son, as well as skiing, snowboarding, scuba diving, horseback riding, and traveling when he’s able.'
+    ],
+    name: 'Jessica Campbell',
+    agent_type: 'Listing Agent',
+    img: 'https://thumbs.nestseekers.com/DYvNnAeyDjfB.jpg',
+    company: 'Easy Homes',
+    email: 'jessicac@easyhomes.com',
+    phone: '917.621.7815'
+  }
+];

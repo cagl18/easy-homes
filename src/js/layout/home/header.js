@@ -68,8 +68,8 @@ class Header extends Component {
                   </Button>
                 </div>
                 <SearchBar
-                  onSearch={this.props.onSearchSubmited}
                   autoSearch={false}
+                  // onSearch={this.props.onSearchSubmited}
                   // onSearch={searchTerm => this.props.setFilters({ searchTerm })}
                 />
               </div>

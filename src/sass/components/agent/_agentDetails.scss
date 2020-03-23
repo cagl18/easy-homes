@@ -1,0 +1,150 @@
+.agentDetails {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-row-gap: 6rem;
+  grid-gap: 15px;
+  grid-template-areas:
+    'image card'
+    'sidebar biography';
+
+  &--img {
+    grid-area: image;
+    width: 25rem;
+    height: 25rem;
+    margin: 30px 0 45px;
+  }
+
+  & .agentCard {
+    grid-area: card;
+    margin: 15px 5px 35px 0;
+    &--name {
+      font-size: 4.2rem;
+      font-weight: 100;
+      margin-bottom: 1rem;
+    }
+
+    & p {
+      line-height: 1.5;
+    }
+
+    &--phone {
+      margin: 2.2rem 0;
+      color: rgba($color-grey-dark-3, 0.8);
+      font-weight: 100;
+    }
+
+    & .primary {
+      font-size: 1.6rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  & .biography {
+    grid-area: biography;
+    font-size: 1.5rem;
+
+    & h2 {
+      margin-bottom: 1.3rem;
+      font-weight: 100;
+    }
+
+    & p {
+      font-size: 1.7rem;
+      line-height: 1.5;
+      margin-bottom: 2.2rem;
+    }
+  }
+
+  & .sidebar {
+    grid-area: sidebar;
+
+    & h2 {
+      font-weight: 100;
+      font-size: 2.5rem;
+    }
+
+    & .press {
+      & h2 {
+        font-weight: 600;
+        font-size: 2.1rem;
+      }
+    }
+
+    & a {
+      position: relative;
+      display: inline;
+      padding: 5px 0;
+      border-bottom: 1px solid $color-black;
+      color: #000;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 29px;
+
+      &:hover {
+        color: $color-primary;
+      }
+
+      &::after {
+        display: block;
+        content: '';
+        margin-top: 2rem;
+      }
+    }
+
+    & .social {
+      display: flex;
+      flex-direction: column;
+
+      &__box {
+        margin: 3rem 0 0 1rem;
+      }
+
+      & .social__icon {
+        display: flex;
+        margin-bottom: 2rem;
+        & i {
+          align-self: center;
+          font-size: 2.5rem;
+          padding: 0.65rem 0.9rem;
+          background-color: $color-black;
+          color: $color-white;
+          border-radius: 5px;
+          margin-right: 1rem;
+        }
+        & a {
+          margin-top: -0.45rem;
+          align-self: center;
+          padding: 0;
+          &::after {
+            align-self: center;
+            margin: 0rem;
+          }
+        }
+
+        & .fa-facebook-f {
+          padding: 0.65rem 1.2rem;
+        }
+      }
+    }
+  }
+
+  @include respond(phone) {
+    grid-template-areas:
+      'image image'
+      'card card'
+      'sidebar sidebar'
+      'biography biography';
+
+    &--img {
+      justify-self: center;
+    }
+
+    & .press {
+      margin-top: 1rem;
+      & h2 {
+        //   font-weight: 600;
+        //   font-size: 2.1rem;
+      }
+    }
+  }
+}

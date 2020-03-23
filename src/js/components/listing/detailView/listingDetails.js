@@ -10,21 +10,28 @@ import Footer from '../../footer';
 import AgentCard from '../../agent/agentCard';
 import AgentContact from '../../agent/agentContact';
 import Agents from '../../agent/agents';
+import { redirectToURL, getURLParams } from '../../../../shared/utility';
 
 class listingDetail extends Component {
   state = { listing: '' };
+
   componentDidMount() {
     const listingID = this.props.match.params.id;
     const listing = this.getListingByID(listingID);
-    // console.log('listingDetail Page', listingID);
-    // console.log('listing', listing);
+
     this.setState({ listing });
   }
 
   getListingByID = id => {
     const listing = listingData.find(l => l.id.toString() === id);
-    // console.log(listing);
     return listing;
+  };
+
+  redirectToSearchPage = () => {
+    const searchTerm = getURLParams('q', this.props.location);
+    if (searchTerm) {
+      redirectToURL('/search', this.props.history);
+    }
   };
 
   render() {
@@ -45,14 +52,11 @@ class listingDetail extends Component {
     let agents = this.state.listing.agents || [];
     let keyDetails = this.state.listing.keyDetails || {};
     let listing = this.state.listing || {};
-    // console.log('agents', agents);
+
     return (
-      <div>
+      <div ref={this.myRef}>
         <Nav className='sticky'>
-          <SearchBar
-            onSearch={searchTerm => this.filterData({ searchTerm })}
-            autoSearch
-          />
+          <SearchBar onSearch={() => this.redirectToSearchPage()} />
         </Nav>
 
         <main className='container listingDetails'>
@@ -302,8 +306,6 @@ class listingDetail extends Component {
               · Tel: 212-913-9058 · New York, NY
             </p>
           </div>
-          {/* <div className='listingDetails__building-overview'>{building}</div> */}
-          {/* <div className='listingDetails__agent'>{agent}</div> */}
         </main>
         <Footer />
       </div>

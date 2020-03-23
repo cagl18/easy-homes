@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const agentCard = props => {
   if (!props.agent) {
@@ -12,10 +12,15 @@ const agentCard = props => {
     <div className='agent_card'>
       <h3 className='agent_card--title'>{props.title}</h3>
       <div className='agent_card__container'>
-        <div className='agent__photo' style={photoStyle}></div>
+        <Link to={`/agent/${props.agent.id}`}>
+          <div className='agent__photo' style={photoStyle}></div>
+        </Link>
         <div className='agent__info'>
           <div>
-            <h4 className='agent__info--name'>{props.agent.name}</h4>
+            <h4 className='agent__info--name'>
+              <Link to={`/agent/${props.agent.id}`}>{props.agent.name}</Link>
+            </h4>
+
             {props.agent_type ? (
               <p className='agent__info--agent_type'>
                 {props.agent.agent_type}

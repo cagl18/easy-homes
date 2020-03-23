@@ -1,8 +1,9 @@
 .btn {
   position: relative;
   padding: 1rem;
-  margin-left: 1rem;
+  // margin-left: 1rem;
   border: 1px solid transparent;
+  border-radius: 2px;
   outline: none;
   user-select: none;
 
@@ -31,6 +32,7 @@
 
     &:hover {
       cursor: pointer;
+      background-color: rgba($color-primary, 0.7);
     }
     &:active {
       margin-bottom: -1rem;

@@ -5,7 +5,7 @@ const logo = props => {
   return (
     <div className='logo'>
       <Link className='logo__link' to='/'>
-        <i className={props.iconClass}></i> Easy Homes
+        <i className={props.iconClass}></i> {props.brand}
       </Link>
     </div>
   );

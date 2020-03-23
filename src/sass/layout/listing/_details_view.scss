@@ -133,6 +133,7 @@
         font-size: 1.6rem;
         padding: 1rem 1.8rem;
         &.primary {
+          margin-right: 1rem;
           &:hover {
             background-color: rgba($color-primary, 0.7);
           }

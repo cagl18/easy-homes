@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import home from './js/layout/home';
 import search from './js/layout/search';
-
+import agentDetails from './js/components/agent/agentDetails';
 import listingDetails from './js/components/listing/detailView/listingDetails';
 import noFound from './js/layout/noFound';
 
@@ -15,6 +15,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={home} />
           <Route path='/search/' exact component={search} />
+          <Route path='/agent/:id/' exact component={agentDetails} />
           <Route path='/listing/:id' exact component={listingDetails} />
           <Route component={noFound} />
           {/* <Route path='/streams/new' exact component={streams.streamCreate} />

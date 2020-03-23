@@ -1,43 +1,52 @@
 import React, { Component } from 'react';
-import onClickOutside from 'react-onclickoutside';
-import { withRouter } from 'react-router-dom';
+// import onClickOutside from 'react-onclickoutside';
+// import { withRouter } from 'react-router-dom';
 import Button from '../UI/button';
 
 class Auth extends Component {
   state = {
-    is_opened: false
+    isModalOpened: false
   };
 
   componentDidMount() {
-    if (this.props.position === 'open') {
-      this.toogleModal();
-    }
+    // console.log('modal state is_opened', this.state.isModalOpened);
+    // if (this.props.position === 'open') {
+    //   this.closeModal();
+    // }
   }
-  toogleModal = () => {
-    this.setState({ is_opened: !this.state.is_opened });
+  componentDidUpdate() {
+    // console.log('modal state is_opened', this.state.isModalOpened);
+    // console.log('modal props', this.props);
+  }
+  closeModal = () => {
+    this.setState({ isModalOpened: false });
   };
 
-  handleClickOutside = () => {
-    //closing menu when user click outside component
-    if (this.state.is_opened) {
-      this.setState({ is_opened: false });
-    }
+  openModal = () => {
+    this.setState({ isModalOpened: true });
   };
+
+  // handleClickOutside = () => {
+  //   //closing menu when user click outside component
+  //   if (this.state.isModalOpened) {
+  //     this.closeModal();
+  //   }
+  // };
 
   render() {
     let is_active = {};
-    is_active.className = this.state.is_opened ? 'is-active' : '';
-    is_active.onClick = this.state.is_opened ? this.toogleModal : null;
+    is_active.className = this.state.isModalOpened ? 'is-active' : '';
+    is_active.onClick = this.state.isModalOpened ? this.closeModal : null;
 
     return (
       <div className='modal'>
-        <div onClick={this.toogleModal}>
+        <div onClick={this.openModal}>
           <Button className={this.props.btnClass}>{this.props.btnText}</Button>
         </div>
         <div className={`backdrop ${is_active.className}`}>
           <div className={`modal--box ${is_active['className']}`}>
             <div className='container'>
-              <div className='btn__closed' onClick={this.toogleModal}>
+              <div className='btn__closed' onClick={this.closeModal}>
                 <div href='#' className='btn__closed--animated closed-position'>
                   <span></span>
                   <span></span>
@@ -52,4 +61,4 @@ class Auth extends Component {
   }
 }
 
-export default withRouter(onClickOutside(Auth));
+export default Auth;

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import listingData from '../../data/dummy_data';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../../store/actions';
 
-import Map from '../../../components/map';
+import Map from '../../map/mapForSingleMarker';
 import SearchBar from '../../searchBar';
 import Nav from '../../UI/navbar';
 import Button from '../../UI/button';
@@ -10,72 +11,80 @@ import Footer from '../../footer';
 import AgentCard from '../../agent/agentCard';
 import AgentContact from '../../agent/agentContact';
 import Agents from '../../agent/agents';
-import { redirectToURL, getURLParams } from '../../../../shared/utility';
+
+import { withRouter } from 'react-router-dom';
 
 class listingDetail extends Component {
   state = { listing: '' };
 
   componentDidMount() {
-    const listingID = this.props.match.params.id;
+    const listingID = this.props.match.params.listingId;
     const listing = this.getListingByID(listingID);
-
     this.setState({ listing });
   }
 
   getListingByID = id => {
-    const listing = listingData.find(l => l.id.toString() === id);
+    const listing = this.props.listingData.find(l => {
+      return l.id.toString() === id;
+    });
+
+    // console.log('listingData', this.props.listingData);
+    // console.log('listing', listing);
     return listing;
   };
 
-  redirectToSearchPage = () => {
-    const searchTerm = getURLParams('q', this.props.location);
-    if (searchTerm) {
-      redirectToURL('/search', this.props.history);
-    }
-  };
-
   render() {
+    // console.log('listing', this.props);
+    const listing = this.state.listing || {};
     let description = null;
-    if (this.state.listing.description) {
-      description = this.state.listing.description.map((el, index) => (
+    if (listing.description) {
+      description = listing.description.map((el, index) => (
         <p key={index}>{el}</p>
       ));
     }
     let amenities = null;
-    if (this.state.listing.description) {
-      amenities = this.state.listing.amenities.map((el, index) => (
+    if (listing.description) {
+      amenities = listing.amenities.map((el, index) => (
         <span key={index} className='cell_item'>
           {el}
         </span>
       ));
     }
-    let agents = this.state.listing.agents || [];
-    let keyDetails = this.state.listing.keyDetails || {};
-    let listing = this.state.listing || {};
+    const agents = listing.agents || [];
+    const keyDetails = listing.keyDetails || {};
+
+    let location = { lat: 40.728936, lng: -73.993655 };
+
+    if (listing.location) {
+      location = {
+        lat: parseFloat(listing.location.latitude),
+        lng: parseFloat(listing.location.longitude)
+      };
+    }
 
     return (
       <div ref={this.myRef}>
         <Nav className='sticky'>
-          <SearchBar onSearch={() => this.redirectToSearchPage()} />
+          <SearchBar />
         </Nav>
 
         <main className='container listingDetails'>
           <div className='listingDetails__header'>
             <div className='header__ToLeftContent'>
-              <h2>{this.state.listing.address}</h2>
+              <h2>{listing.address}</h2>
 
               <div className='header__subTitle'>
-                <p>{this.state.listing.neighborhood},</p>
-                <p>{this.state.listing.city},</p>
-                <p>{this.state.listing.state}</p>
-                <p>{this.state.listing.zipcode}</p>
+                <p>{listing.neighborhood},</p>
+                <p>{listing.city},</p>
+                <p>{listing.state}</p>
+                <p>{listing.zipcode}</p>
               </div>
             </div>
             <div className='header__ToRightContent'>
               <div className='header--price_space'>
                 <div className='header__col'>
                   <p className='header__title'>
-                    ${Number(this.state.listing.price).toLocaleString()}
+                    ${Number(listing.price).toLocaleString()}
                   </p>
                   <div className='header__subTitle'>
                     <p>Price</p>
@@ -84,26 +93,26 @@ class listingDetail extends Component {
               </div>
               <div className='header--basic_summary_specs'>
                 <div className='header__col'>
-                  <p className='header__title'>{this.state.listing.beds}</p>
+                  <p className='header__title'>{listing.beds}</p>
                   <div className='header__subTitle'>
                     <p>Beds</p>
                   </div>
                 </div>
                 <div className='header__col'>
-                  <p className='header__title'>{this.state.listing.baths}</p>
+                  <p className='header__title'>{listing.baths}</p>
                   <div className='header__subTitle'>Baths</div>
                 </div>
 
                 <div className='sq_summary'>
                   <div className='header__col'>
                     <div className='header__title'>
-                      {Number(this.state.listing.sqft).toLocaleString()}{' '}
+                      {Number(listing.sqft).toLocaleString()}{' '}
                       <div className='header__subTitle'>Sq. Ft.</div>
                     </div>
 
                     <div className='header__title'>
                       {`$${Math.round(
-                        this.state.listing.price / this.state.listing.sqft
+                        listing.price / listing.sqft
                       ).toLocaleString()}`}
                       <div className='header__subTitle'>{`/ Sq.Ft.`}</div>
                     </div>
@@ -133,22 +142,20 @@ class listingDetail extends Component {
             <div
               className='card-img slider__container'
               style={{
-                backgroundImage: `url(${this.state.listing.img})`,
+                backgroundImage: `url(${listing.img})`,
                 height: '50rem'
               }}
             >
               <div className='container'>
-                {this.state.listing.comingsoon ? (
+                {listing.comingsoon ? (
                   <div className='banner banner-message'>
-                    {this.state.listing.comingsoon}
+                    {listing.comingsoon}
                   </div>
                 ) : (
                   ''
                 )}
-                {this.state.listing.openhouse ? (
-                  <div className='banner open-house'>
-                    {this.state.listing.openhouse}
-                  </div>
+                {listing.openhouse ? (
+                  <div className='banner open-house'>{listing.openhouse}</div>
                 ) : (
                   ''
                 )}
@@ -161,7 +168,7 @@ class listingDetail extends Component {
 
               {/* <img
                 className='listingDetails__slider--wrapper'
-                src={this.state.listing.img}
+                src={listing.img}
               ></img> */}
             </div>
           </div>
@@ -180,7 +187,7 @@ class listingDetail extends Component {
                   </tr>
                   <tr>
                     <td>MLS ID</td>
-                    <td className='value'>{this.state.listing.id}</td>
+                    <td className='value'>{listing.id}</td>
                   </tr>
                   <tr>
                     <td>Total Rooms</td>
@@ -285,7 +292,7 @@ class listingDetail extends Component {
               </li>
             </ul>
 
-            <Map zoom={14} />
+            <Map location={location} zoom={16} />
           </div>
           <div className='listingDetails__listing_agents u-margin-top-big'>
             <Agents agents={agents} />
@@ -313,4 +320,21 @@ class listingDetail extends Component {
   }
 }
 
-export default listingDetail;
+const mapStateToProps = state => {
+  return {
+    listingData: state.search.listingData,
+    filteredData: state.search.filteredData,
+    filtersParams: state.search.filtersParams
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setFilters: filters => dispatch(actions.setListingsFilter(filters)),
+    setfilteredData: newData => dispatch(actions.filterListingData(newData))
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(listingDetail)
+);

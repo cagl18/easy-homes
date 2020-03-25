@@ -186,6 +186,7 @@
 
     &:not(.is-active) {
       & .filters__wrapper {
+        border-top: 0.5px solid #dadada;
         display: flex;
         flex-direction: row;
         justify-content: space-between;

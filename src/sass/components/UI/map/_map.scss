@@ -1,0 +1,16 @@
+.cluster-marker {
+  font-size: 1rem;
+  color: $color-white;
+  background-color: $color-black;
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba($color-black, 0.15);
+  border-image: initial;
+  cursor: pointer;
+  background: padding-box rgb(0, 0, 0);
+}

@@ -1,0 +1,113 @@
+.mapMarker {
+  cursor: default;
+  border: 0px;
+  & .pin-marker {
+    background-color: $color-quaternary;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: max-content;
+    font-size: 13px;
+    color: $color-white;
+    text-rendering: auto;
+    cursor: pointer;
+    border: 0px;
+    border-radius: 4px;
+    padding: 3px 4px;
+    outline: none;
+
+    &:hover,
+    &:active {
+      background-color: $color-primary-light;
+    }
+
+    &.is-active {
+      background-color: $color-primary;
+    }
+  }
+
+  &__card {
+    z-index: 10;
+    display: none;
+    min-height: 100px;
+    width: 350px;
+    background-color: $color-white;
+    flex-direction: row;
+    margin-bottom: 1rem;
+
+    position: absolute;
+    left: 100px;
+    bottom: 0px;
+    height: 89px;
+
+    &.is-active {
+      display: flex;
+    }
+
+    & .card-img {
+      height: 70px;
+      width: 10rem;
+
+      background-position: 0 0;
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    & .card__body {
+      display: flex;
+      align-self: center;
+      padding-left: 1.5rem;
+
+      & h3 {
+        & a {
+          text-decoration: none;
+          color: $color-black;
+        }
+      }
+      p {
+        margin: 0.5rem 0;
+      }
+
+      & .card_details {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        padding-left: 8px;
+
+        &--specs {
+          display: flex;
+          flex-direction: row;
+          order: 2;
+          flex-grow: 4;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          text-align: center;
+          line-height: 1.7rem;
+
+          & div {
+            position: relative;
+            font-weight: 100;
+            padding: 0 0.5rem;
+            align-self: center;
+
+            &:first-child {
+              padding-left: 0;
+            }
+
+            &:not(:last-child)::after {
+              content: ' ';
+              position: absolute;
+              top: 3px;
+              right: 0;
+              bottom: 3px;
+              width: 1px;
+              border-right: 0.1px solid $color-black;
+              opacity: 0.4;
+            }
+          }
+        }
+      }
+    }
+  }
+}

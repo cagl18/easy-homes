@@ -1,3 +1,11 @@
+//navbar
 // Fix issue where sign up and login modal do not open from the drawer menu
+
+//listing Detail page
 // add slider to listing page
-// hook up map to listing on search page
+
+
+//search page:
+// Try to auto center marker card so that card is within visible bounds
+
+//set local enviroment key

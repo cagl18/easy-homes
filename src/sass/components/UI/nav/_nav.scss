@@ -258,9 +258,18 @@
       }
     }
   }
+
+  @include respond(tab-port) {
+    &.header {
+      &__nav {
+        border-bottom: none;
+      }
+    }
+  }
   @include respond(phone) {
     &.header {
       &__nav {
+        border-bottom: none;
         & .search--input {
           &-box {
             margin: 0 !important;

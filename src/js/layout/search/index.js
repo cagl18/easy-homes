@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Map from '../../components/map';
+import Map from '../../components/map/mapForMultiMarkers';
 import SearchBar from '../../components/searchBar';
 import Nav from '../../components/UI/navbar';
 import Listings from '../../components/listing/listings';
@@ -12,6 +12,9 @@ import { getAllUrlParams } from '../../../shared/utility';
 
 class Search extends Component {
   // state = {
+  //   currentProperties: [],
+  //   currentPage: null,
+  //   totalPages: null
   //   listingData,
   //   filteredData: listingData
   //   // filtersParams: { searchTerm: '', minPrice: 0, maxPrice: 9999999999 }
@@ -34,6 +37,16 @@ class Search extends Component {
     // console.log('');
   }
 
+  // onPageChanged = data => {
+  //   const allProperties = this.props.filteredData;
+  //   const { currentPage, totalPages, pageLimit } = data;
+
+  //   const offset = (currentPage - 1) * pageLimit;
+  //   const currentProperties = allProperties.slice(offset, offset + pageLimit);
+
+  //   this.setState({ currentPage, currentProperties, totalPages });
+  // };
+
   autoFilterURLData = async () => {
     const URLParmsObj = getAllUrlParams(this.props.location.search);
     if (this.props.filtersParams) {
@@ -55,7 +68,7 @@ class Search extends Component {
 
     const URLParmsObj = getAllUrlParams(this.props.location.search);
     const updatedFilters = { ...URLParmsObj, ...filters };
-    // console.log('updatedFilters', neighborhood, 'searchTerm', searchTerm);
+    // console.log('updatedFilters', updatedFilters);
     const queryTerm = updatedFilters.q;
 
     let newData = this.props.listingData;
@@ -129,6 +142,33 @@ class Search extends Component {
       return isAMatch;
     });
 
+    //filtering based on map location
+    const { bounds } = updatedFilters;
+    if (bounds) {
+      newData = newData.filter(l => {
+        const bb = bounds;
+        const marker = {
+          lat: parseFloat(l.location.latitude),
+          lng: parseFloat(l.location.longitude)
+        };
+
+        if (
+          marker.lat > bb.se.lat &&
+          bb.sw.lat &&
+          marker.lat < bb.ne.lat &&
+          bb.nw.lat &&
+          marker.lng > bb.nw.lng &&
+          bb.sw.lng &&
+          marker.lng < bb.ne.lng &&
+          bb.se.lng
+        ) {
+          // listing cordinates are within the map bounding box
+
+          return true;
+        }
+      });
+    }
+
     //sorting data
     const sortBy = updatedFilters.sort;
 
@@ -153,6 +193,8 @@ class Search extends Component {
   };
 
   render() {
+    // const totalProperties = this.props.filteredData.length;
+    const itemsShownPerPage = 8;
     return (
       <div className='searchpage'>
         <div className='searchpage__nav'>
@@ -164,7 +206,11 @@ class Search extends Component {
           </Nav>
         </div>
         <div className='searchpage__content'>
-          <Map zoom={14} />
+          <Map
+            zoom={14}
+            onPan={bounds => this.filterData({ bounds })}
+            filteredData={this.props.filteredData}
+          />
           <div className='listings'>
             <div className='listings__header'>
               <header>
@@ -175,10 +221,14 @@ class Search extends Component {
               <ListingsFilter
                 filteredData={this.props.filteredData}
                 onFiltersSelected={this.filterData}
+                itemsShownPerPage={itemsShownPerPage}
               />
             </div>
 
-            <Listings data={this.props.filteredData} />
+            <Listings
+              itemsShownPerPage={itemsShownPerPage}
+              data={this.props.filteredData}
+            />
           </div>
         </div>
       </div>

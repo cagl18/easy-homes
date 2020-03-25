@@ -276,6 +276,8 @@ class Filter extends Component {
           </div>
           <div className='results'>
             <span className='results__found'>
+              <b>{this.props.itemsShownPerPage}</b>
+              {' of '}
               <b>{this.props.filteredData.length} </b>
               Homes
             </span>

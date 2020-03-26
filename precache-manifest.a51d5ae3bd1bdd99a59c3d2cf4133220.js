@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7d0874c3dcfa70122dc0726396fd5bd2",
+    "revision": "a724e83e37cdf9dc3fe754d3cb13a863",
     "url": "/easy-homes/index.html"
   },
   {
-    "revision": "f3785fb4200e8865e302",
-    "url": "/easy-homes/static/css/main.ac9bafc1.chunk.css"
+    "revision": "b97146d044e87b358ae8",
+    "url": "/easy-homes/static/css/main.fa49b663.chunk.css"
   },
   {
     "revision": "1dbf75fcdbe6c3b63da0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/easy-homes/static/js/2.4c823945.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f3785fb4200e8865e302",
-    "url": "/easy-homes/static/js/main.70ff7c9d.chunk.js"
+    "revision": "b97146d044e87b358ae8",
+    "url": "/easy-homes/static/js/main.85c58295.chunk.js"
   },
   {
     "revision": "602168e1e96c836d7cf3",

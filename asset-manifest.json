@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/easy-homes/static/css/main.8d4dbc56.chunk.css",
+    "main.css": "/easy-homes/static/css/main.ac9bafc1.chunk.css",
     "main.js": "/easy-homes/static/js/main.70ff7c9d.chunk.js",
     "main.js.map": "/easy-homes/static/js/main.70ff7c9d.chunk.js.map",
     "runtime-main.js": "/easy-homes/static/js/runtime-main.4847ade1.js",
@@ -8,16 +8,16 @@
     "static/js/2.4c823945.chunk.js": "/easy-homes/static/js/2.4c823945.chunk.js",
     "static/js/2.4c823945.chunk.js.map": "/easy-homes/static/js/2.4c823945.chunk.js.map",
     "index.html": "/easy-homes/index.html",
-    "precache-manifest.27307f602d685a618429c8783b5e9929.js": "/easy-homes/precache-manifest.27307f602d685a618429c8783b5e9929.js",
+    "precache-manifest.ac81b4e414403c49e41ae9af69f28603.js": "/easy-homes/precache-manifest.ac81b4e414403c49e41ae9af69f28603.js",
     "service-worker.js": "/easy-homes/service-worker.js",
-    "static/css/main.8d4dbc56.chunk.css.map": "/easy-homes/static/css/main.8d4dbc56.chunk.css.map",
+    "static/css/main.ac9bafc1.chunk.css.map": "/easy-homes/static/css/main.ac9bafc1.chunk.css.map",
     "static/js/2.4c823945.chunk.js.LICENSE.txt": "/easy-homes/static/js/2.4c823945.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/easy-homes/static/media/hero_high_res.6e678a39.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.4847ade1.js",
     "static/js/2.4c823945.chunk.js",
-    "static/css/main.8d4dbc56.chunk.css",
+    "static/css/main.ac9bafc1.chunk.css",
     "static/js/main.70ff7c9d.chunk.js"
   ]
 }

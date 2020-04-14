@@ -70,10 +70,14 @@ export default function Map(props) {
             bounds.se.lng,
             bounds.nw.lat
           ]);
-          if (window.innerWidth > 450) {
-            // only filter listing based on map for devices with screen larger than 450px
-            props.onPan(bounds);
-          }
+
+          // only filter listing based on map for devices with screen larger than 450px
+
+          // if (window.innerWidth > 648) {
+          props.onPan(bounds);
+          // } else {
+          // props.onPan({ bounds: null });
+          // }
         }}
       >
         {/* {console.log('center', center, 'points', points, 'map', mapRef)} */}

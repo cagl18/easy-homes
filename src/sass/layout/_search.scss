@@ -1,6 +1,13 @@
 .searchpage {
   overflow: hidden;
 
+  & .sticky {
+    & .nav--box {
+      margin: -0.8rem -1.1rem 0 -1.1rem;
+      box-shadow: 0 2px 5px rgba($color-black, 0.08);
+    }
+  }
+
   &__content {
     position: relative;
     bottom: 0;
@@ -10,6 +17,7 @@
     margin-bottom: -0.3rem;
 
     & .map {
+      margin-top: -0.2rem;
       height: 95vh;
       min-width: 66%;
       flex-grow: 1;
@@ -87,6 +95,12 @@
 
     & .mobile__menu--icon {
       display: inline-block;
+    }
+
+    & .sticky {
+      & .search--input-box {
+        top: 0%;
+      }
     }
   }
 

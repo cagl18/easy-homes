@@ -783,8 +783,8 @@ const data = [
     baths: 6,
     sqft: 5444,
     location: {
-      latitude: '40.683124',
-      longitude: '-73.948260'
+      latitude: '40.741599',
+      longitude: '-74.004656'
     }
   },
   {

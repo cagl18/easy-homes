@@ -10,7 +10,7 @@ const sortFields = [
   'beds',
   'baths',
   'address',
-  'neighborhood'
+  'neighborhood',
 ];
 
 class sort extends Component {
@@ -20,14 +20,17 @@ class sort extends Component {
     this.changeSortBy();
   };
   toogleMenu = () => {
-    this.setState({
-      isOptionsMenuOpened: !this.state.isOptionsMenuOpened
-    });
+    this.setState((prevState) => ({
+      isOptionsMenuOpened: !prevState.isOptionsMenuOpened,
+    }));
   };
-  setSortDirection = newSortDir => {
+  setSortDirection = (newSortDir) => {
     this.setState({ sortDirection: newSortDir }, this.changeSortBy);
   };
-  changeSortBy = (
+  setSortBy = (newSortBy) => {
+    this.setState({ sortBy: newSortBy }, this.changeSortBy);
+  };
+  changeSortBy = async (
     sortBy = this.state.sortBy,
     sortDirection = this.state.sortDirection
   ) => {
@@ -35,8 +38,8 @@ class sort extends Component {
       ? `${sortDirection}-${sortBy}`
       : sortBy;
 
-    updateURLParams({ sort: sortByURLParam }, this.props.history);
-    this.setState({ sortBy, sortDirection });
+    await updateURLParams({ sort: sortByURLParam }, this.props.history);
+
     this.handleClickOutside(); //auto closing menu after selecting
     this.props.onChange(); //function reference to sorting data
   };
@@ -55,8 +58,8 @@ class sort extends Component {
     const sortOptions = sortFields.map((val, index) => (
       <p
         key={index}
-        onChange={this.props.onChange}
-        onClick={() => this.changeSortBy(val)}
+        // onChange={this.props.onChange}
+        onClick={() => this.setSortBy(val)}
       >
         {val}
         {this.state.sortBy === val ? (

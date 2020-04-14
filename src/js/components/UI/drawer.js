@@ -5,16 +5,20 @@ class Drawer extends Component {
     is_opened: false
   };
 
-  componentDidMount() {
-    if (this.props.position === 'open') {
-      this.toogleDrawer();
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.position === 'open') {
+  //     this.toogleDrawer();
+  //   }
+  // }
   componentDidUpdate() {
     // console.log('Drawer state open', this.state.is_opened);
   }
+  // toogleDrawer = () => {
+  //   this.setState({ is_opened: !this.state.is_opened });
+  // };
+
   toogleDrawer = () => {
-    this.setState({ is_opened: !this.state.is_opened });
+    this.setState(prevState => ({ is_opened: !prevState.is_opened }));
   };
 
   closeDrawer = () => {
@@ -28,7 +32,7 @@ class Drawer extends Component {
     let nav_content =
       is_active['className'] === 'is-active' ? (
         <div
-          onClick={this.closeDrawer}
+          // onClick={this.closeDrawer}
           style={{ display: 'flex', flexDirection: 'column' }}
         >
           {this.props.children}

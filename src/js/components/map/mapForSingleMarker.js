@@ -19,6 +19,7 @@ const Map = props => {
           <img
             src='https://static.thenounproject.com/png/9093-200.png'
             style={{ width: '36px', height: '36px' }}
+            alt='location pin marker'
           />
         </Marker>
       </GoogleMapReact>

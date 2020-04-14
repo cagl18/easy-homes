@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
   const pageNumbers = [];
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -14,16 +14,15 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
     <nav className='pagination'>
       <ul>
         {pageNumbers.map(number => {
-          const is_active = currentPage === number ? 'active' : null;
+          const is_active = currentPage === number ? 'active' : '';
           return (
-            <li key={number} className={`page-item ${is_active}`}>
-              <Link
-                to='#'
+            <li key={number} className={`page-item`}>
+              <button
                 onClick={() => paginate(number)}
-                className='page-link'
+                className={`btn page-link ${is_active}`}
               >
                 {number}
-              </Link>
+              </button>
             </li>
           );
         })}

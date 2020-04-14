@@ -48,6 +48,8 @@ Enjoy :)
 
 - [SASS](https://sass-lang.com/) - CSS Pre-Processor
 - [React](https://reactjs.org/) - The JavaScript framework used
+- [Redux](https://redux.js.org/) - The JS App state management library used
+- [Google Map API](https://developers.google.com/maps/documentation/javascript/tutorial) - The Map API to search and view Properties by location
 
 ## Contributors
 

@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bb351df996beb974d2b62fbb90964093",
+    "revision": "a724e83e37cdf9dc3fe754d3cb13a863",
     "url": "/easy-homes/index.html"
   },
   {
-    "revision": "4d3c9d293d06f7c7787b",
-    "url": "/easy-homes/static/css/main.ede9ccaa.chunk.css"
+    "revision": "b97146d044e87b358ae8",
+    "url": "/easy-homes/static/css/main.fa49b663.chunk.css"
   },
   {
-    "revision": "9eb12dc2de72f84ec934",
-    "url": "/easy-homes/static/js/2.a2e87b73.chunk.js"
+    "revision": "1dbf75fcdbe6c3b63da0",
+    "url": "/easy-homes/static/js/2.4c823945.chunk.js"
   },
   {
     "revision": "3a08a7c8f8e6231522abe29a929e6912",
-    "url": "/easy-homes/static/js/2.a2e87b73.chunk.js.LICENSE.txt"
+    "url": "/easy-homes/static/js/2.4c823945.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4d3c9d293d06f7c7787b",
-    "url": "/easy-homes/static/js/main.e20b281a.chunk.js"
+    "revision": "b97146d044e87b358ae8",
+    "url": "/easy-homes/static/js/main.85c58295.chunk.js"
   },
   {
     "revision": "602168e1e96c836d7cf3",

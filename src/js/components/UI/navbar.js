@@ -7,8 +7,9 @@ import Logo from './logo';
 import Auth from '../../layout/auth';
 
 const navbar = props => {
+  console.log(props);
   return (
-    <div className={`header__nav ${props.className}`}>
+    <div className={`header__nav ${props.className ? props.className : ''}`}>
       <div className='backdrop'>
         <nav className={`nav `}>
           <Drawer brand='Easy Homes' position='closed'>

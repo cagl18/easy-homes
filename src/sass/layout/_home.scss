@@ -131,6 +131,11 @@
     & .homepage {
       &__search {
         width: 100%;
+
+        & .search--input-btn {
+          top: 41% !important;
+          border-radius: 0px;
+        }
       }
     }
   }

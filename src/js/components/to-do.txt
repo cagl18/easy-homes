@@ -1,11 +1,21 @@
 //navbar
-// Fix issue where sign up and login modal do not open from the drawer menu
+// Fix issue where sign up and login modal do not open from the drawer menu. (try passing closeNav props down the li / button elements)
+
+//sorting:
+// sort is being delayed by one step 
+// not working on github live project. check if searchbar is not working on listing page
+
+//filter update price select values when filtering rent listings
 
 //listing Detail page
 // add slider to listing page
 
-
 //search page:
 // Try to auto center marker card so that card is within visible bounds
+//disable map searching when map is not visible
+// remove overflow y overflow
 
 //set local enviroment key
+
+
+

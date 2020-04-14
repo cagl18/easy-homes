@@ -8,7 +8,7 @@ import Sort from './sort';
 import {
   updateURLParams,
   getAllUrlParams,
-  getURLParams
+  getURLParams,
 } from '../../../shared/utility';
 
 const defaultFields = {
@@ -17,15 +17,15 @@ const defaultFields = {
   minbeds: { value: -1, label: 'No Min' },
   maxbeds: { value: 7, label: 'No Max' },
   minbaths: { value: 0, label: 'No Min' },
-  minSqft: { value: 0, label: 'No Min' },
-  maxSqft: { value: 8000, label: 'No Max' }
+  minsqft: { value: 0, label: 'No Min' },
+  maxsqft: { value: 8000, label: 'No Max' },
 };
 
 class Filter extends Component {
   state = {
     fields: { ...JSON.parse(JSON.stringify(defaultFields)) }, //Deep copying defaultFields Obj
     selectedFiltersCounter: 0,
-    isAdvancedFiltersOpened: false
+    isAdvancedFiltersOpened: false,
   };
   componentDidMount() {
     if (this.props.position === 'open') {
@@ -58,14 +58,25 @@ class Filter extends Component {
           }
           if (
             key.includes('bed') &&
-            updatedFields[key].value > defaultFields.minprice.value &&
-            updatedFields[key].value < defaultFields.maxprice.value
+            updatedFields[key].value > defaultFields.minbeds.value &&
+            updatedFields[key].value < defaultFields.maxbeds.value
           ) {
             updatedFields[key].label = this.getLabelOfValue(
               updatedFields[key].value,
               this.getBedsOptions()
             );
           }
+          if (
+            key.includes('sqft') &&
+            updatedFields[key].value > defaultFields.minsqft.value &&
+            updatedFields[key].value < defaultFields.maxsqft.value
+          ) {
+            updatedFields[key].label = this.getLabelOfValue(
+              updatedFields[key].value,
+              this.getSquareFootOptions()
+            );
+          }
+
           if (key.includes('bath')) {
             updatedFields[key].label = this.getLabelOfValue(
               updatedFields[key].value,
@@ -85,14 +96,18 @@ class Filter extends Component {
     // populates selected filters from URL into the UI
   };
   filterDataFromURLParams = () => {
-    const listing_type = getURLParams('type', this.props.location);
-    if (listing_type.trim().length) {
-      this.onChangeHandler('type', { value: listing_type });
+    const sort = getURLParams('sort', this.props.location);
+
+    if (sort.trim().length) {
+      this.props.onFiltersSelected({ sort });
     }
+    // if (listing_type.trim().length) {
+    //   this.onChangeHandler('type', { value: listing_type });
+    // }
   };
   toogleDrawer = () => {
     this.setState({
-      isAdvancedFiltersOpened: !this.state.isAdvancedFiltersOpened
+      isAdvancedFiltersOpened: !this.state.isAdvancedFiltersOpened,
     });
   };
 
@@ -128,7 +143,7 @@ class Filter extends Component {
         selectedFields.add(newKey);
       }
     }
-
+    console.log('this.state.fields', this.state.fields);
     return [...selectedFields];
   };
 
@@ -210,9 +225,13 @@ class Filter extends Component {
     updateURLParams({ [name]: event.value }, this.props.history);
     this.props.onFiltersSelected({ [name]: event.value });
 
-    await this.setState({
-      fields: { ...this.state.fields, ...newState }
-    });
+    // await this.setState({
+    //   fields: { ...this.state.fields, ...newState }
+    // });
+    await this.setState((prevState) => ({
+      fields: { ...prevState.fields, ...newState },
+    }));
+
     const selectedFiltersCounter = this.getSelectedFilters().length;
     this.setState({ selectedFiltersCounter });
   };
@@ -237,10 +256,10 @@ class Filter extends Component {
                   components={{ IndicatorSeparator: null }}
                   options={[
                     { value: 0, label: 'No Min Price' },
-                    ...this.getPriceOptions()
+                    ...this.getPriceOptions(),
                   ]}
                   // defaultValue={{ value: 0, label: 'No Min Price' }}
-                  onChange={e => this.onChangeHandler('minprice', e)}
+                  onChange={(e) => this.onChangeHandler('minprice', e)}
                   // getOptionLabel={this.state.minPrice}
                   value={this.state.fields.minprice}
                 />
@@ -252,10 +271,10 @@ class Filter extends Component {
                   components={{ IndicatorSeparator: null }}
                   options={[
                     { value: 9999999999, label: 'No Max Price' },
-                    ...this.getPriceOptions()
+                    ...this.getPriceOptions(),
                   ]}
                   // defaultValue={{ value: 0, label: 'No Max Price' }}
-                  onChange={e => this.onChangeHandler('maxprice', e)}
+                  onChange={(e) => this.onChangeHandler('maxprice', e)}
                   value={this.state.fields.maxprice}
                 />
               </div>
@@ -294,10 +313,10 @@ class Filter extends Component {
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: -1, label: 'No Min' },
-                      ...this.getBedsOptions()
+                      ...this.getBedsOptions(),
                     ]}
                     defaultValue={this.state.fields.minbeds}
-                    onChange={e => this.onChangeHandler('minbeds', e)}
+                    onChange={(e) => this.onChangeHandler('minbeds', e)}
                     value={this.state.fields.minbeds}
                   />
                   <span style={{ padding: '0 8px' }}>-</span>
@@ -307,10 +326,10 @@ class Filter extends Component {
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: 7, label: 'No Max' },
-                      ...this.getBedsOptions()
+                      ...this.getBedsOptions(),
                     ]}
                     defaultValue={this.state.fields.maxBeds}
-                    onChange={e => this.onChangeHandler('maxbeds', e)}
+                    onChange={(e) => this.onChangeHandler('maxbeds', e)}
                     value={this.state.fields.maxbeds}
                   />
                 </div>
@@ -325,10 +344,10 @@ class Filter extends Component {
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: 0, label: 'No Min' },
-                      ...this.getBathsOptions()
+                      ...this.getBathsOptions(),
                     ]}
                     defaultValue={this.state.fields.minBaths}
-                    onChange={e => this.onChangeHandler('minbaths', e)}
+                    onChange={(e) => this.onChangeHandler('minbaths', e)}
                     value={this.state.fields.minbaths}
                   />
                 </div>
@@ -345,12 +364,12 @@ class Filter extends Component {
                       name='min-sqft'
                       components={{ IndicatorSeparator: null }}
                       options={[
-                        { value: -1, label: 'No Min' },
-                        ...this.getSquareFootOptions()
+                        { value: 0, label: 'No Min' },
+                        ...this.getSquareFootOptions(),
                       ]}
-                      defaultValue={this.state.fields.minSqft}
-                      onChange={e => this.onChangeHandler('minSqft', e)}
-                      value={this.state.fields.minSqft}
+                      defaultValue={this.state.fields.minsqft}
+                      onChange={(e) => this.onChangeHandler('minsqft', e)}
+                      value={this.state.fields.minsqft}
                     />
                     <span style={{ padding: '0 8px' }}>-</span>
                     <Select
@@ -358,12 +377,12 @@ class Filter extends Component {
                       name='max-sqft'
                       components={{ IndicatorSeparator: null }}
                       options={[
-                        { value: 7, label: 'No Max' },
-                        ...this.getSquareFootOptions()
+                        { value: 8000, label: 'No Max' },
+                        ...this.getSquareFootOptions(),
                       ]}
-                      defaultValue={this.state.fields.maxSqft}
-                      onChange={e => this.onChangeHandler('maxSqft', e)}
-                      value={this.state.fields.maxSqft}
+                      defaultValue={this.state.fields.maxsqft}
+                      onChange={(e) => this.onChangeHandler('maxsqft', e)}
+                      value={this.state.fields.maxsqft}
                     />
                   </div>
                 </div>

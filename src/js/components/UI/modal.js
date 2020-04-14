@@ -52,7 +52,7 @@ class Auth extends Component {
                   <span></span>
                 </div>
               </div>
-              <div className='authentication'> {this.props.children}</div>
+              <div className='authentication'>{this.props.children}</div>
             </div>
           </div>
         </div>

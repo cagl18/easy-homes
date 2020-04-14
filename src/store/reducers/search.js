@@ -26,6 +26,7 @@ const filterListingData = (state, action) => {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log('redux state', state);
   switch (action.type) {
     case actionTypes.SET_LISTINGS_FILTER:
       return setListingsFilters(state, action);

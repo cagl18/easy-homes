@@ -29,7 +29,7 @@ const card = props => {
                 <div className='flex '>
                   <div className='card-listing-left-wrapper'>
                     <div>{Number(props.data.price).toLocaleString()}</div>
-                    <div>{props.data.address}</div>
+                    <div className='listing-address'>{props.data.address}</div>
                     <div>{props.data.neighborhood}</div>
                   </div>
                   <div className='card-listing-right-wrapper'>

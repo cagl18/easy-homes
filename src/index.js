@@ -17,7 +17,7 @@ const composeEnhancers =
     : null) || compose; //try to find redux_devtool or simply default to redux compose without devtools functionality
 
 const rootReducer = combineReducers({
-  search: searchReducer
+  search: searchReducer,
   //   burgerBuilder: burgerBuilderReducer,
   //   order: orderReducer
 });

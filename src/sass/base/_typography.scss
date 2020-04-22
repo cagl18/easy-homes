@@ -38,9 +38,10 @@ body {
 
 .heading-secondary {
   // font-family: 'Papyrus';
-  font-size: 4.2rem;
+  font-size: 4rem;
   font-weight: 100;
   margin-bottom: -1.2rem;
+  color: $color-grey-light-4;
 
   @include respond(phone) {
     //width < 900?
@@ -64,6 +65,7 @@ body {
 .heading-tertiary {
   font-size: 3.6rem;
   font-weight: 400;
+  color: $color-grey-light-4;
 }
 
 .heading-quaternary {

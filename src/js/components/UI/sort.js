@@ -63,7 +63,7 @@ class sort extends Component {
       >
         {val}
         {this.state.sortBy === val ? (
-          <i style={{ marginLeft: '1.5rem' }} className='fas fa-check'></i>
+          <i style={{ marginLeft: '1.5rem' }} className="fas fa-check"></i>
         ) : (
           ''
         )}
@@ -71,18 +71,18 @@ class sort extends Component {
     ));
     return (
       <span className={`sort ${is_active['className']}`}>
-        <span className='results__sorted_by' onClick={this.toogleMenu}>
+        <span className="results__sorted_by" onClick={this.toogleMenu}>
           {'Sort By '}
-          <span className='results__sorted_by--FieldName'>
+          <span className="results__sorted_by--FieldName">
             {this.state.sortBy}
           </span>
-          <i className='fas fa-chevron-down'></i>
+          <i className="fas fa-chevron-down"></i>
         </span>
 
-        <div className='popUpMenu'>
-          <div className='popUpMenu__wrapper'>
-            <div className='popUpMenu__items'>
-              <h5 className='sort-direction'>
+        <div className="popUpMenu">
+          <div className="popUpMenu__wrapper">
+            <div className="popUpMenu__items">
+              <h5 className="sort-direction">
                 <span
                   className={
                     this.state.sortDirection === 'asc' ? 'is-active' : ''

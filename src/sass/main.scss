@@ -6,7 +6,7 @@
 @import 'components/UI/logo';
 @import 'components/UI/nav/nav';
 @import 'components/UI/nav/drawer';
-@import 'components/UI/card';
+@import 'components/UI/listings/card/listingCardGrid';
 @import 'components/UI/filter';
 @import 'components/UI/btn';
 @import 'components/UI/backdrop';
@@ -17,7 +17,8 @@
 @import 'components/UI/map/map';
 @import 'components/UI/map/mapListingMarker';
 @import 'components/UI/pagination';
-@import 'components/agent/agent_card';
+@import 'components/agent/card/_card_grid.scss';
+@import 'components/agent/card/_card_row.scss';
 @import 'components/agent/agents';
 @import 'components/agent/agent_contact';
 @import 'components/agent/agentDetails';
@@ -31,6 +32,7 @@
 @import 'layout/grid';
 @import 'layout/home';
 @import 'layout/search';
+@import 'layout/agents';
 @import 'layout/listing/details_view';
 @import 'components/footer';
 @import 'components/market';

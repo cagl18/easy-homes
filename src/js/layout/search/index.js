@@ -19,18 +19,8 @@ class Search extends Component {
 
   componentDidUpdate() {
     this.autoFilterURLData();
-    console.log('saved Filter params in redux', this.props.filtersParams);
+    // console.log('saved Filter params in redux', this.props.filtersParams);
   }
-
-  // onPageChanged = data => {
-  //   const allProperties = this.props.filteredData;
-  //   const { currentPage, totalPages, pageLimit } = data;
-
-  //   const offset = (currentPage - 1) * pageLimit;
-  //   const currentProperties = allProperties.slice(offset, offset + pageLimit);
-
-  //   this.setState({ currentPage, currentProperties, totalPages });
-  // };
 
   autoFilterURLData = async () => {
     const URLParmsObj = getAllUrlParams(this.props.location.search);
@@ -150,7 +140,7 @@ class Search extends Component {
     //filtering based on map location
 
     const { bounds } = updatedFilters;
-
+    //check how often window.innerWidth updates
     if (bounds && window.innerWidth > 648) {
       newData = newData.filter((l) => {
         const bb = bounds;
@@ -207,25 +197,25 @@ class Search extends Component {
     // const totalProperties = this.props.filteredData.length;
     const itemsShownPerPage = 6;
     return (
-      <div className='searchpage'>
-        <div className='searchpage__nav'>
-          <Nav className='sticky'>
+      <div className="searchpage">
+        <div className="searchpage__nav">
+          <Nav className="sticky">
             <SearchBar
               onSearch={(searchTerm) => this.filterData({ searchTerm })}
               autoSearch
             />
           </Nav>
         </div>
-        <div className='searchpage__content'>
+        <div className="searchpage__content">
           <Map
             zoom={14}
             onPan={(bounds) => this.filterData({ bounds })}
             filteredData={this.props.filteredData}
           />
-          <div className='listings'>
-            <div className='listings__header'>
+          <div className="listings">
+            <div className="listings__header">
               <header>
-                <h4 className='heading-quaternary'>
+                <h4 className="heading-quaternary">
                   Explore This Neighborhood
                 </h4>
               </header>

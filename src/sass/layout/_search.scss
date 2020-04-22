@@ -13,13 +13,14 @@
     bottom: 0;
     display: flex;
     flex: wrap column;
-    margin-top: -0.7rem;
+    margin-top: -0.9rem;
+    // margin-top: -0.6rem;
     margin-bottom: -0.3rem;
 
     & .map {
       margin-top: -0.2rem;
       height: 95vh;
-      min-width: 66%;
+      min-width: 63%;
       flex-grow: 1;
       height: auto !important;
       border-right: 1px solid rgba($color-black, 0.08);
@@ -76,12 +77,14 @@
     }
     &__content {
       & .map {
-        min-width: 60%;
+        min-width: 54.5%;
       }
     }
   }
   @include respond(tab-land) {
     &__content {
+      margin-top: -0.6rem;
+
       & .listings {
         & .MuiGrid-item {
           max-width: 50%;
@@ -89,7 +92,7 @@
         }
       }
       & .map {
-        min-width: 47%;
+        min-width: 43.5%;
       }
     }
 
@@ -135,7 +138,7 @@
         }
       }
       & .map {
-        min-width: 36%;
+        min-width: 35%;
       }
     }
   }

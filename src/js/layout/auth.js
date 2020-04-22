@@ -3,32 +3,29 @@ import Modal from '../components/UI/modal';
 
 class Auth extends Component {
   state = {
-    auth_window: { login: this.props.login, signup: this.props.signup }
+    auth_window: {
+      login: this.props.login,
+      signup: this.props.signup,
+    },
   };
-
-  componentDidMount() {}
 
   toogleAuthOption = () => {
     this.setState({
       auth_window: {
         login: !this.state.auth_window.login,
-        signup: !this.state.auth_window.signup
-      }
+        signup: !this.state.auth_window.signup,
+      },
     });
   };
 
   render() {
-    let is_active = {};
-    is_active.className = this.state.is_opened ? 'is-active' : '';
-    is_active.onClick = this.state.is_opened ? this.toogleModal : null;
-
     let modal_content = this.state.auth_window.login ? (
-      <div className='authentication-content'>
+      <div className="authentication-content">
         <h1>Welcome back!</h1>
-        <form className='form' action=''>
-          <input name='email' placeholder='Email'></input>
-          <button className='btn primary'>Continue</button>
-          <div className='authentication-footer'>
+        <form className="form" action="">
+          <input name="email" placeholder="Email"></input>
+          <button className="btn primary">Continue</button>
+          <div className="authentication-footer">
             <span>New to Easy Homes?</span>
             <button onClick={() => this.toogleAuthOption()}>
               Create an account
@@ -37,15 +34,15 @@ class Auth extends Component {
         </form>
       </div>
     ) : (
-      <div className='authentication-content'>
+      <div className="authentication-content">
         <h1>Create an account</h1>
-        <form className='form' action=''>
-          <input type='text' name='name' placeholder='First Name'></input>
-          <input type='text' name='lastname' placeholder='Last Name'></input>
-          <input type='email' name='email' placeholder='Email'></input>
-          <input type='password' name='password' placeholder='Password'></input>
-          <button className='btn primary'>Continue</button>
-          <div className='authentication-footer'>
+        <form className="form" action="">
+          <input type="text" name="name" placeholder="First Name"></input>
+          <input type="text" name="lastname" placeholder="Last Name"></input>
+          <input type="email" name="email" placeholder="Email"></input>
+          <input type="password" name="password" placeholder="Password"></input>
+          <button className="btn primary">Continue</button>
+          <div className="authentication-footer">
             <span>Already have an account?</span>
             <button onClick={() => this.toogleAuthOption()}>Sign in</button>
           </div>
@@ -53,7 +50,7 @@ class Auth extends Component {
       </div>
     );
     return (
-      <div className='authentication'>
+      <div className="authentication">
         <Modal btnClass={this.props.btnClass} btnText={this.props.btnText}>
           {modal_content}
         </Modal>

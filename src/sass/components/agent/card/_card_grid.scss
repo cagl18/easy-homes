@@ -1,0 +1,35 @@
+.grid {
+  border: 1px solid $color-grey-dark-4;
+  padding: 0 !important;
+  // width: 27.2rem;
+  width: 100%;
+  &.agent_card {
+    & .agent_card {
+      &__container {
+        flex-direction: column;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        & .agent__photo {
+          height: 27rem;
+          width: 100%;
+          border-radius: 0% !important;
+        }
+
+        & .agent__info {
+          flex-direction: column;
+          align-self: flex-start;
+          margin-left: 0rem;
+          padding: 2rem;
+
+          &--name {
+            font-size: 2.4rem;
+          }
+
+          &--contact {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.agents {
+  .header {
+    // position: relative;
+    height: 42.5vh;
+    // background-color: #333;
+
+    background-image: linear-gradient(
+        rgba($color-black, 0.1),
+        rgba($color-black, 0.1)
+      ),
+      url(../../img/office_reception.jpg);
+    // visibility: visible;
+    // background-position: 50%;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      text-align: center;
+      width: 100%;
+      z-index: 9;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .homepage__search {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+
+    & .search--input {
+      &-box {
+        & form {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+      &-btn {
+        position: relative;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        margin-left: -5.75rem;
+      }
+    }
+  }
+
+  &-hero {
+    height: 100vh !important;
+  }
+
+  @include respond(phone) {
+    & .homepage__search {
+      & .search--input {
+        &-btn {
+          margin-left: -1px;
+        }
+      }
+    }
+  }
+}

@@ -87,7 +87,8 @@ class Filter extends Component {
       }
     }
 
-    const selectedFiltersCounter = this.getSelectedFilters().length;
+    const selectedFiltersCounter = this.getSelectedFilters(updatedFields)
+      .length;
 
     this.setState(
       { selectedFiltersCounter, fields: updatedFields },
@@ -131,19 +132,16 @@ class Filter extends Component {
     return '';
   };
 
-  getSelectedFilters = () => {
+  getSelectedFilters = (fields = this.state.fields) => {
     const selectedFields = new Set();
 
-    for (let key in this.state.fields) {
-      if (
-        key !== 'type' &&
-        defaultFields[key].value !== this.state.fields[key].value
-      ) {
+    for (let key in fields) {
+      if (key !== 'type' && defaultFields[key].value !== fields[key].value) {
         const newKey = key.replace(/min|max/, '');
         selectedFields.add(newKey);
       }
     }
-    console.log('this.state.fields', this.state.fields);
+    console.log('fields', fields);
     return [...selectedFields];
   };
 
@@ -245,14 +243,14 @@ class Filter extends Component {
 
     return (
       <div className={`filters ${is_active['className']}`}>
-        <div className='filters__wrapper'>
-          <h2 className='heading'>Filters</h2>
-          <div className='basicFilters__section'>
-            <div className='filters__item prices'>
-              <div className='price_filter'>
+        <div className="filters__wrapper">
+          <h2 className="heading">Filters</h2>
+          <div className="basicFilters__section">
+            <div className="filters__item prices">
+              <div className="price_filter">
                 <Select
-                  className='select'
-                  name='min-price'
+                  className="select"
+                  name="min-price"
                   components={{ IndicatorSeparator: null }}
                   options={[
                     { value: 0, label: 'No Min Price' },
@@ -266,8 +264,8 @@ class Filter extends Component {
 
                 <span style={{ padding: '0 8px' }}>-</span>
                 <Select
-                  className='select'
-                  name='max-price'
+                  className="select"
+                  name="max-price"
                   components={{ IndicatorSeparator: null }}
                   options={[
                     { value: 9999999999, label: 'No Max Price' },
@@ -284,7 +282,7 @@ class Filter extends Component {
                 } Filters `}
 
                 {this.state.selectedFiltersCounter > 0 ? (
-                  <span className='activeFilters-count'>
+                  <span className="activeFilters-count">
                     {this.state.selectedFiltersCounter}
                   </span>
                 ) : (
@@ -293,23 +291,27 @@ class Filter extends Component {
               </Button>
             </div>
           </div>
-          <div className='results'>
-            <span className='results__found'>
-              <b>{this.props.itemsShownPerPage}</b>
+          <div className="results">
+            <span className="results__found">
+              <b>
+                {this.props.filteredData.length >= this.props.itemsShownPerPage
+                  ? this.props.itemsShownPerPage
+                  : this.props.filteredData.length}
+              </b>
               {' of '}
-              <b>{this.props.filteredData.length} </b>
-              Homes
+              <b>{this.props.filteredData.length}</b>
+              {' Homes'}
             </span>
             <Sort onChange={this.filterDataFromURLParams} />
           </div>
-          <div className='advanceFilters'>
-            <div className='advanceFilters__section'>
-              <div className='advanceFilters__item beds'>
-                <h4 className='heading'>Beds</h4>
-                <div className='advanceFilters__item--field'>
+          <div className="advanceFilters">
+            <div className="advanceFilters__section">
+              <div className="advanceFilters__item beds">
+                <h4 className="heading">Beds</h4>
+                <div className="advanceFilters__item--field">
                   <Select
-                    className='select'
-                    name='min-beds'
+                    className="select"
+                    name="min-beds"
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: -1, label: 'No Min' },
@@ -321,8 +323,8 @@ class Filter extends Component {
                   />
                   <span style={{ padding: '0 8px' }}>-</span>
                   <Select
-                    className='select'
-                    name='max-beds'
+                    className="select"
+                    name="max-beds"
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: 7, label: 'No Max' },
@@ -335,12 +337,12 @@ class Filter extends Component {
                 </div>
               </div>
 
-              <div className='advanceFilters__item baths'>
-                <h4 className='heading'>Baths</h4>
-                <div className='advanceFilters__item--field'>
+              <div className="advanceFilters__item baths">
+                <h4 className="heading">Baths</h4>
+                <div className="advanceFilters__item--field">
                   <Select
-                    className='select select--single'
-                    name='Baths'
+                    className="select select--single"
+                    name="Baths"
                     components={{ IndicatorSeparator: null }}
                     options={[
                       { value: 0, label: 'No Min' },
@@ -353,15 +355,15 @@ class Filter extends Component {
                 </div>
               </div>
             </div>
-            <div className='advanceFilters__section'>
+            <div className="advanceFilters__section">
               <div>
-                <h2 className='heading'>Property Facts</h2>
-                <div className='advanceFilters__item'>
-                  <h4 className='heading'>Square Feet</h4>
-                  <div className='advanceFilters__item--field'>
+                <h2 className="heading">Property Facts</h2>
+                <div className="advanceFilters__item">
+                  <h4 className="heading">Square Feet</h4>
+                  <div className="advanceFilters__item--field">
                     <Select
-                      className='select'
-                      name='min-sqft'
+                      className="select"
+                      name="min-sqft"
                       components={{ IndicatorSeparator: null }}
                       options={[
                         { value: 0, label: 'No Min' },
@@ -373,8 +375,8 @@ class Filter extends Component {
                     />
                     <span style={{ padding: '0 8px' }}>-</span>
                     <Select
-                      className='select'
-                      name='max-sqft'
+                      className="select"
+                      name="max-sqft"
                       components={{ IndicatorSeparator: null }}
                       options={[
                         { value: 8000, label: 'No Max' },
@@ -388,9 +390,9 @@ class Filter extends Component {
                 </div>
               </div>
             </div>
-            <div className='advanceFilters__footer'>
-              <div className='advanceFilters__footer--wrapper'>
-                <Button className='btn primary' onClick={this.toogleDrawer}>
+            <div className="advanceFilters__footer">
+              <div className="advanceFilters__footer--wrapper">
+                <Button className="btn primary" onClick={this.toogleDrawer}>
                   See {`${this.props.filteredData.length.toLocaleString()} `}
                   Homes
                 </Button>

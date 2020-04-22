@@ -8,9 +8,9 @@ import SearchBar from '../../searchBar';
 import Nav from '../../UI/navbar';
 import Button from '../../UI/button';
 import Footer from '../../footer';
-import AgentCard from '../../agent/agentCard';
+import AgentCard from '../../agent/card/listRow';
 import AgentContact from '../../agent/agentContact';
-import Agents from '../../agent/agents';
+import Agents from '../../agent/agents/agentsListRow';
 
 import { withRouter } from 'react-router-dom';
 
@@ -23,8 +23,8 @@ class listingDetail extends Component {
     this.setState({ listing });
   }
 
-  getListingByID = id => {
-    const listing = this.props.listingData.find(l => {
+  getListingByID = (id) => {
+    const listing = this.props.listingData.find((l) => {
       return l.id.toString() === id;
     });
 
@@ -45,7 +45,7 @@ class listingDetail extends Component {
     let amenities = null;
     if (listing.description) {
       amenities = listing.amenities.map((el, index) => (
-        <span key={index} className='cell_item'>
+        <span key={index} className="cell_item">
           {el}
         </span>
       ));
@@ -58,109 +58,109 @@ class listingDetail extends Component {
     if (listing.location) {
       location = {
         lat: parseFloat(listing.location.latitude),
-        lng: parseFloat(listing.location.longitude)
+        lng: parseFloat(listing.location.longitude),
       };
     }
 
     return (
       <div ref={this.myRef}>
-        <Nav className='sticky'>
+        <Nav className="sticky">
           <SearchBar />
         </Nav>
 
-        <main className='container listingDetails'>
-          <div className='listingDetails__header'>
-            <div className='header__ToLeftContent'>
+        <main className="container listingDetails">
+          <div className="listingDetails__header">
+            <div className="header__ToLeftContent">
               <h2>{listing.address}</h2>
 
-              <div className='header__subTitle'>
+              <div className="header__subTitle">
                 <p>{listing.neighborhood},</p>
                 <p>{listing.city},</p>
                 <p>{listing.state}</p>
                 <p>{listing.zipcode}</p>
               </div>
             </div>
-            <div className='header__ToRightContent'>
-              <div className='header--price_space'>
-                <div className='header__col'>
-                  <p className='header__title'>
+            <div className="header__ToRightContent">
+              <div className="header--price_space">
+                <div className="header__col">
+                  <p className="header__title">
                     ${Number(listing.price).toLocaleString()}
                   </p>
-                  <div className='header__subTitle'>
+                  <div className="header__subTitle">
                     <p>Price</p>
                   </div>
                 </div>
               </div>
-              <div className='header--basic_summary_specs'>
-                <div className='header__col'>
-                  <p className='header__title'>{listing.beds}</p>
-                  <div className='header__subTitle'>
+              <div className="header--basic_summary_specs">
+                <div className="header__col">
+                  <p className="header__title">{listing.beds}</p>
+                  <div className="header__subTitle">
                     <p>Beds</p>
                   </div>
                 </div>
-                <div className='header__col'>
-                  <p className='header__title'>{listing.baths}</p>
-                  <div className='header__subTitle'>Baths</div>
+                <div className="header__col">
+                  <p className="header__title">{listing.baths}</p>
+                  <div className="header__subTitle">Baths</div>
                 </div>
 
-                <div className='sq_summary'>
-                  <div className='header__col'>
-                    <div className='header__title'>
+                <div className="sq_summary">
+                  <div className="header__col">
+                    <div className="header__title">
                       {Number(listing.sqft).toLocaleString()}{' '}
-                      <div className='header__subTitle'>Sq. Ft.</div>
+                      <div className="header__subTitle">Sq. Ft.</div>
                     </div>
 
-                    <div className='header__title'>
+                    <div className="header__title">
                       {`$${Math.round(
                         listing.price / listing.sqft
                       ).toLocaleString()}`}
-                      <div className='header__subTitle'>{`/ Sq.Ft.`}</div>
+                      <div className="header__subTitle">{`/ Sq.Ft.`}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='header__ToBottomContent'>
-              <Button className='btn primary'>
-                <i className='far fa-star'></i>
-                <span className='btn__label'>{' Save'}</span>
+            <div className="header__ToBottomContent">
+              <Button className="btn primary">
+                <i className="far fa-star"></i>
+                <span className="btn__label">{' Save'}</span>
               </Button>
               <Button>
-                <i className='far fa-share-square'></i>
-                <span className='btn__label'>{' Share'}</span>
+                <i className="far fa-share-square"></i>
+                <span className="btn__label">{' Share'}</span>
               </Button>
             </div>
           </div>
-          <div className='listingDetails__nav'>
-            <a href='#location'>Location</a>
-            <a href='#history'>Property History</a>
-            <a href='#schools'>Schools</a>
-            <a href='#neighborhood'>Neighborhood</a>
-            <a href='#morehomes'>Similar Homes</a>
+          <div className="listingDetails__nav">
+            <a href="#location">Location</a>
+            <a href="#history">Property History</a>
+            <a href="#schools">Schools</a>
+            <a href="#neighborhood">Neighborhood</a>
+            <a href="#morehomes">Similar Homes</a>
           </div>
-          <div className='listingDetails__slider'>
+          <div className="listingDetails__slider">
             <div
-              className='card-img slider__container'
+              className="card-img slider__container"
               style={{
                 backgroundImage: `url(${listing.img})`,
-                height: '50rem'
+                height: '50rem',
               }}
             >
-              <div className='container'>
+              <div className="container">
                 {listing.comingsoon ? (
-                  <div className='banner banner-message'>
+                  <div className="banner banner-message">
                     {listing.comingsoon}
                   </div>
                 ) : (
                   ''
                 )}
                 {listing.openhouse ? (
-                  <div className='banner open-house'>{listing.openhouse}</div>
+                  <div className="banner open-house">{listing.openhouse}</div>
                 ) : (
                   ''
                 )}
                 {keyDetails.status !== 'Active' ? (
-                  <div className='banner status'>{keyDetails.status}</div>
+                  <div className="banner status">{keyDetails.status}</div>
                 ) : (
                   ''
                 )}
@@ -173,49 +173,49 @@ class listingDetail extends Component {
             </div>
           </div>
 
-          <div className='listingDetails__sidebar'>
-            <div className='keyDetails'>
-              <h2 className='keyDetails__header'>
+          <div className="listingDetails__sidebar">
+            <div className="keyDetails">
+              <h2 className="keyDetails__header">
                 Property Details for 1 West End Avenue, Unit 31C
               </h2>
 
-              <table className='keyDetails__table'>
+              <table className="keyDetails__table">
                 <tbody>
                   <tr>
                     <td>Status</td>
-                    <td className='value'>{keyDetails.status}</td>
+                    <td className="value">{keyDetails.status}</td>
                   </tr>
                   <tr>
                     <td>MLS ID</td>
-                    <td className='value'>{listing.id}</td>
+                    <td className="value">{listing.id}</td>
                   </tr>
                   <tr>
                     <td>Total Rooms</td>
-                    <td className='value'>{keyDetails.rooms}</td>
+                    <td className="value">{keyDetails.rooms}</td>
                   </tr>
                   <tr>
                     <td>Year Built</td>
-                    <td className='value'>{keyDetails.year_built}</td>
+                    <td className="value">{keyDetails.year_built}</td>
                   </tr>
                   <tr>
                     <td>DOM</td>
-                    <td className='value'>{keyDetails.dom || '-'}</td>
+                    <td className="value">{keyDetails.dom || '-'}</td>
                   </tr>
                   <tr>
                     <td>EasyHomes Type</td>
-                    <td className='value'>
+                    <td className="value">
                       {keyDetails.property_type || '--'}
                     </td>
                   </tr>
                   <tr>
                     <td>MLS Type</td>
-                    <td className='value'>{keyDetails.msl_type || '--'}</td>
+                    <td className="value">{keyDetails.msl_type || '--'}</td>
                   </tr>
 
                   {keyDetails.status === 'for-sale' ? (
                     <tr>
                       <td>Common Charges</td>
-                      <td className='value'>{keyDetails.common || '--'}</td>
+                      <td className="value">{keyDetails.common || '--'}</td>
                     </tr>
                   ) : (
                     <tr></tr>
@@ -224,7 +224,7 @@ class listingDetail extends Component {
                   {keyDetails.status === 'for-sale' ? (
                     <tr>
                       <td>Minumun Down Payment</td>
-                      <td className='value'>{keyDetails.min_down_p || '--'}</td>
+                      <td className="value">{keyDetails.min_down_p || '--'}</td>
                     </tr>
                   ) : (
                     <tr></tr>
@@ -232,45 +232,45 @@ class listingDetail extends Component {
                   {keyDetails.status === 'for-sale' ? (
                     <tr>
                       <td>Taxes</td>
-                      <td className='value'>{keyDetails.taxes || '--'}</td>
+                      <td className="value">{keyDetails.taxes || '--'}</td>
                     </tr>
                   ) : (
                     <tr>
                       <td>Available Date</td>
-                      <td className='value'>{keyDetails.start_date || '--'}</td>
+                      <td className="value">{keyDetails.start_date || '--'}</td>
                     </tr>
                   )}
                   <tr>
                     <td>County</td>
-                    <td className='value'>{keyDetails.county || '--'}</td>
+                    <td className="value">{keyDetails.county || '--'}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className='agent'>
-              <AgentCard title='Listing Agent' agent={agents[0]} />
+            <div className="agent">
+              <AgentCard title="Listing Agent" agent={agents[0]} />
               <AgentContact addresss={keyDetails.address} />
             </div>
           </div>
-          <div className='listingDetails__description'>
-            <h2 className='description__header u-margin-top-small'>
+          <div className="listingDetails__description">
+            <h2 className="description__header u-margin-top-small">
               Description
             </h2>
             {description}
           </div>
-          <div className='listingDetails__amenities u-margin-top-big'>
+          <div className="listingDetails__amenities u-margin-top-big">
             <h2>Amenities</h2>
-            <div className='listingDetails__amenities--container'>
+            <div className="listingDetails__amenities--container">
               {amenities}
             </div>
           </div>
           <div
-            id='location'
-            className='listingDetails__location u-margin-top-big'
+            id="location"
+            className="listingDetails__location u-margin-top-big"
           >
             <h2>Location</h2>
-            <ul className='location__list u-padding-bottom-small'>
+            <ul className="location__list u-padding-bottom-small">
               <li>
                 <Link to={`/search?type=${listing.type}`}>New York City</Link>
               </li>
@@ -294,10 +294,10 @@ class listingDetail extends Component {
 
             <Map location={location} zoom={16} />
           </div>
-          <div className='listingDetails__listing_agents u-margin-top-big'>
+          <div className="listingDetails__listing_agents u-margin-top-big">
             <Agents agents={agents} />
           </div>
-          <div className='listingDetails__disclaimer u-margin-top-medium'>
+          <div className="listingDetails__disclaimer u-margin-top-medium">
             <p>
               No guarantee, warranty or representation of any kind is made
               regarding the completeness or accuracy of descriptions or
@@ -320,18 +320,18 @@ class listingDetail extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     listingData: state.search.listingData,
     filteredData: state.search.filteredData,
-    filtersParams: state.search.filtersParams
+    filtersParams: state.search.filtersParams,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setFilters: filters => dispatch(actions.setListingsFilter(filters)),
-    setfilteredData: newData => dispatch(actions.filterListingData(newData))
+    setFilters: (filters) => dispatch(actions.setListingsFilter(filters)),
+    setfilteredData: (newData) => dispatch(actions.filterListingData(newData)),
   };
 };
 

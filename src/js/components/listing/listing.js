@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './listView/listingCard';
+import Card from './card/listingCardGridview';
 
-const listing = props => <Card data={props.data}></Card>;
+const listing = (props) => <Card data={props.data}></Card>;
 
 export default listing;

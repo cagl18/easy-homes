@@ -1,4 +1,6 @@
 .agents {
+  margin: 0 auto;
+
   & .agent {
     &_card {
       padding-top: 1.5rem;
@@ -27,4 +29,48 @@
       }
     }
   }
+  @include respond(tab-land) {
+    & .header .header__content {
+      width: 90%;
+
+      & h2 {
+        line-height: 1.1;
+        letter-spacing: 1.2px;
+      }
+    }
+  }
+
+  // @include respond(tab-land) {
+  //   & .MuiGrid-item {
+  //     display: flex;
+  //     justify-content: space-around;
+  //     max-width: 25.333333%;
+  //   }
+
+  //   .MuiGrid-spacing-xs-3 {
+  //     justify-content: center;
+  //   }
+  //   // & .MuiGrid-root {
+  //   //   flex-grow: 0;
+  //   //   max-width: 25%;
+  //   //   flex-basis: 25%;
+  //   // }
+  // }
+
+  // @include respond(tab-port) {
+  //   & .MuiGrid-item {
+  //     display: block;
+  //     // justify-content: space-around;
+  //     max-width: 50%;
+  //   }
+
+  //   .MuiGrid-spacing-xs-3 {
+  //     justify-content: none;
+  //   }
+  //   // & .MuiGrid-root {
+  //   //   flex-grow: 0;
+  //   //   max-width: 25%;
+  //   //   flex-basis: 25%;
+  //   // }
+  // }
 }

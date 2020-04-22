@@ -39,15 +39,15 @@ class Header extends Component {
 
   render() {
     return (
-      <header className='header'>
-        <div className='header__nav-box'>
+      <header className="header">
+        <div className="header__nav-box">
           <Navbar />
 
-          <div className='row'>
-            <div className='header__content'>
-              <h1 className='heading-primary'>Find your place.</h1>
-              <div className='homepage__search '>
-                <div className='homepage__search__type--select'>
+          <div className="row">
+            <div className="header__content">
+              <h1 className="heading-primary">Find your place.</h1>
+              <div className="homepage__search ">
+                <div className="homepage__search__type--select">
                   <Button
                     className={`homepage__search__type--btn  ${
                       this.state.type === 'for-sale' ? 'is_active ' : ''
@@ -57,7 +57,7 @@ class Header extends Component {
                     Buy
                   </Button>
                 </div>
-                <div className='homepage__search__type--select'>
+                <div className="homepage__search__type--select">
                   <Button
                     className={`homepage__search__type--btn  ${
                       this.state.type === 'for-rent' ? 'is_active' : ''

@@ -1,11 +1,4 @@
-//navbar
-// Fix issue where sign up and login modal do not open from the drawer menu. (try passing closeNav props down the li / button elements)
-
-//sorting:
-// sort is being delayed by one step 
-// not working on github live project. check if searchbar is not working on listing page
-
-//filter update price select values when filtering rent listings
+This project to-do list
 
 //listing Detail page
 // add slider to listing page
@@ -13,9 +6,17 @@
 //search page:
 // Try to auto center marker card so that card is within visible bounds
 //disable map searching when map is not visible
-// remove overflow y overflow
+// replace pagination with NPM package. listing results section to reset paging to 0 on component update
+//sorting:
+// sort by address not working properly. Also, check if searchbar is not working on listing page
 
-//set local enviroment key
+//create agent section
+
+My Portfolio to-do list.
+
+//Improve performance
+// add SSL certificate
+
 
 
 

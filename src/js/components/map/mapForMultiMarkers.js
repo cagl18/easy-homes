@@ -11,7 +11,7 @@ export default function Map(props) {
   const [zoom, setZoom] = useState(13);
   const [bounds, setbounds] = useState(null);
 
-  const points = props.filteredData.map(listing => ({
+  const points = props.filteredData.map((listing) => ({
     type: 'Feature',
     properties: {
       cluster: false,
@@ -21,15 +21,15 @@ export default function Map(props) {
       beds: listing.beds,
       baths: listing.baths,
       sqft: listing.sqft,
-      img: listing.img
+      img: listing.img,
     },
     geometry: {
       type: 'Point',
       coordinates: [
         parseFloat(listing.location.longitude),
-        parseFloat(listing.location.latitude)
-      ]
-    }
+        parseFloat(listing.location.latitude),
+      ],
+    },
   })); //converting the fetch data into clusters
 
   // 3) get clusters
@@ -37,25 +37,29 @@ export default function Map(props) {
     points,
     bounds,
     zoom,
-    options: { radius: 75, maxZoom: 20 }
+    options: { radius: 75, maxZoom: 20 },
   });
 
   const center = {
     lat: 40.728936,
-    lng: -73.993655
+    lng: -73.993655,
   };
   // const center = {
   //   lat: points[0].geometry.coordinates[0],
   //   lng: points[0].geometry.coordinates[1]
   // };
+  let bootstrapURLKeys = {};
+  if (process.env.REACT_APP_GOOGLE_KEY) {
+    bootstrapURLKeys = {
+      key: process.env.REACT_APP_GOOGLE_KEY || null,
+    };
+  }
 
   return (
     // Important! Always set the container height explicitly
-    <div className='map'>
+    <div className="map">
       <GoogleMapReact
-        // bootstrapURLKeys={{
-        //   key: process.env.REACT_APP_GOOGLE_KEY
-        // }}
+        bootstrapURLKeys={bootstrapURLKeys}
         defaultCenter={center}
         defaultZoom={zoom}
         yesIWantToUseGoogleMapApiInternals
@@ -68,7 +72,7 @@ export default function Map(props) {
             bounds.nw.lng,
             bounds.se.lat,
             bounds.se.lng,
-            bounds.nw.lat
+            bounds.nw.lat,
           ]);
 
           // only filter listing based on map for devices with screen larger than 450px
@@ -81,21 +85,21 @@ export default function Map(props) {
         }}
       >
         {/* {console.log('center', center, 'points', points, 'map', mapRef)} */}
-        {clusters.map(cluster => {
+        {clusters.map((cluster) => {
           const [longitude, latitude] = cluster.geometry.coordinates;
           const {
             cluster: isCluster,
-            point_count: pointCount
+            point_count: pointCount,
           } = cluster.properties;
 
           if (isCluster) {
             return (
               <Marker key={cluster.id} lat={latitude} lng={longitude}>
                 <div
-                  className='cluster-marker'
+                  className="cluster-marker"
                   style={{
                     width: `${10 + (pointCount / points.length) * 30}px`,
-                    height: `${10 + (pointCount / points.length) * 30}px`
+                    height: `${10 + (pointCount / points.length) * 30}px`,
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(

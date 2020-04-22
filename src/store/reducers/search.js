@@ -4,7 +4,7 @@ import listingData from '../../js/components/data/dummy_data';
 
 const initialState = {
   listingData,
-  filteredData: listingData
+  filteredData: listingData,
   // filtersParams: {
   //   searchTerm: '',
   //   minPrice: 0,
@@ -26,7 +26,7 @@ const filterListingData = (state, action) => {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log('redux state', state);
+  // console.log('redux state', state);
   switch (action.type) {
     case actionTypes.SET_LISTINGS_FILTER:
       return setListingsFilters(state, action);

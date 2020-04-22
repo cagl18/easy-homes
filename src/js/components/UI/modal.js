@@ -5,7 +5,7 @@ import Button from '../UI/button';
 
 class Auth extends Component {
   state = {
-    isModalOpened: false
+    isModalOpened: false,
   };
 
   componentDidMount() {
@@ -39,20 +39,20 @@ class Auth extends Component {
     is_active.onClick = this.state.isModalOpened ? this.closeModal : null;
 
     return (
-      <div className='modal'>
+      <div className="modal">
         <div onClick={this.openModal}>
           <Button className={this.props.btnClass}>{this.props.btnText}</Button>
         </div>
         <div className={`backdrop ${is_active.className}`}>
           <div className={`modal--box ${is_active['className']}`}>
-            <div className='container'>
-              <div className='btn__closed' onClick={this.closeModal}>
-                <div href='#' className='btn__closed--animated closed-position'>
+            <div className="container">
+              <div className="btn__closed" onClick={this.closeModal}>
+                <div href="#" className="btn__closed--animated closed-position">
                   <span></span>
                   <span></span>
                 </div>
               </div>
-              <div className='authentication'>{this.props.children}</div>
+              <div className="authentication">{this.props.children}</div>
             </div>
           </div>
         </div>

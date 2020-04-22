@@ -1,11 +1,21 @@
 const updateObject = (oldObject, updatedProperties) => {
   return {
     ...oldObject,
-    ...updatedProperties
+    ...updatedProperties,
   };
 };
 
-export const getAllUrlParams = url => {
+export const findOverfloatingElement = () => {
+  var docWidth = document.documentElement.offsetWidth;
+
+  [].forEach.call(document.querySelectorAll('*'), function (el) {
+    if (el.offsetWidth > docWidth) {
+      console.log(el);
+    }
+  });
+};
+
+export const getAllUrlParams = (url) => {
   // get query string from url (optional) or window
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 

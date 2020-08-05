@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/easy-homes/static/css/main.55d1a9e2.chunk.css",
+    "main.js": "/easy-homes/static/js/main.66934f28.chunk.js",
+    "main.js.map": "/easy-homes/static/js/main.66934f28.chunk.js.map",
+    "runtime-main.js": "/easy-homes/static/js/runtime-main.4847ade1.js",
+    "runtime-main.js.map": "/easy-homes/static/js/runtime-main.4847ade1.js.map",
+    "static/js/2.fbd4feed.chunk.js": "/easy-homes/static/js/2.fbd4feed.chunk.js",
+    "static/js/2.fbd4feed.chunk.js.map": "/easy-homes/static/js/2.fbd4feed.chunk.js.map",
+    "index.html": "/easy-homes/index.html",
+    "precache-manifest.416d8c3b099076b32d47d048996df2bb.js": "/easy-homes/precache-manifest.416d8c3b099076b32d47d048996df2bb.js",
+    "service-worker.js": "/easy-homes/service-worker.js",
+    "static/css/main.55d1a9e2.chunk.css.map": "/easy-homes/static/css/main.55d1a9e2.chunk.css.map",
+    "static/js/2.fbd4feed.chunk.js.LICENSE.txt": "/easy-homes/static/js/2.fbd4feed.chunk.js.LICENSE.txt",
+    "static/media/main.scss": "/easy-homes/static/media/office_reception.a7ab6830.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4847ade1.js",
+    "static/js/2.fbd4feed.chunk.js",
+    "static/css/main.55d1a9e2.chunk.css",
+    "static/js/main.66934f28.chunk.js"
+  ]
+}

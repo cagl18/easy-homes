@@ -1,0 +1,12 @@
+.backdrop {
+  &.is-active {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 900;
+    visibility: visible;
+    padding: 0;
+    margin: 0;
+    background-color: rgba($color-black, 0.5);
+  }
+}

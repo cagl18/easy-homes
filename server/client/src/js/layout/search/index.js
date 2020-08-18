@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Map from '../../components/map/mapForMultiMarkers';
-import SearchBar from '../../components/searchBar/searchBar';
+import SearchBar from '../../components/searchBar';
 import Nav from '../../components/UI/navbar';
 import Listings from '../../components/listing/listings';
 import ListingsFilter from '../../components/UI/filter';

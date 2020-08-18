@@ -7,6 +7,12 @@
   margin-bottom: 0.4rem;
   text-transform: uppercase;
   padding: 0rem 1rem;
+
+  &__content {
+    position: fixed;
+    bottom: 15px;
+    background-color: inherit;
+  }
   &.open-house {
     background-color: #03aa82;
   }
@@ -14,9 +20,25 @@
     background-color: #fff1d9;
     color: #944504;
   }
+  &.error {
+    background-color: $color-primary-dark;
+  }
+  &.success {
+    background-color: #46b863;
+  }
+
+  & .messageBox {
+    padding: 2rem;
+    color: $color-white;
+    font-size: 1.6rem;
+    font-weight: 100;
+  }
 
   &.banner-message {
+    color: $color-white;
     background-color: $color-primary;
+    display: flex;
+    justify-content: center;
   }
 }
 

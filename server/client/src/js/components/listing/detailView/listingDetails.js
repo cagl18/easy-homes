@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../store/actions';
 
 import Map from '../../map/mapForSingleMarker';
-import SearchBar from '../../searchBar/searchBar';
+import SearchBar from '../../searchBar';
 import Nav from '../../UI/navbar';
 import Button from '../../UI/button';
 import Footer from '../../footer';

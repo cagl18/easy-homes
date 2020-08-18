@@ -7,19 +7,21 @@ import Auth from '../../layout/auth';
 import Button from '../UI/navbar.js';
 import * as actions from '../../../store/actions';
 
+// Note button does not work properly in this component <Button></Button> */}
+
 class navbar extends Component {
   state = {
     isModalOpened: false,
   };
 
-  componentDidUpdate() {
-    console.log(
-      'navbar auth props user:',
-      this.props.user,
-      'isAuth',
-      this.props.isAuthenticated
-    );
-  }
+  // componentDidUpdate() {
+  //   console.log(
+  //     'navbar auth props user:',
+  //     this.props.user,
+  //     'isAuth',
+  //     this.props.isAuthenticated
+  //   );
+  // }
   closeDrawer = () => {
     this.setState({ isModalOpened: false });
   };
@@ -83,29 +85,34 @@ class navbar extends Component {
                 <div className="nav__menu--user">
                   {this.props.isAuthenticated ? (
                     <>
-                      <div className="nav__menu--user--item ">
-                        <i className="far fa-user"></i> {this.props.user?.name}
-                        {/* button does not work properly here */}
-                        {/* <Button className="nav__menu--user--item--btn">
-                          Test
-                        </Button> */}
+                      <div
+                        className="nav__menu--user--item "
+                        style={{ marginTop: '-.9rem' }}
+                      >
+                        <Link className="userProfileLink" to="/account">
+                          <div
+                            className="nav__menu--user--item--btn"
+                            style={{
+                              padding: '1rem',
+                              textTransform: 'capitalize',
+                            }}
+                          >
+                            <i className="far fa-user"></i>
+                            {` `}
+                            {this.props.user?.name}
+                          </div>
+                        </Link>
+                        {/* <Button>Test2</Button> */}
                       </div>
                       <div className="nav__menu--user--item ">
-                        <Auth
-                          logout
-                          btnClass="nav__menu--user--item--btn active"
-                          btnText="Log Out"
-                          // onClick={this.closeDrawer}
-                        ></Auth>
-                      </div>
-                      {/* <div className="nav__menu--user--item">
-                        <Button
-                          // onClick={this.props.logout}
+                        <div
                           className="nav__menu--user--item--btn"
+                          style={{ padding: '1rem' }}
+                          onClick={this.props.logout}
                         >
-                          Log out
-                        </Button>
-                      </div> */}
+                          Log Out
+                        </div>
+                      </div>
                     </>
                   ) : (
                     <>
@@ -114,7 +121,6 @@ class navbar extends Component {
                           signup
                           btnClass="nav__menu--user--item--btn active"
                           btnText="Sign Up"
-                          // onClick={this.closeDrawer}
                         ></Auth>
                       </div>
                       <div className="nav__menu--user--item">
@@ -122,7 +128,6 @@ class navbar extends Component {
                           login
                           btnClass="nav__menu--user--item--btn"
                           btnText="Log In"
-                          // onClick={this.closeDrawer}
                         ></Auth>
                       </div>
                     </>

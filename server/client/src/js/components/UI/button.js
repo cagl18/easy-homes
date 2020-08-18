@@ -1,13 +1,22 @@
 import React from 'react';
 
-const button = (props) => {
-  const loading = props.loading ? 'Loading' : '';
+const button = ({ children, className, style, onClick, loading }) => {
+  const isLoading = loading ? (
+    <i className="fas fa-circle-notch fa-spin"></i>
+  ) : (
+    ''
+  );
+
   return (
     <button
-      className={`btn ${props.className ? props.className : 'default'}`}
-      onClick={props.onClick}
+      className={`btn ${className?.length > 0 ? className : 'default'}`}
+      onClick={onClick}
+      style={style}
     >
-      {`${props.children} ${loading}`}
+      <span className="btn__text">
+        {children}
+        {` `} {isLoading}
+      </span>
     </button>
   );
 };

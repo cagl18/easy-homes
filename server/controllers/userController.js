@@ -42,52 +42,58 @@ const factory = require('./handlerFactory.js');
 //   next();
 // };
 
-// const filterObj = (obj, ...allowedFields) => {
-//   const newObj = {};
-//   Object.keys(obj).forEach((el) => {
-//     if (allowedFields.includes(el)) newObj[el] = obj[el];
-//   });
-//   return newObj;
-//   // const filterdObj = {};
-//   // for (let el in obj) {
-//   //   if (obj.includes(el)) {
-//   //     filterdObj[el] = obj[el];
-//   //   }
-//   // }
-//   // return filterdObj;
-// };
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+  // const filterdObj = {};
+  // for (let el in obj) {
+  //   if (obj.includes(el)) {
+  //     filterdObj[el] = obj[el];
+  //   }
+  // }
+  // return filterdObj;
+};
 
 // //ROUTE HANDLERS
-// exports.getMe = (req, res, next) => {
-//   req.params.id = req.user.id;
-//   next();
-// };
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
 
-// exports.updateMe = catchAsync(async (req, res, next) => {
-//   console.log(req.file);
-//   console.log(req.body);
-//   //1) create an error if user POSTS the password data
-//   if (req.body.password || req.body.passwordConfirm) {
-//     return next(
-//       new AppError(
-//         'This route is not for password updates. Please use / updatePassword',
-//         400
-//       )
-//     );
-//   }
+exports.updateMe = catchAsync(async (req, res, next) => {
+  console.log(req.file);
+  console.log(req.body);
+  //1) create an error if user POSTS the password data
+  if (req.body.password || req.body.passwordConfirm) {
+    return next(
+      new AppError(
+        'This route is not for password updates. Please use / updatePassword',
+        400
+      )
+    );
+  }
 
-//   //2) Filtered out unwated fields name that are not allow to be updated
-//   const filteredBody = filterObj(req.body, 'name', 'email');
-//   if (req.file) filteredBody.photo = req.file.filename;
+  //2) Filtered out unwanted fields name that are not allow to be updated
+  const filteredBody = filterObj(
+    req.body,
+    'name',
+    'firstname',
+    'lastname',
+    'email'
+  );
+  if (req.file) filteredBody.photo = req.file.filename;
 
-//   //3) Update user document
-//   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
-//     new: true,
-//     runValidators: true,
-//   });
+  //3) Update user document
+  const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
+    new: true,
+    runValidators: true,
+  });
 
-//   res.status(200).json({ status: 'success', user: updatedUser });
-// });
+  res.status(200).json({ status: 'success', user: updatedUser });
+});
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user._id, { active: false });

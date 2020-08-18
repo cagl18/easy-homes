@@ -1,0 +1,86 @@
+.account {
+  background-color: #f9f9f9;
+  height: 100vh;
+
+  & .heading-secondary {
+    color: $color-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(10px, auto);
+    grid-gap: 24px;
+
+    grid-template-areas:
+      'profileCard notificationCard'
+      'passwordCard deleteCard'
+      'passwordCard signOutCard'
+      'messageBanner messageBanner';
+    & .btn {
+      &.default {
+        border: 1px solid $color-grey-light-3;
+
+        &:hover {
+          background-color: $color-grey-light-3;
+          color: $color-primary;
+        }
+      }
+    }
+    & .account__profile {
+      grid-area: profileCard / profileCard / profileCard / profileCard;
+      & .btn {
+        max-width: 90px;
+      }
+    }
+
+    & .account__signOut {
+      grid-area: signOutCard / signOutCard / signOutCard / signOutCard;
+      & .btn {
+        font-weight: 600;
+      }
+    }
+    & .account__deleteAccount {
+      grid-area: deleteCard / deleteCard / deleteCard / deleteCard;
+      & .btn {
+        font-size: 1.4rem;
+        min-width: 16.5rem;
+        transition: all 0.1s ease-in-out;
+        border: 1px solid transparent;
+        &.btn-danger {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: $color-primary-dark;
+          border: 1px solid #c33;
+
+          &:hover {
+            font-size: 1.52rem;
+            font-weight: 500;
+            color: $color-white;
+            background-color: $color-primary-dark;
+            // border: none;
+            // border: 1px solid $color-primary-dark;
+          }
+        }
+      }
+    }
+
+    & .account__changePassword {
+      grid-area: passwordCard / passwordCard / passwordCard / passwordCard;
+      label {
+        & p {
+          font-size: 1.9rem;
+        }
+      }
+    }
+
+    & .banner {
+      grid-area: messageBanner / messageBanner / messageBanner / messageBanner;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

@@ -52,20 +52,23 @@ body {
 }
 
 .heading-divider {
-  border-bottom: 2px solid $color-primary;
-  margin: 1rem 0 2rem 0;
-  width: 18%;
-  display: block;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-bottom: 2px solid $color-black;
+  // margin: 1rem 0 2rem 0;
+  margin: 0.2rem 0 1.2rem 0;
+
+  width: 3.6rem;
+  display: flex;
+  justify-content: center;
+  // position: relative;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
 }
 
 .heading-tertiary {
   font-size: 3.6rem;
   font-weight: 400;
-  color: $color-grey-light-4;
+  color: $color-black;
 }
 
 .heading-quaternary {

@@ -4,47 +4,47 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   SIGNUP,
+  USER_PROFILE_UPDATE_SUCCESS,
+  SHOW_NOTIFICATION,
+  DELETE_ME_SUCCESS,
 } from '../actions/actionTypes';
+
+import { isJWTValid } from '../actions/index';
 
 const initialState = {
   isFetching: false,
-  isAuthenticated: localStorage.getItem('jwt_token') ? true : false,
+  isAuthenticated: isJWTValid(localStorage.getItem('jwt')),
   message: null,
-  user: null,
+  user:
+    localStorage.getItem('user_profile') !== 'undefined'
+      ? JSON.parse(localStorage.getItem('user_profile'))
+      : null,
+  error: false,
 };
 
 export default function (state = initialState, action) {
-  // console.log('Auth reducer state', state, 'Action ', action);
+  console.log('Auth reducer state', state, 'Action ', action);
+  const newState = {
+    ...state,
+    ...action.payload,
+  };
   switch (action.type) {
     case AUTH_USER_REQUEST:
-      return {
-        ...state,
-        isFetching: true,
-        isAuthenticated: false,
-      };
+      return newState;
     case AUTH_FAILURE_REQUEST:
-      return {
-        isFetching: false,
-        isAuthenticated: false,
-        message: action.message,
-      };
+      return newState;
     case LOGIN_SUCCESS:
-      // console.log('login reducer', action.payload.data);
-      return {
-        isFetching: false,
-        message: '',
-        isAuthenticated: true,
-        user: action.payload.data.user,
-      };
+      return newState;
     case LOGOUT_SUCCESS:
-      return {
-        isFetching: false,
-        message: '',
-        isAuthenticated: false,
-        user: action.payload.user,
-      };
+      return newState;
+    case USER_PROFILE_UPDATE_SUCCESS:
+      return newState;
+    case DELETE_ME_SUCCESS:
+      return newState;
     case SIGNUP:
-      return { data: action.payload.data.user };
+      return newState;
+    case SHOW_NOTIFICATION:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

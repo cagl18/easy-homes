@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/UI/navbar';
 import Button from '../../components/UI/button';
-import SearchBar from '../../components/searchBar/searchBar';
+import SearchBar from '../../components/searchBar';
 import { withRouter } from 'react-router-dom';
 
 import { updateURLParams, getURLParams } from '../../../shared/utility';

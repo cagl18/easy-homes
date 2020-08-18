@@ -9,4 +9,12 @@ export {
   fetchFeaturedListings,
   fetchOneListing,
 } from './listings';
-export { loginUser, logoutUser } from './auth';
+export {
+  loginUser,
+  logoutUser,
+  updateUserProfile,
+  signUpUser,
+  changeUserPassword,
+  isJWTValid,
+  deleteCurrentUser,
+} from './auth';

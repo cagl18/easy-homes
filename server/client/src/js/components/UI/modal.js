@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import onClickOutside from 'react-onclickoutside';
 // import { withRouter } from 'react-router-dom';
 import Button from './button';
+import Banner from './banner';
 
 class Auth extends Component {
   state = {
@@ -19,6 +20,7 @@ class Auth extends Component {
     // console.log('modal props', this.props);
   }
   closeModal = () => {
+    this.props.onClose();
     this.setState({ isModalOpened: false });
   };
 
@@ -38,10 +40,6 @@ class Auth extends Component {
     is_active.className = this.state.isModalOpened ? 'is-active' : '';
     is_active.onClick = this.state.isModalOpened ? this.closeModal : null;
 
-    // is_active.className = this.props.isModalOpened
-    //   ? 'is-active'
-    //   : is_active.className;
-
     return (
       <div className="modal">
         <div onClick={this.openModal}>
@@ -56,6 +54,7 @@ class Auth extends Component {
                   <span></span>
                 </div>
               </div>
+              <Banner>{this.props.message}</Banner>
               <div className="authentication">{this.props.children}</div>
             </div>
           </div>

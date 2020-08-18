@@ -13,14 +13,14 @@ router.patch('/resetPassword/:token', authController.resetPassword);
 router.use(authController.protect); //protect(require login) all routes after this middleware(below this line).
 
 router.patch('/updateMyPassword', authController.updatePassword); //using patch since we are updating the user document/row
-// router.get('/me', userController.getMe, userController.getUser);
-// router.patch(
-//   '/updateMe',
-//   userController.uploadUserPhoto,
-//   userController.resizeUserPhoto,
-//   userController.updateMe
-// );
-// router.delete('/deleteMe', userController.deleteMe);
+router.get('/me', userController.getMe, userController.getUser);
+router.patch(
+  '/updateMe',
+  //   userController.uploadUserPhoto,
+  //   userController.resizeUserPhoto,
+  userController.updateMe
+);
+router.delete('/deleteMe', userController.deleteMe);
 
 // router.use(authController.restrictTo('admin')); // Only admin can access the below routes
 

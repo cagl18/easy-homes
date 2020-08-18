@@ -29,6 +29,19 @@
         & .container {
           padding: 2rem 2.5rem;
 
+          & .banner {
+            margin-top: 2.5rem;
+            position: relative;
+
+            &__content {
+              position: initial;
+
+              & .messageBox {
+                padding: 0.5rem;
+              }
+            }
+          }
+
           & .authentication {
             & input {
               border: 1px solid $color-grey-dark-4;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../UI/navbar';
 import { Link } from 'react-router-dom';
-import SearchBar from '../searchBar/searchBar';
+import SearchBar from '../searchBar';
 import Footer from '../footer';
 import { redirectToURL, getURLParams } from '../../../shared/utility';
 import { connect } from 'react-redux';

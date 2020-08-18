@@ -2,7 +2,7 @@
   "name": "easy-homes",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://cagl18.github.io/easy-homes",
+  "homepage": "https://easyhomes.herokuapp.com",
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "axios": "^0.18.1",

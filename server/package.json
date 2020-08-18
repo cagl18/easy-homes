@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/cagl18/easy-homes/issues"
   },
-  "homepage": "http://easyhomes.carlosgonzalez.site/",
+  "homepage": "https://easyhomes.herokuapp.com",
   "devDependencies": {
     "nodemon": "^2.0.4"
   },

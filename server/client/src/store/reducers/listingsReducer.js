@@ -14,7 +14,7 @@ export default function (state = {}, action) {
     case FETCH_FEATURED_LISTINGS:
       return {
         results: action.payload.results,
-        data: action.payload.data.docs,
+        data: action.payload.data?.docs,
       };
     case FETCH_ONE_LISTING:
       return action.payload.data.doc;

@@ -5,7 +5,6 @@ import {
 } from '../actions/actionTypes';
 
 export default function (state = {}, action) {
-  console.log('listingsReducer', action);
   switch (action.type) {
     case FETCH_LISTINGS:
       return {

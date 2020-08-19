@@ -27,7 +27,7 @@ class UserAccount extends Component {
   };
   render() {
     const { auth } = this.props;
-    console.log('account auth props', auth);
+    // console.log('account auth props', auth);
 
     if (!auth?.isAuthenticated) {
       return <Redirect to="/" />;

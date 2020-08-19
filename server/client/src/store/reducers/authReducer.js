@@ -23,7 +23,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  console.log('Auth reducer state', state, 'Action ', action);
+  // console.log('Auth reducer state', state, 'Action ', action);
   const newState = {
     ...state,
     ...action.payload,

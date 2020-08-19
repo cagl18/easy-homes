@@ -44,11 +44,8 @@ class Auth extends Component {
   onSubmitHandler = (e) => {
     e.preventDefault();
     const valid = this.validateForm();
-    console.log('valid', valid, 'state', this.state);
 
     if (valid) {
-      //   const email = e.target.email.value.trim();
-      //   const password = e.target.password.value.trim();
       if (this.state.auth_window.login) {
         const email = this.state.fields.email.trim();
         const password = this.state.fields.password.trim();
@@ -167,7 +164,6 @@ class Auth extends Component {
             errorMessage={this.state.errors.email}
           />
           <Input
-            // className={this.state.errors.email ? 'error' : ''}
             name="password"
             type="password"
             placeholder="Password"

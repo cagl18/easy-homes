@@ -12,7 +12,8 @@ import store from './store';
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter basename={`${process.env.PUBLIC_URL}/easy-homes`}>
+    {/* <BrowserRouter basename={`${process.env.PUBLIC_URL}/easy-homes`}> */}
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ScrollToTop>
         <App />
       </ScrollToTop>

@@ -5,11 +5,12 @@ import {
 } from '../actions/actionTypes';
 
 export default function (state = {}, action) {
+  console.log('listingsReducer', action);
   switch (action.type) {
     case FETCH_LISTINGS:
       return {
         results: action.payload.results,
-        data: action.payload.data.docs,
+        data: action.payload.data?.docs,
       };
     case FETCH_FEATURED_LISTINGS:
       return {
@@ -17,7 +18,7 @@ export default function (state = {}, action) {
         data: action.payload.data?.docs,
       };
     case FETCH_ONE_LISTING:
-      return action.payload.data.doc;
+      return action.payload.data?.doc;
 
     default:
       return state;

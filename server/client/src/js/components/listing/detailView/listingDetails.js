@@ -236,7 +236,7 @@ class listingDetail extends Component {
 
             <div className="agent">
               <AgentCard title="Listing Agent" agent={agents[0]} />
-              <AgentContact addresss={keyDetails.address} />
+              <AgentContact address={keyDetails.address} />
             </div>
           </div>
           <div className="listingDetails__description">

@@ -60,6 +60,12 @@ app.use(xss());
 //   })
 // );
 
+//ROUTES
+app.use('/api/v1/agents', agentRouter); //mounting a new router on a route. using the agentRouter as middleware
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/listings', listingRouter);
+app.use('/api/v1/search', searchRouter);
+
 // handles static files and routes defined by the client (react router)
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up productions assets, like our main.js file or main.css file!
@@ -74,12 +80,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // //Serving Static files
 // app.use(express.static(`${__dirname}/public`));
-
-//ROUTES
-app.use('/api/v1/agents', agentRouter); //mounting a new router on a route. using the agentRouter as middleware
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/listings', listingRouter);
-app.use('/api/v1/search', searchRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404)); //if an argument is passed to the next function, express assume there was an error and will call the global middleware hanlder

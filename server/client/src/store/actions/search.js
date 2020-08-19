@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 import EasyHomesAxios from '../../shared/APIs/EasyHomes';
 
 // const BASE_URL = `${process.env.PUBLIC_URL}/easy-homes`;
-const BASE_URL = `${process.env.PUBLIC_URL}`;
+const BASE_URL = process.env.PUBLIC_URL ? `${process.env.PUBLIC_URL}` : '/';
 
 export const setListingsFilter = (filters) => {
   return {

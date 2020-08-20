@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Drawer from './drawer';
 import Logo from './logo';
 import Auth from '../../layout/auth';
-import Button from '../UI/navbar.js';
 import * as actions from '../../../store/actions';
 
 // Note button does not work properly in this component <Button></Button> */}
@@ -85,28 +84,24 @@ class navbar extends Component {
                 <div className="nav__menu--user">
                   {this.props.isAuthenticated ? (
                     <>
-                      <div
-                        className="nav__menu--user--item "
-                        style={{ marginTop: '-.9rem' }}
-                      >
+                      <div className="nav__menu--user--item ">
                         <Link className="userProfileLink" to="/account">
                           <div
-                            className="nav__menu--user--item--btn"
+                            className="nav__menu--user--item--btn btn active"
                             style={{
                               padding: '1rem',
                               textTransform: 'capitalize',
                             }}
                           >
                             <i className="far fa-user"></i>
-                            {` `}
+
                             {this.props.user?.name}
                           </div>
                         </Link>
-                        {/* <Button>Test2</Button> */}
                       </div>
                       <div className="nav__menu--user--item ">
                         <div
-                          className="nav__menu--user--item--btn"
+                          className="nav__menu--user--item--btn btn"
                           style={{ padding: '1rem' }}
                           onClick={this.props.logout}
                         >

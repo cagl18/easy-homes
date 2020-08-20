@@ -1,5 +1,5 @@
 .agents {
-  .header {
+  & .header {
     // position: relative;
     height: 42.5vh;
     // background-color: #333;
@@ -26,10 +26,17 @@
     }
 
     .homepage__search {
-      position: relative;
-      top: 0;
-      left: 0;
-      transform: none;
+      display: flex;
+      flex-direction: row;
+      // width: auto !important;
+      // position: relative;
+      // top: 0;
+      // left: 0;
+      // transform: none;
+      & .search--input-box,
+      & .search_suggestions {
+        width: 65rem;
+      }
     }
 
     & .search--input {
@@ -38,6 +45,10 @@
           display: flex;
           flex-direction: row;
           align-items: center;
+
+          & .cancel-btn {
+            right: 13% !important;
+          }
         }
       }
       &-btn {
@@ -54,11 +65,22 @@
     height: 100vh !important;
   }
 
+  @include respond(tab-land) {
+    & .header {
+      .homepage__search {
+        width: auto !important;
+      }
+    }
+  }
+
   @include respond(phone) {
-    & .homepage__search {
-      & .search--input {
-        &-btn {
-          margin-left: -1px;
+    & .header {
+      .homepage__search {
+        width: 96% !important;
+        & .search--input {
+          &-btn {
+            margin-left: -1px;
+          }
         }
       }
     }

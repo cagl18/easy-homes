@@ -8,10 +8,13 @@ const proxy = require('http-proxy-middleware');
 // };
 
 module.exports = function (app) {
-  // if (process.env.NODE_ENV === 'development') {
-  const target = process.env.PUBLIC_URL
-    ? `${process.env.PUBLIC_URL}:${process.env.PORT}`
-    : 'http://localhost:8000';
+  let target;
+  if (process.env.NODE_ENV === 'development') {
+    target = `http://localhost:8000`;
+  } else {
+    target = `${process.env.PUBLIC_URL}:${process.env.PORT}`;
+  }
+
   app.use(
     // proxy(['/api/v1', '/auth/google'], { target: 'http://localhost:8000' })
     proxy(['/api/v1', '/auth/google'], {

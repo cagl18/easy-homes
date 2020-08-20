@@ -78,7 +78,7 @@
 }
 
 @include respond(tab-land) {
-  button {
+  & button {
     color: inherit;
     background-color: inherit;
 

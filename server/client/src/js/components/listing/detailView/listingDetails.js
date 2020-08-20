@@ -162,7 +162,7 @@ class listingDetail extends Component {
           <div className="listingDetails__sidebar">
             <div className="keyDetails">
               <h2 className="keyDetails__header">
-                Property Details for 1 West End Avenue, Unit 31C
+                Property Details for {listing.address}
               </h2>
 
               <table className="keyDetails__table">
@@ -236,7 +236,7 @@ class listingDetail extends Component {
 
             <div className="agent">
               <AgentCard title="Listing Agent" agent={agents[0]} />
-              <AgentContact address={keyDetails.address} />
+              <AgentContact address={listing.address} />
             </div>
           </div>
           <div className="listingDetails__description">

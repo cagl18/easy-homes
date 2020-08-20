@@ -3,8 +3,8 @@
   color: $color-black;
   z-index: 9;
   position: fixed;
-  // width: 100%;
-  width: 65rem;
+  width: 100%;
+  // width: 65rem;
   max-height: 90vh;
   box-shadow: 0 1px 20px rgba($color-black, 0.5);
   margin-top: -3px;
@@ -50,6 +50,21 @@
           color: $color-primary;
         }
       }
+    }
+  }
+}
+@include respond(tab-land) {
+  .sticky {
+    .search_suggestions {
+      z-index: 10;
+      width: 60% !important;
+    }
+  }
+}
+@include respond(phone) {
+  .sticky {
+    .search_suggestions {
+      width: 80% !important;
     }
   }
 }

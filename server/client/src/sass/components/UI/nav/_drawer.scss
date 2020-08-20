@@ -58,27 +58,30 @@
           &--item {
             color: inherit;
             background-color: inherit;
-            transition: all 0.01s;
+            transition: all 0.03s ease-in-out;
             border-radius: 2px;
+            border-bottom: 0.5px solid transparent;
+            display: flex;
+            align-self: flex-end;
 
             &:nth-child(1) {
               color: $color-white;
-              border: 0.5px solid $color-primary;
+              margin-top: 0;
+              border: 1px solid $color-primary;
+              background-color: rgba($color-primary, 1);
 
               &:hover {
-                border: 0.5px solid $color-secondary;
+                background-color: rgba($color-secondary, 1);
+                border: 1px solid $color-secondary;
               }
             }
 
             &:nth-child(2) {
               margin-left: 1.6rem;
               border: 0.5px solid rgba($color-black, 0.15);
-            }
-            &:nth-child(2) &--btn {
-              padding: 1.2rem 3.06rem;
+
               &:hover {
-                color: $color-primary;
-                background-color: rgba($color-grey-light, 0.5);
+                color: $color-white;
               }
             }
 
@@ -89,7 +92,6 @@
                 margin: 0;
 
                 &:hover {
-                  border: none !important;
                   background-color: $color-secondary;
                 }
               }
@@ -121,27 +123,49 @@
       &.nav {
         &--box {
           transition: 0.3s all;
-        }
-        &__menu {
-          &--user {
-            transition: none;
-            &--item {
-              transition: none;
-            }
-          }
-        }
-        &--box {
           left: 0%;
           padding: 2rem 1.25rem 3rem 1.25rem;
           & .btn__closed {
             display: flex;
           }
         }
+        &__menu {
+          &--user {
+            transition: none;
+            &--item {
+              transition: none;
+
+              color: inherit;
+              background-color: inherit;
+              transition: all 0.03s ease-in-out;
+              border-radius: 2px;
+              // border-bottom: 0.5px solid transparent !important;
+              display: flex;
+              align-self: flex-end;
+
+              &:nth-child(1) {
+                color: $color-white;
+                margin-top: 0;
+
+                background-color: rgba($color-primary, 1);
+
+                &:hover {
+                  background-color: rgba($color-secondary, 1);
+                }
+              }
+
+              &:nth-child(2) {
+                margin-left: 1.6rem;
+                border: 0.5px solid rgba($color-black, 0.15);
+
+                &:hover {
+                  color: $color-white;
+                }
+              }
+            }
+          }
+        }
       }
-      // &.backdrop {
-      //   background-color: rgba(0, 0, 0, 0.5) !important;
-      //   background: rgba(0, 0, 0, 0.5) !important;
-      // }
     }
 
     .mobile__menu--icon {
@@ -149,7 +173,6 @@
       color: inherit;
       & i {
         font-size: 2rem;
-        // margin: 1.8rem;
         margin: 1.2rem 1.8rem;
         margin-right: 1.1rem;
       }

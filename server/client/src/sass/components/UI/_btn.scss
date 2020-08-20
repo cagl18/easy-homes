@@ -8,6 +8,12 @@
   user-select: none;
   transition: all 0.3s ease-in-out;
 
+  &:disabled {
+    background-color: $color-grey-light-3 !important;
+    color: $color-grey-dark-3 !important;
+    cursor: auto !important;
+  }
+
   &__text {
     transition: all 0.3s ease-in-out;
   }

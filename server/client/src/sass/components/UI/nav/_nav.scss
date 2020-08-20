@@ -34,17 +34,15 @@
     @include clearfix;
   }
 
-  &:not(.is-active) {
-    & .nav__menu--user--item--btn {
-      &.btn {
-        border-bottom: 2px solid transparent;
-        border-radius: 0;
-        // border: 0;
-        &:hover,
-        &:active {
-          // border: 1px solid $color-primary;
-          border-bottom: 2px solid $color-secondary;
-        }
+  & .nav__menu--user--item--btn {
+    &.btn {
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      // border: 0;
+      &:hover,
+      &:active {
+        // border: 1px solid $color-primary;
+        border-bottom: 2px solid $color-secondary;
       }
     }
   }
@@ -169,15 +167,12 @@
     }
   }
 
-  // try to improve this code later on
-  &:not(.is-active) {
-    & .nav__menu--user--item--btn {
-      &.btn {
-        &:hover,
-        &:active {
-          border-bottom: 2px solid $color-secondary;
-          color: $color-white;
-        }
+  & .nav__menu--user--item--btn {
+    &.btn {
+      &:hover,
+      &:active {
+        border-bottom: 2px solid $color-secondary;
+        color: $color-white;
       }
     }
   }
@@ -378,55 +373,3 @@
     }
   }
 }
-
-// div.sticky {
-//   padding: 0rem 0 0 8rem;
-//   width: 100%;
-//   position: fixed; /* nav will stay at the same point with respect to our scrooling */
-//   top: 0;
-//   left: 0;
-//   background-color: rgba($color-grey-light-4, 0.98);
-//   box-shadow: 0 0.8px 1.5px rgba($color-white, 0.88); //#efefef;
-//   z-index: 9999; /* nav is the highest vertical stacking of all elements*/
-
-//   & .logo > .logo__box {
-//     border: none;
-//     box-shadow: none;
-//     height: 6.4rem;
-//   }
-
-//   & .nav {
-//     padding: 0.3rem 0;
-
-//     &__menu {
-//       margin-top: 1rem;
-
-//       & li {
-//         & a:link,
-//         & a:visited {
-//           color: $color-grey-dark;
-//         }
-//       }
-//     }
-//   }
-// }
-
-/* Mobile Nav */
-// .mobile-nav-icon {
-//   float: right;
-//   margin-top: 30px;
-//   cursor: pointer;
-//   display: none;
-//   @include clearfix;
-// }
-// .mobile-nav-icon i {
-//   font-size: 200%;
-//   color: #fff;
-// }
-
-// #hours:target {
-//   color: $color-secondary;
-//   & a {
-//     color: $color-white;
-//   }
-// }

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 class popUpMenu extends Component {
   state = {
-    isMenuOpened: false
+    isMenuOpened: false,
   };
   componentDidMount() {
     if (this.props.position === 'open') {
@@ -15,7 +15,7 @@ class popUpMenu extends Component {
 
   toogleDrawer = () => {
     this.setState({
-      isMenuOpened: !this.state.isMenuOpened
+      isMenuOpened: !this.state.isMenuOpened,
     });
   };
 
@@ -34,7 +34,7 @@ class popUpMenu extends Component {
           </Button>
         </span>
 
-        <div className='popMenu'>{this.props.menuContent}</div>
+        <div className="popMenu">{this.props.menuContent}</div>
       </div>
     );
   }

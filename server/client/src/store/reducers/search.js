@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import updateObject from '../../shared/utility';
-import { fetchListings } from '../actions';
+// import { fetchListings } from '../actions';
 // import listingData from '../../js/components/data/dummy_data';
 
 const listingData = [];
@@ -23,9 +23,6 @@ const setListingsFilters = (state, action) => {
   const updatedFilters = updateObject(state.filtersParams, action.filters);
   //   console.log('redux state', updatedFilters, 'action', action);
   return updateObject(state, { filtersParams: updatedFilters });
-};
-const setListingsData = (state, action) => {
-  return updateObject(state, { listingData: action.filteredData });
 };
 
 const setFilteredListingData = (state, action) => {
@@ -50,44 +47,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-// import * as actionTypes from '../actions/actionTypes';
-// import updateObject from '../../shared/utility';
-// import listingData from '../../js/components/data/dummy_data';
-
-// const initialState = {
-//   listingData,
-//   filteredData: listingData,
-//   // filtersParams: {
-//   //   searchTerm: '',
-//   //   minPrice: 0,
-//   //   maxPrice: 9999999999,
-//   //   minBeds: -1,
-//   //   maxBeds: 7,
-//   //   minBaths: 0
-//   // }
-// };
-
-// const setListingsFilters = (state, action) => {
-//   const updatedFilters = updateObject(state.filtersParams, action.filters);
-//   //   console.log('redux state', updatedFilters, 'action', action);
-//   return updateObject(state, { filtersParams: updatedFilters });
-// };
-
-// const filterListingData = (state, action) => {
-//   return updateObject(state, { filteredData: action.filteredData });
-// };
-
-// const reducer = (state = initialState, action) => {
-//   // console.log('redux state', state);
-//   switch (action.type) {
-//     case actionTypes.SET_LISTINGS_FILTER:
-//       return setListingsFilters(state, action);
-//     case actionTypes.FILTER_LISTING_DATA:
-//       return filterListingData(state, action);
-//     default:
-//       return state;
-//   }
-// };
-
-// export default reducer;

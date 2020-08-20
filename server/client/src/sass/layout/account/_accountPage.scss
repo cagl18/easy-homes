@@ -22,29 +22,53 @@
       'messageBanner messageBanner';
     & .btn {
       &.default {
-        border: 1px solid $color-grey-light-3;
-
-        &:hover {
-          background-color: $color-grey-light-3;
-          color: $color-primary;
+        .btn__text {
+          transition: none;
         }
+        border: 1px solid $color-grey-light-3;
+        // background-color: $color-primary;
+        // color: $color-white;
+        // &:hover {
+        //   background-color: $color-primary;
+
+        // }
       }
     }
     & .account__profile {
-      grid-area: profileCard / profileCard / profileCard / profileCard;
+      grid-area: profileCard;
+      & .btn {
+        max-width: 90px;
+      }
+    }
+    & .account__notification {
+      grid-area: notificationCard;
+
+      .form {
+        & .inputGroup {
+          font-size: 1.6rem;
+        }
+        & label {
+          display: inline-block;
+          & input {
+            width: auto;
+            margin-right: 7px;
+          }
+        }
+      }
+
       & .btn {
         max-width: 90px;
       }
     }
 
     & .account__signOut {
-      grid-area: signOutCard / signOutCard / signOutCard / signOutCard;
+      grid-area: signOutCard;
       & .btn {
         font-weight: 600;
       }
     }
     & .account__deleteAccount {
-      grid-area: deleteCard / deleteCard / deleteCard / deleteCard;
+      grid-area: deleteCard;
       & .btn {
         font-size: 1.4rem;
         min-width: 16.5rem;
@@ -61,15 +85,13 @@
             font-weight: 500;
             color: $color-white;
             background-color: $color-primary-dark;
-            // border: none;
-            // border: 1px solid $color-primary-dark;
           }
         }
       }
     }
 
     & .account__changePassword {
-      grid-area: passwordCard / passwordCard / passwordCard / passwordCard;
+      grid-area: passwordCard;
       label {
         & p {
           font-size: 1.9rem;
@@ -78,9 +100,21 @@
     }
 
     & .banner {
-      grid-area: messageBanner / messageBanner / messageBanner / messageBanner;
+      grid-area: messageBanner;
       display: flex;
       justify-content: center;
+    }
+  }
+
+  @include respond(phone) {
+    &__body {
+      grid-template-areas:
+        'profileCard profileCard'
+        'notificationCard notificationCard'
+        'passwordCard passwordCard'
+        'deleteCard deleteCard'
+        'signOutCard signOutCard'
+        'messageBanner messageBanner';
     }
   }
 }

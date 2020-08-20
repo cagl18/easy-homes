@@ -104,7 +104,6 @@ class AccountChangePassword extends Component {
     }
   };
   render() {
-    console.log('state', this.state);
     const cardBody = (
       <form className="form" onSubmit={this.onSubmitHandler}>
         <label htmlFor="currentPassword">

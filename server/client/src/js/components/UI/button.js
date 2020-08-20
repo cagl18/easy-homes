@@ -1,6 +1,6 @@
 import React from 'react';
 
-const button = ({ children, className, style, onClick, loading }) => {
+const button = ({ children, className, style, onClick, loading, disabled }) => {
   const isLoading = loading ? (
     <i className="fas fa-circle-notch fa-spin"></i>
   ) : (
@@ -9,6 +9,7 @@ const button = ({ children, className, style, onClick, loading }) => {
 
   return (
     <button
+      disabled={disabled}
       className={`btn ${className?.length > 0 ? className : 'default'}`}
       onClick={onClick}
       style={style}

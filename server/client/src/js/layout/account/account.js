@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import Nav from '../../components/UI/navbar';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import SearchBar from '../../components/searchBar';
 
 import { redirectToURL, getURLParams } from '../../../shared/utility';
 import { connect } from 'react-redux';
-// import { fetchOneAgent } from '../../../store/actions';
-import AccountCard from './card/card';
+// import AccountCard from './card/card';
 import AccountProfile from './accountProfile';
+import NotificationSettings from './notificationSettings';
 import SignOut from './signOut';
 import DeleteAccount from './deleteAccount';
 import ChangePassword from './changePassword';
 import Banner from '../../components/UI/banner.js';
 
 class UserAccount extends Component {
-  // componentDidMount() {
-  //   const agentID = this.props.match.params.id;
-  //   this.props.fetchOneAgent(agentID);
-  // }
-
   redirectToSearchPage = () => {
     const searchTerm = getURLParams('q', this.props.location);
     if (searchTerm.length) {
@@ -43,23 +38,10 @@ class UserAccount extends Component {
           </h2>
           <div className="container account__body">
             <AccountProfile />
-            <AccountCard title="Default Saved Search Notifications">
-              How often would you like to receive updates on future Saved
-              Searches?
-            </AccountCard>
-
+            <NotificationSettings />
             <ChangePassword />
             <DeleteAccount />
             <SignOut />
-
-            {/* <div class="banner">
-              <div class="banner__content">
-                <div class="messageBox">
-                  Unable to update profile: Error: (Status Code: 401):
-                </div>
-              </div>
-            </div> */}
-
             <Banner success={!auth.error}>{auth.message}</Banner>
           </div>
         </div>

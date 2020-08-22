@@ -1,6 +1,10 @@
 .agents {
   margin: 0 auto;
 
+  & .backdrop {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent);
+  }
+
   & .agent {
     &_card {
       padding-top: 1.5rem;

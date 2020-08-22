@@ -34,7 +34,7 @@ const drawer = (props) => {
           </div>
         </div>
 
-        <div>{nav_content}</div>
+        <div onClick={props.closeDrawer}>{nav_content}</div>
       </div>
     </div>
   );

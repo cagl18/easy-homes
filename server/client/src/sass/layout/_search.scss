@@ -97,6 +97,10 @@
 
     & .mobile__menu--icon {
       display: inline-block;
+
+      & i {
+        border-right: 0.5px solid $color-grey-light-3;
+      }
     }
 
     & .sticky {

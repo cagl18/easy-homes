@@ -39,6 +39,7 @@ class navbar extends Component {
           <nav className={`nav `}>
             <Drawer
               toogleDrawer={this.toogleDrawer}
+              closeDrawer={this.C}
               active={this.state.isModalOpened}
               brand="Easy Homes"
             >

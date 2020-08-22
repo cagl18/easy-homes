@@ -4,6 +4,7 @@
   font-family: inherit;
   letter-spacing: 3px;
   height: 5.15rem;
+  // height: 5.2rem;
   padding: 1rem;
   z-index: 5;
 
@@ -273,19 +274,20 @@
       &__nav {
         height: 6.1rem !important;
 
-        border-bottom: 0.5px solid #dadada;
+        // border-bottom: 0.5px solid $color-grey-light-3;
         & .is-active .search--input {
           padding: 0rem 0rem 0.2rem 1.1rem !important;
           &-box {
             display: none;
           }
         }
+
         .search--input {
           padding: 0rem 0rem 0.2rem 1.1rem !important;
           &-box {
             display: block;
             width: 70%;
-            top: 0.7%;
+            // top: 0.7%;
             position: absolute;
             right: 0;
           }
@@ -315,7 +317,7 @@
   @include respond(tab-port) {
     &.header {
       &__nav {
-        border-bottom: none;
+        // border-bottom: none;
       }
     }
   }
@@ -323,14 +325,14 @@
   @include respond(phone) {
     &.header {
       &__nav {
-        border-bottom: none;
+        // border-bottom: none;
         & .search--input {
           &-box {
             margin: 0 !important;
             margin-left: 6rem !important;
             width: 100%;
             position: relative;
-            border-left: 0.5px solid $color-grey-dark-4;
+            // border-left: 0.5px solid $color-grey-dark-4;
 
             & input {
               // height: 6.1rem !important;
@@ -370,6 +372,40 @@
         }
         & .search--input-box {
           display: none;
+        }
+      }
+    }
+  }
+}
+
+@include respond(tab-land) {
+  .header__nav {
+    // to be applied on sticky navbar
+    & .nav {
+      border-bottom: 0.5px solid $color-grey-light-3;
+    }
+    & .drawer {
+      & .mobile__menu--icon {
+        & i {
+          border-right: 0.5px solid $color-grey-light-3;
+          height: 5.2rem;
+          margin: -0.5rem 0.5rem;
+          padding: 1.8rem 1.3rem;
+        }
+      }
+    }
+
+    &:not(.sticky) {
+      & .nav {
+        border-bottom: 0.5px solid $color-grey-light-3;
+        & .mobile__menu--icon {
+          & i {
+            border-right: 0.5px solid #8c8c8c;
+            // border-bottom: 0.5px solid #8c8c8c;
+            height: 5.2rem;
+            padding: 1.7rem;
+            margin: -0.2rem 0rem 0rem 0.3rem;
+          }
         }
       }
     }

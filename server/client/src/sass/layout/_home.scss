@@ -55,7 +55,6 @@
 
           & form {
             & .cancel-btn {
-              margin-top: 0.9rem;
               right: 13% !important;
             }
           }
@@ -137,7 +136,11 @@
     & .homepage {
       &__search {
         width: 100%;
-
+        & form {
+          & .cancel-btn {
+            margin-top: 0.9rem;
+          }
+        }
         & .search--input-btn {
           top: 41% !important;
           border-radius: 0px;

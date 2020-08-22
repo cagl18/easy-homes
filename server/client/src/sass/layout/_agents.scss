@@ -30,7 +30,7 @@
       flex-direction: row;
 
       & .search--input-box {
-        width: 100%;
+        width: 65rem;
       }
       & .search_suggestions {
         width: 65rem;
@@ -69,6 +69,10 @@
   @include respond(tab-port) {
     & .header {
       .homepage__search {
+        & .search--input-box,
+        .search_suggestions {
+          width: 60rem;
+        }
         width: auto !important;
       }
     }

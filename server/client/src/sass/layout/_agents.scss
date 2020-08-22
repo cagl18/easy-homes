@@ -28,12 +28,10 @@
     .homepage__search {
       display: flex;
       flex-direction: row;
-      // width: auto !important;
-      // position: relative;
-      // top: 0;
-      // left: 0;
-      // transform: none;
-      & .search--input-box,
+
+      & .search--input-box {
+        width: 100%;
+      }
       & .search_suggestions {
         width: 65rem;
       }
@@ -56,7 +54,7 @@
         top: 0;
         right: 0;
         z-index: 10;
-        margin-left: -5.75rem;
+        margin-left: -6.2rem;
       }
     }
   }
@@ -72,14 +70,29 @@
       }
     }
   }
-
+  @include respond(tab-port) {
+    & .header {
+      .homepage__search {
+        width: auto !important;
+      }
+    }
+  }
   @include respond(phone) {
     & .header {
       .homepage__search {
         width: 96% !important;
+        & .search_suggestions {
+          width: 100% !important;
+        }
         & .search--input {
           &-btn {
-            margin-left: -1px;
+            margin-left: -25px;
+
+            &.cancel-btn {
+              & i {
+                margin-top: 1.1rem;
+              }
+            }
           }
         }
       }

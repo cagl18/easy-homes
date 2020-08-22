@@ -52,6 +52,15 @@
         width: 100%;
         &-box {
           width: 65rem;
+
+          & form {
+            & .cancel-btn {
+              // position: relative;
+              margin-top: 0.9rem;
+              right: 13% !important;
+              // top: 10% !important;
+            }
+          }
         }
         &-btn {
           position: absolute;

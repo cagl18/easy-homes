@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../UI/button';
 import { Link } from 'react-router-dom';
 
 const card = (props) => {
@@ -7,7 +8,7 @@ const card = (props) => {
   };
 
   return (
-    <Link className="card" to={`listings/${props.data.id}`}>
+    <Link className="card" to={`listings/${props.data.slug}/${props.data.id}`}>
       <div key={props.data.id} className="card-body">
         <div className="card-img" style={cardImageStyling} alt="">
           <div className="container">
@@ -20,6 +21,13 @@ const card = (props) => {
             )}
             {props.data.openhouse ? (
               <div className="banner open-house">{props.data.openhouse}</div>
+            ) : (
+              ''
+            )}
+            {props.show_fav_btn ? (
+              <Button className="btn fav" onClick={props.onSavedListing}>
+                <i className="fas fa-star"></i>
+              </Button>
             ) : (
               ''
             )}

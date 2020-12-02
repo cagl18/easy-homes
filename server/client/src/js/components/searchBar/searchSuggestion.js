@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const searchSuggestion = ({ data }) => {
+  const collectionName = data.collection.toLowerCase();
+
+  const link = data.slug
+    ? `/${data.collection}/${data.slug}/${data._id}`
+    : `/${data.collection}/${data._id}`;
+
   return (
     <li>
-      <Link
-        className="search_suggestions__link"
-        to={`/${data.collection}/${data._id}`}
-      >
+      <Link className="search_suggestions__link" to={link}>
         <div
           className="avatar--image"
           style={{ background: `url(${data.photo})` }}

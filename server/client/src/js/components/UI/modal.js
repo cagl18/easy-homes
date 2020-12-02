@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Button from './button';
 import Banner from './banner';
 
-class Auth extends Component {
+class Modal extends Component {
   state = {
     isModalOpened: false,
   };
@@ -43,7 +43,9 @@ class Auth extends Component {
     return (
       <div className="modal">
         <div onClick={this.openModal}>
-          <Button className={this.props.btnClass}>{this.props.btnText}</Button>
+          <Button ref={this.props.btnRef} className={this.props.btnClass}>
+            {this.props.btnText}
+          </Button>
         </div>
         <div className={`backdrop ${is_active.className}`}>
           <div className={`modal--box ${is_active['className']}`}>
@@ -64,4 +66,4 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+export default Modal;

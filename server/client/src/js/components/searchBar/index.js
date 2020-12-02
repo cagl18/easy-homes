@@ -18,11 +18,8 @@ const utilizeFocus = () => {
 };
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { term: '' };
-    this.inputFocus = utilizeFocus();
-  }
+  state = { term: '' };
+  inputFocus = utilizeFocus();
 
   redirectToSearchPage = () => {
     const searchTerm = getURLParams('q', this.props.location);

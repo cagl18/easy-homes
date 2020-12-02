@@ -11,6 +11,11 @@ import * as actions from '../../../store/actions';
 import { getAllUrlParams } from '../../../shared/utility';
 
 class Search extends Component {
+  loginBtnRef = React.createRef();
+  requestUserAuth = () => {
+    this.loginBtnRef.current.click();
+  };
+
   async componentDidMount() {
     const URLParmsObj = getAllUrlParams(this.props.location.search);
     // console.log('this.props.location.search', this.props.location.search);
@@ -185,10 +190,11 @@ class Search extends Component {
     // const totalProperties = this.props.filteredData.length;
     // console.log('listingAPI', this.props.listingAPI);
     const itemsShownPerPage = 6;
+
     return (
       <div className="searchpage">
         <div className="searchpage__nav">
-          <Nav className="sticky">
+          <Nav className="sticky" loginBtnRef={this.loginBtnRef}>
             <SearchBar
               onSearch={(searchTerm) => this.filterData({ searchTerm })}
               autoSearch
@@ -218,6 +224,8 @@ class Search extends Component {
             <Listings
               itemsShownPerPage={itemsShownPerPage}
               data={this.props.filteredData}
+              show_fav_btn
+              requestUserAuth={this.requestUserAuth}
             />
           </div>
         </div>

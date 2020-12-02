@@ -244,6 +244,7 @@ class Auth extends Component {
           btnText={this.props.btnText}
           onClose={this.setInitialStateToProps}
           message={this.props.auth.message}
+          btnRef={this.props.loginBtnRef}
         >
           {modal_content}
         </Modal>

@@ -11,14 +11,14 @@ import {
 
 import { isJWTValid } from '../actions/index';
 
+let user_profile = JSON.parse(localStorage.getItem('user_profile'));
+let isAuthenticated = isJWTValid(localStorage.getItem('jwt'));
+
 const initialState = {
   isFetching: false,
-  isAuthenticated: isJWTValid(localStorage.getItem('jwt')),
+  isAuthenticated,
   message: null,
-  user:
-    localStorage.getItem('user_profile') !== 'undefined'
-      ? JSON.parse(localStorage.getItem('user_profile'))
-      : null,
+  user: isAuthenticated && user_profile !== 'undefined' ? user_profile : null,
   error: false,
 };
 

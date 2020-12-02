@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const Agent = require('../models/agentModel');
 const Listing = require('../models/listingModel');
 
-dotenv.config({ path: './config.env' }); //setting variables from file to node.js process (App enviroment)
+dotenv.config({ path: '../config.env' }); //setting variables from file to node.js process (App enviroment)
 // console.log(app.get('env')); // this variable is set by express
 // console.log(process.env); // this variables are set by node.js
 

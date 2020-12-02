@@ -51,6 +51,7 @@ const userSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
+    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Listings' }],
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -123,6 +124,25 @@ userSchema.virtual('name').set(function (name) {
   this.firstname = str[0];
   this.lastname = str[1];
 });
+
+// Methods for dealing with favorites (liked) listings
+
+userSchema.methods.favorite = function (id) {
+  if (this.favorites.indexOf(id) === -1) {
+    this.favorites.push(id);
+  }
+  return this.save();
+};
+
+userSchema.methods.unfavorite = function (id) {
+  this.favorites.remove(id);
+  return this.save();
+};
+userSchema.methods.isFavorite = function (id) {
+  return this.favorites.some(function (favoriteId) {
+    return id.toString() === favoriteId.toString();
+  });
+};
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

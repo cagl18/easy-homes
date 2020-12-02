@@ -29,9 +29,10 @@
     margin: 0px;
 
     display: flex;
-    flex-direction: column;
-
+    // flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
   }
 
   &-caption {

@@ -9,6 +9,18 @@ import {
 // import axios from 'axios';
 import EasyHomesAxios from '../../shared/APIs/EasyHomes';
 
+const updateUserSession = (jwt, user_profile) => {
+  localStorage.removeItem('jwt');
+  localStorage.removeItem('user_profile');
+  localStorage.setItem('jwt', jwt);
+  localStorage.setItem('user_profile', JSON.stringify(user_profile));
+};
+
+const deleteCurrentUserSession = () => {
+  localStorage.removeItem('jwt');
+  localStorage.removeItem('user_profile');
+};
+
 // Calls the API to get a token and
 // dispatches actions to the auth reducer
 
@@ -19,7 +31,6 @@ export const loginUser = (credentials) => async (dispatch) => {
     console.log('res', res);
     // If login was successful, set the token in local storage and dispatch success notification to reducer
     const user = res.data.data?.user || null;
-
     localStorage.setItem('jwt', res.data.token);
     localStorage.setItem('user_profile', JSON.stringify(user));
     dispatch(receiveLogin(user));
@@ -49,8 +60,9 @@ export const signUpUser = (user) => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   try {
     await EasyHomesAxios.get('/api/v1/users/logout'); //logout user on server
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('user_profile');
+    // localStorage.removeItem('jwt');
+    // localStorage.removeItem('user_profile');
+    deleteCurrentUserSession();
     dispatch(recieveLogOut());
   } catch (err) {
     console.log('logout error', err);
@@ -108,8 +120,10 @@ export const changeUserPassword = (credentials) => async (dispatch) => {
     // console.log('action creator', res.data);
     // If request was successful, dispatch success notification to reducer
     const user = res.data.data?.user || null;
-    localStorage.setItem('jwt', res.data.token);
-    localStorage.setItem('user_profile', JSON.stringify(user));
+    const jwt = res.data.token;
+    updateUserSession(jwt, user);
+    // localStorage.setItem('jwt', res.data.token);
+    // localStorage.setItem('user_profile', JSON.stringify(user));
     // console.log('res data from changeUserPass', res.data?.data);
     dispatch(recieveUpdatedUserProfile(user));
   } catch (err) {

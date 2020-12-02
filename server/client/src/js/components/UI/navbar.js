@@ -21,6 +21,12 @@ class navbar extends Component {
   //     this.props.isAuthenticated
   //   );
   // }
+
+  componentDidMount() {
+    // this.triggerClickOnLogin();
+    // console.log('loginBtnRef', this.loginBtnRef.current);
+  }
+
   closeDrawer = () => {
     this.setState({ isModalOpened: false });
   };
@@ -80,6 +86,16 @@ class navbar extends Component {
                       Agents
                     </Link>
                   </li>
+                  {this.props.isAuthenticated ? (
+                    <li className="nav__item">
+                      <Link className="userProfileLink" to="/workspace">
+                        {`Saved Items `}
+                        <i className="fas fa-angle-down"></i>
+                      </Link>
+                    </li>
+                  ) : (
+                    ''
+                  )}
                 </ul>
 
                 <div className="nav__menu--user">
@@ -96,10 +112,11 @@ class navbar extends Component {
                           >
                             <i className="far fa-user"></i>
 
-                            {this.props.user?.name}
+                            {this.props.user?.name.split(' ')[0]}
                           </div>
                         </Link>
                       </div>
+
                       <div className="nav__menu--user--item ">
                         <div
                           className="nav__menu--user--item--btn btn"
@@ -124,6 +141,7 @@ class navbar extends Component {
                           login
                           btnClass="nav__menu--user--item--btn"
                           btnText="Log In"
+                          loginBtnRef={this.props.loginBtnRef}
                         ></Auth>
                       </div>
                     </>

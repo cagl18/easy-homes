@@ -12,13 +12,15 @@ const agentCard = (props) => {
     <div className="agent_card grid">
       <h3 className="agent_card--title">{props.title}</h3>
       <div className="agent_card__container">
-        <Link to={`/agents/${props.data.id}`}>
+        <Link to={`/agents/${props.data.slug}/${props.data.id}`}>
           <div className="agent__photo" style={photoStyle}></div>
         </Link>
         <div className="agent__info">
           <div>
             <h4 className="agent__info--name">
-              <Link to={`/agents/${props.data.id}`}>{props.data.name}</Link>
+              <Link to={`/agents/${props.data.slug}/${props.data.id}`}>
+                {props.data.name}
+              </Link>
             </h4>
 
             {props.agent_type ? (

@@ -1,6 +1,9 @@
 import React from 'react';
 
-const button = ({ children, className, style, onClick, loading, disabled }) => {
+const button = (
+  { children, className, style, onClick, loading, disabled },
+  ref
+) => {
   const isLoading = loading ? (
     <i className="fas fa-circle-notch fa-spin"></i>
   ) : (
@@ -13,6 +16,7 @@ const button = ({ children, className, style, onClick, loading, disabled }) => {
       className={`btn ${className?.length > 0 ? className : 'default'}`}
       onClick={onClick}
       style={style}
+      ref={ref}
     >
       <span className="btn__text">
         {children}
@@ -22,4 +26,4 @@ const button = ({ children, className, style, onClick, loading, disabled }) => {
   );
 };
 
-export default button;
+export default React.forwardRef(button);

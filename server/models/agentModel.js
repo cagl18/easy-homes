@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const slug = require('slug');
 
 const agentSchema = mongoose.Schema(
   {
@@ -8,6 +9,7 @@ const agentSchema = mongoose.Schema(
       required: [true, 'Please tell us your name!'],
       text: true,
     },
+    slug: String,
     title: String,
     biography: [String],
     photo: String,
@@ -34,6 +36,17 @@ const agentSchema = mongoose.Schema(
 // Duplicate the ID field.
 agentSchema.virtual('id').get(function () {
   return this._id.toHexString();
+});
+
+agentSchema.methods.slugify = function () {
+  this.slug = slug(this.name.replace(' ', '-'), { lower: true });
+};
+
+agentSchema.pre('validate', function (next) {
+  if (!this.slug) {
+    this.slugify();
+  }
+  return next();
 });
 
 const Agent = mongoose.model('Agent', agentSchema);

@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -45,6 +46,9 @@ app.use(mongoSanitize());
 
 // Data sanitization against XSS (prevent HTML /JS code injection)
 app.use(xss());
+
+// Middleware for reading cookies from requests
+app.use(cookieParser());
 
 //Prevent parameter pollution: should be used towards the end since it clean the queryString
 // app.use(

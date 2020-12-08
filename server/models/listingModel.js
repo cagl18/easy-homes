@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const slug = require('slug');
 const { Schema } = mongoose;
 
-const User = mongoose.model('User');
+const User = require('./userModel');
 
 const listingSchema = mongoose.Schema(
   {
@@ -65,14 +65,13 @@ listingSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
-listingSchema.methods.updateFavoriteCount = function () {
+listingSchema.methods.updateFavoriteCount = async function () {
   const listing = this;
-  return User.count({ favorites: { $in: [listing._id] } }).then(function (
-    count
-  ) {
-    listing.favoritesCount = count;
-    return listing.save();
+  const count = await User.countDocuments({
+    favorites: { $in: [listing._id] },
   });
+  listing.favoritesCount = count;
+  return listing.save();
 };
 
 // give our schema text search capabilities

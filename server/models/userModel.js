@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const Listings = require('./listingModel');
 
 const userSchema = new mongoose.Schema(
   {
@@ -51,7 +52,13 @@ const userSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
-    favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Listings' }],
+    // favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Listing' }],
+    favorites: {
+      type: Map,
+      of: Boolean,
+      default: {},
+    },
+    // favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Listing' }],
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -128,21 +135,77 @@ userSchema.virtual('name').set(function (name) {
 // Methods for dealing with favorites (liked) listings
 
 userSchema.methods.favorite = function (id) {
-  if (this.favorites.indexOf(id) === -1) {
-    this.favorites.push(id);
-  }
-  return this.save();
+  this.favorites.set(id, true);
+  return this.save({ validateBeforeSave: false });
 };
 
 userSchema.methods.unfavorite = function (id) {
-  this.favorites.remove(id);
-  return this.save();
+  if (this.favorites.has(id)) {
+    this.favorites.set(id, false);
+    return this.save({ validateBeforeSave: false });
+  }
 };
+
 userSchema.methods.isFavorite = function (id) {
-  return this.favorites.some(function (favoriteId) {
-    return id.toString() === favoriteId.toString();
-  });
+  if (this.favorites.has(id)) {
+    return this.favorites.get(id) === true;
+  }
+  return false;
 };
+
+userSchema.methods.isUnfavorite = function (id) {
+  if (this.favorites.has(id)) {
+    return this.favorites.get(id) === false;
+  }
+  return false;
+};
+
+userSchema.methods.getFavorites = async function () {
+  const favoritesIds = [];
+  for (let [k, v] of this.favorites) {
+    if (v === true) favoritesIds.push(k);
+  }
+  const listings = await Listings.find({ _id: { $in: favoritesIds } });
+
+  return listings;
+};
+// userSchema.methods.getFavorites = async function () {
+//   // const listing = await Listings.find({ _id: { $in: this.favorites } });
+//   const user = await User.findOne({
+//     _id: this._id,
+//   })
+//     .where('favorites')
+//     .equals(true);
+//   const favoritesIds = Object.keys(user.favorites);
+//   console.log('user', user, 'favoritesIds', favoritesIds);
+//   return user;
+// };
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
+
+// userSchema.methods.favorite = function (id) {
+//   if (this.favorites.indexOf(id) === -1) {
+//     this.favorites.push(id);
+//     return this.save({ validateBeforeSave: false });
+//   }
+// };
+
+// userSchema.methods.unfavorite = function (id) {
+//   const index = this.favorites.indexOf(id);
+//   if (index > -1) {
+//     this.favorites.splice(index, 1);
+//     return this.save({ validateBeforeSave: false });
+//   }
+// };
+// userSchema.methods.isFavorite = function (id) {
+//   return this.favorites.some(function (favoriteId) {
+//     return id.toString() === favoriteId.toString();
+//   });
+// };
+
+// userSchema.methods.getFavorites = async function () {
+//   // const listing = await Listings.find({ _id: { $in: this.favorites } });
+//   const user = await User.findById(this._id).populate('favorites');
+//   return user.favorites;
+// };

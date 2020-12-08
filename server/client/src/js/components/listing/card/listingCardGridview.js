@@ -4,28 +4,38 @@ import { Link } from 'react-router-dom';
 
 const card = (props) => {
   const cardImageStyling = {
-    backgroundImage: `url(${props.data.img})`,
+    backgroundImage: `url(${props.data.listing.img})`,
   };
 
   return (
-    <Link className="card" to={`listings/${props.data.slug}/${props.data.id}`}>
-      <div key={props.data.id} className="card-body">
+    <Link
+      className="card"
+      to={`listings/${props.data.listing.slug}/${props.data.listing.id}`}
+    >
+      <div key={props.data.listing.id} className="card-body">
         <div className="card-img" style={cardImageStyling} alt="">
           <div className="container">
-            {props.data.comingsoon ? (
+            {props.data.listing.comingsoon ? (
               <div className="banner banner-message">
-                {props.data.comingsoon}
+                {props.data.listing.comingsoon}
               </div>
             ) : (
               ''
             )}
-            {props.data.openhouse ? (
-              <div className="banner open-house">{props.data.openhouse}</div>
+            {props.data.listing.openhouse ? (
+              <div className="banner open-house">
+                {props.data.listing.openhouse}
+              </div>
             ) : (
               ''
             )}
             {props.show_fav_btn ? (
-              <Button className="btn fav" onClick={props.onSavedListing}>
+              <Button
+                className={`btn ${
+                  props.data.listing.favorite ? 'fav active' : 'fav'
+                }`}
+                onClick={props.onSavedListing}
+              >
                 <i className="fas fa-star"></i>
               </Button>
             ) : (
@@ -36,21 +46,25 @@ const card = (props) => {
               <div className="flex-col">
                 <div className="flex ">
                   <div className="card-listing-left-wrapper">
-                    <div>{Number(props.data.price).toLocaleString()}</div>
-                    <div className="listing-address">{props.data.address}</div>
-                    <div>{props.data.neighborhood}</div>
+                    <div>
+                      {Number(props.data.listing.price).toLocaleString()}
+                    </div>
+                    <div className="listing-address">
+                      {props.data.listing.address}
+                    </div>
+                    <div>{props.data.listing.neighborhood}</div>
                   </div>
                   <div className="card-listing-right-wrapper">
                     <div>
-                      {props.data.beds} <div>Beds</div>
+                      {props.data.listing.beds} <div>Beds</div>
                     </div>
                     <div>
-                      {props.data.baths} <div>Baths</div>
+                      {props.data.listing.baths} <div>Baths</div>
                     </div>
                     <div>
-                      {Number(props.data.sqft) === 0
+                      {Number(props.data.listing.sqft) === 0
                         ? '-'
-                        : Number(props.data.sqft).toLocaleString()}
+                        : Number(props.data.listing.sqft).toLocaleString()}
                       <div>Sq. Ft.</div>
                     </div>
                   </div>

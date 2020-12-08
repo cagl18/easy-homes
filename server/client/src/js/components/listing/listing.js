@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from './card/listingCardGridview';
+import * as actions from '../../../store/actions/index';
 
 class Listing extends Component {
-  onSavedListing = (e) => {
+  onSavedListing = async (e) => {
     e.preventDefault(); // do not view listing details when saved icon is clicked
-    //favorite listing on api endpoint
     if (!this.props.auth.isAuthenticated) {
-      console.log('redirect to login');
-      this.props.requestUserAuth();
+      // Ask user to login
+      this.props.requestUserAuth(); //call parent function to open login window
       return;
     }
-    console.log('listing need to be saved');
+    //saving listing to user favorites (api endpoint)
 
-    //call parent function to open login window
+    if (this.props.data.favorite) {
+      await this.props.unSetListingLiked(this.props.data.id);
+    } else {
+      await this.props.setListingLiked(this.props.data.id);
+    }
+    this.props.getUserFavorties();
   };
   render() {
     return (
       <div>
         <Card
-          data={this.props.data}
+          data={{
+            listing: this.props.data,
+            userFavoriteListing: this.props.auth,
+          }}
           show_fav_btn={this.props.show_fav_btn}
           onSavedListing={this.onSavedListing}
         ></Card>
@@ -31,8 +39,7 @@ class Listing extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 
-export default connect(mapStateToProps, null)(Listing);
+export default connect(mapStateToProps, actions)(Listing);

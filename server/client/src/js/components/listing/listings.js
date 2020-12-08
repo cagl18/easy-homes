@@ -10,7 +10,10 @@ const listings = (props) => {
         itemsShownPerPage={props.itemsShownPerPage}
         listName="listings"
       >
-        <Listing requestUserAuth={props.requestUserAuth} show_fav_btn />
+        <Listing
+          requestUserAuth={props.requestUserAuth}
+          show_fav_btn={props.show_fav_btn}
+        />
       </ItemsGridList>
     </div>
   );

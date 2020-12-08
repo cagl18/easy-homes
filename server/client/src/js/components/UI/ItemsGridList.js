@@ -3,6 +3,9 @@ import Pagination from './pagination';
 // import Pagination from 'react-js-pagination';
 import ReactDOM from 'react-dom';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
+import { setLikedForListingCollection } from '../../../store/actions/index';
 
 class itemsGridList extends Component {
   state = {
@@ -28,9 +31,15 @@ class itemsGridList extends Component {
     const indexOfLastItemInPage = this.state.currentPage * itemsShownPerPage;
     const indexOfFirstItemInPage = indexOfLastItemInPage - itemsShownPerPage;
     const allItems = this.props.data || [];
+
     let currentItemsInPage = allItems.slice(
       indexOfFirstItemInPage,
       indexOfLastItemInPage
+    );
+
+    currentItemsInPage = setLikedForListingCollection(
+      currentItemsInPage,
+      this.props.auth.user?.favorites
     );
 
     currentItemsInPage = currentItemsInPage.map((item_data, i) => (
@@ -72,7 +81,14 @@ class itemsGridList extends Component {
   }
 }
 
-export default itemsGridList;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps, actions)(itemsGridList);
 
 // import React, { Component } from 'react';
 

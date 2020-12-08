@@ -101,6 +101,29 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   res.status(204).json({ status: 'success', data: null });
 });
 
+// exports.getAllFavorties = factory.getOne(User, {
+//   path: 'favorties',
+//   select: '-__v',
+// });
+
+exports.getAllFavorties = catchAsync(async (req, res, next) => {
+  const docs = await req.user.getFavorites();
+  res
+    .status(200)
+    .json({ status: 'success', results: docs.length, data: { docs } });
+  // console.log('test', test);
+  // const user = await User.findById(req.user._id).populate('favorites');
+  // const { favorites } = user;
+});
+
+// exports.getAllFavorties = catchAsync(async (req, res, next) => {
+//   const docs = await req.user.getFavorites();
+//   res.status(200).json({ status: 'success', data: { docs } });
+//   // console.log('test', test);
+//   // const user = await User.findById(req.user._id).populate('favorites');
+//   // const { favorites } = user;
+// });
+
 // exports.createUser = (req, res) => {
 //   res.status(500).json({
 //     status: 'error',

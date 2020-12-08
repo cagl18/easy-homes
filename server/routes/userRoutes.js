@@ -22,6 +22,12 @@ router.patch(
 );
 router.delete('/deleteMe', userController.deleteMe);
 
+router.get(
+  '/me/favorties',
+  userController.getMe,
+  userController.getAllFavorties
+);
+
 // router.use(authController.restrictTo('admin')); // Only admin can access the below routes
 
 router.route('/').get(userController.getAllUsers);

@@ -18,6 +18,20 @@
     transition: all 0.3s ease-in-out;
   }
 
+  &.fav {
+    border: 1px solid $color-white;
+    background-color: rgba($color-grey-dark, 0.5);
+    padding: 0.8rem;
+    cursor: pointer;
+    & i {
+      color: $color-white;
+    }
+
+    &.active {
+      background-color: #ffcc00;
+    }
+  }
+
   &.default {
     border: 1px solid $color-grey-light;
     background-color: $color-white;
@@ -54,6 +68,16 @@
     &:active {
       margin-bottom: -1rem;
     }
+
+    &.fav {
+      &.active {
+        background-color: $color-primary;
+        & i {
+          // background-color: #ffcc00;
+          // color: #ffcc00;
+        }
+      }
+    }
   }
 
   &.is_active {
@@ -80,20 +104,6 @@
   &.btn-danger {
     color: #c33;
     border: 1px solid #c33;
-  }
-
-  &.fav {
-    border: 1px solid $color-white;
-    background-color: rgba($color-grey-dark, 0.5);
-    padding: 0.8rem;
-    cursor: pointer;
-    & i {
-      color: $color-white;
-    }
-
-    &.active {
-      background-color: #ffcc00;
-    }
   }
 }
 

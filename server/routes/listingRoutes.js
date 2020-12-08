@@ -1,6 +1,8 @@
 const express = require('express');
 const listingController = require('../controllers/listingController');
 
+const authController = require('./../controllers/authController');
+
 const router = express.Router();
 
 router
@@ -12,5 +14,13 @@ router
   .get(listingController.getListing)
   .post(listingController.updateListing)
   .delete(listingController.deleteListing);
+
+router.use(authController.protect); //protect(require login) all routes after this middleware(below this line).
+
+router
+  .route('/:id/favorite')
+  .get(listingController.isListingLiked)
+  .patch(listingController.addListingLike)
+  .delete(listingController.removeListingLike);
 
 module.exports = router;

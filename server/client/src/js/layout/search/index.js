@@ -22,6 +22,7 @@ class Search extends Component {
 
     await this.props.fetchListings();
     this.filterData({ ...URLParmsObj, bounds: null });
+    // this.props.getUser(); // getting lastest user profile to unsure favorites arr is up to date
   }
 
   componentDidUpdate() {
@@ -249,6 +250,7 @@ const mapDispatchToProps = (dispatch) => {
     setfilteredData: (newData) =>
       dispatch(actions.setFilteredListingData(newData)),
     fetchListings: () => dispatch(actions.fetchListings()),
+    getUser: () => dispatch(actions.getUser()),
   };
 };
 

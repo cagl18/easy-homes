@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import EasyHomesAxios from '../../shared/APIs/EasyHomes';
+import easyHomesAxios from '../../shared/APIs/easyHomes';
 
 export const setListingsFilter = (filters) => {
   return {
@@ -16,7 +16,7 @@ export const setFilteredListingData = (newData) => {
 };
 
 export const fetchSearchResults = (query) => async (dispatch) => {
-  const res = await EasyHomesAxios.get(`/api/v1/search?q=${query}`);
+  const res = await easyHomesAxios.get(`/api/v1/search?q=${query}`);
   return dispatch({
     type: actionTypes.FETCH_SEARCH_RESULTS,
     searchResults: res.data,

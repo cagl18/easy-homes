@@ -1,18 +1,27 @@
-import React, {Component} from 'react';
-import ListingCard from '../../components/listing/card/listingCardGridview';
+import React, { Component } from 'react';
+import Listings from '../../components/listing/listings';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class FavoriteListing extends Component {
-    state = {data: []};
-    componentDidMount() {
-        //get data from API endPoint
-
-    }
-    render(){
-        return <div>{this.state.data.map(el => <ListingCard data={el}/>)}</div>
-    }
+  async componentDidMount() {
+    //get data from API endPoint
+    await this.props.getUserFavorties();
+  }
+  render() {
+    return (
+      <div>
+        <Listings data={this.props.listings} show_fav_btn={true} />
+      </div>
+    );
+  }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+    listings: state.listings.data,
+  };
+};
 
-
-export FavoriteListing
-
+export default connect(mapStateToProps, actions)(FavoriteListing);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../../../store/actions';
+import * as actions from '../../../../store/actions/index';
 
 import Map from '../../map/mapForSingleMarker';
 import SearchBar from '../../searchBar';
@@ -15,13 +15,34 @@ import Agents from '../../agent/agents/agentsListRow';
 import { withRouter } from 'react-router-dom';
 
 class listingDetail extends Component {
-  componentDidMount() {
-    const listingId = this.props.match.params.listingId;
-    this.props.fetchOneListing(listingId);
+  listingId = this.props.match.params.listingId;
+
+  loginBtnRef = React.createRef();
+  requestUserAuth = () => {
+    this.loginBtnRef.current.click();
+  };
+
+  async componentDidMount() {
+    await this.props.fetchOneListing(this.listingId);
+    await this.props.isListingLiked(this.listingId);
   }
 
+  favoriteListing = async () => {
+    if (!this.props.auth.isAuthenticated) {
+      this.requestUserAuth(); // open login window component
+      return;
+    }
+    // toogle listing from user favorites array
+    if (this.props.listing.data?.favorite) {
+      await this.props.unSetListingLiked(this.listingId);
+    } else {
+      await this.props.setListingLiked(this.listingId);
+    }
+  };
+
   render() {
-    const listing = this.props.listing || {};
+    let listing = this.props.listing.data || {};
+
     let description = null;
     if (listing.description) {
       description = listing.description.map((el, index) => (
@@ -50,7 +71,7 @@ class listingDetail extends Component {
 
     return (
       <div ref={this.myRef}>
-        <Nav className="sticky">
+        <Nav className="sticky" loginBtnRef={this.loginBtnRef}>
           <SearchBar />
         </Nav>
 
@@ -107,9 +128,18 @@ class listingDetail extends Component {
               </div>
             </div>
             <div className="header__ToBottomContent">
-              <Button className="btn primary">
-                <i className="far fa-star"></i>
-                <span className="btn__label">{' Save'}</span>
+              <Button
+                className={`btn primary ${
+                  listing?.favorite ? 'fav active' : ''
+                }`}
+                onClick={this.favoriteListing}
+              >
+                <i
+                  className={`${listing?.favorite ? ' fas' : ' far'} fa-star`}
+                ></i>
+                <span className="btn__label">
+                  {listing?.favorite ? ' Saved' : ' Save'}
+                </span>
               </Button>
               <Button>
                 <i className="far fa-share-square"></i>
@@ -312,21 +342,21 @@ const mapStateToProps = (state) => {
     filteredData: state.search.filteredData,
     filtersParams: state.search.filtersParams,
     listing: state.listings,
+    auth: state.auth,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // setFilters: (filters) => dispatch(actions.setListingsFilter(filters)),
-    // setfilteredData: (newData) => dispatch(actions.filterListingData(newData)),
-    fetchOneListing: (listingId) =>
-      dispatch(actions.fetchOneListing(listingId)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     // setFilters: (filters) => dispatch(actions.setListingsFilter(filters)),
+//     // setfilteredData: (newData) => dispatch(actions.filterListingData(newData)),
+//     fetchOneListing: (listingId) =>
+//       dispatch(actions.fetchOneListing(listingId)),
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(listingDetail)
-);
+//   };
+// };
+
+export default withRouter(connect(mapStateToProps, actions)(listingDetail));
 
 // getListingByID = (id) => {
 //   const listing = this.props.listingData.find((l) => {

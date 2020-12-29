@@ -53,46 +53,40 @@ class navbar extends Component {
               {this.props.children}
               <div className="nav__menu">
                 <ul className="nav__menu--main" onClick={this.closeDrawer}>
-                  <li className="nav__item" style={{ cursor: 'not-allowed' }}>
-                    <Link
-                      className="nav__link"
-                      to="#exclusives"
-                      style={{ cursor: 'not-allowed' }}
-                    >
+                  <Link
+                    className="nav__link"
+                    to="#exclusives"
+                    style={{ cursor: 'not-allowed' }}
+                  >
+                    <li className="nav__item" style={{ cursor: 'not-allowed' }}>
                       Exclusives
-                    </Link>
-                  </li>
-                  <li className="nav__item">
-                    <Link className="nav__link" to="/search?type=for-sale">
-                      Buy
-                    </Link>
-                  </li>
-                  <li className="nav__item">
-                    <Link className="nav__link" to="/search?type=for-rent">
-                      Rent
-                    </Link>
-                  </li>
-                  <li className="nav__item" style={{ cursor: 'not-allowed' }}>
-                    <Link
-                      className="nav__link"
-                      to="#sell"
-                      style={{ cursor: 'not-allowed' }}
-                    >
+                    </li>
+                  </Link>
+                  <Link className="nav__link" to="/search?type=for-sale">
+                    <li className="nav__item">Buy</li>
+                  </Link>
+                  <Link className="nav__link" to="/search?type=for-rent">
+                    <li className="nav__item">Rent</li>
+                  </Link>
+                  <Link
+                    className="nav__link"
+                    to="#sell"
+                    style={{ cursor: 'not-allowed' }}
+                  >
+                    <li className="nav__item" style={{ cursor: 'not-allowed' }}>
                       Sell
-                    </Link>
-                  </li>
-                  <li className="nav__item">
-                    <Link className="nav__link" to="/agents">
-                      Agents
-                    </Link>
-                  </li>
+                    </li>
+                  </Link>
+                  <Link className="nav__link" to="/agents">
+                    <li className="nav__item">Agents</li>
+                  </Link>
                   {this.props.isAuthenticated ? (
-                    <li className="nav__item">
-                      <Link className="userProfileLink" to="/workspace">
+                    <Link className="nav__link" to="/workspace">
+                      <li className="nav__item">
                         {`Saved Items `}
                         <i className="fas fa-angle-down"></i>
-                      </Link>
-                    </li>
+                      </li>
+                    </Link>
                   ) : (
                     ''
                   )}

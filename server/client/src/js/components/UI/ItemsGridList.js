@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import { setLikedForListingCollection } from '../../../store/actions/index';
+import Loader from './loader';
 
 class itemsGridList extends Component {
   state = {
@@ -22,20 +23,21 @@ class itemsGridList extends Component {
   };
 
   render() {
-    if (this.loading) {
-      return <h2>Loading...</h2>;
+    if (this.props.loading) {
+      return <Loader />;
     }
 
     const itemsShownPerPage = this.props.itemsShownPerPage || 8;
     // Get current properties
     const indexOfLastItemInPage = this.state.currentPage * itemsShownPerPage;
     const indexOfFirstItemInPage = indexOfLastItemInPage - itemsShownPerPage;
-    const allItems = this.props.data || [];
 
-    let currentItemsInPage = allItems.slice(
-      indexOfFirstItemInPage,
-      indexOfLastItemInPage
-    );
+    let allItems = this.props.data || [];
+
+    let currentItemsInPage =
+      allItems.length > 1
+        ? allItems.slice(indexOfFirstItemInPage, indexOfLastItemInPage)
+        : allItems;
 
     currentItemsInPage = setLikedForListingCollection(
       currentItemsInPage,

@@ -227,6 +227,7 @@ class Search extends Component {
               data={this.props.filteredData}
               show_fav_btn
               requestUserAuth={this.requestUserAuth}
+              loading={this.props.listingsAPIRes.isFetching}
             />
           </div>
         </div>

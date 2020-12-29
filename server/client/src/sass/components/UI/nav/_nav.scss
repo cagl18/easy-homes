@@ -21,6 +21,14 @@
     @include clearfix;
   }
 
+  &--box {
+    &:not(.is-active) {
+      & .nav__link {
+        display: inline-block;
+      }
+    }
+  }
+
   &__menu {
     z-index: 10;
     position: relative;
@@ -185,7 +193,7 @@
         color: $color-black;
       }
       margin: -1.1rem;
-      :not(.is-active) {
+      &:not(.is-active) {
         & .logo {
           margin: 1.2rem 0 0 0.4rem;
         }

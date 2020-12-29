@@ -21,6 +21,7 @@ class Listing extends Component {
     this.props.getUserFavorties();
   };
   render() {
+    if (!this.props.data?._id) return null;
     return (
       <div>
         <Card

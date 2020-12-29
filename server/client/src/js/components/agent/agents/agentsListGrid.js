@@ -4,7 +4,6 @@ import AgentCard from '../card/listGrid';
 
 const agents = (props) => {
   let resultTotal = '';
-
   resultTotal = `${props.totalResult} Agents Found`;
 
   let itemsList = '';

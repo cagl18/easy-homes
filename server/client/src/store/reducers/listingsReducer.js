@@ -5,6 +5,7 @@ import {
   IS_LISTING_LIKED,
   SET_LISTING_LIKED,
   UNSET_LISTING_LIKED,
+  LISTING_START_REQUEST,
 } from '../actions/actionTypes';
 
 // import updateObject from '../../shared/utility';
@@ -15,18 +16,25 @@ import {
 
 export default function (state = {}, action) {
   switch (action.type) {
+    case LISTING_START_REQUEST:
+      return action.payload;
     case FETCH_LISTINGS:
       return {
         results: action.payload.results,
-        data: action.payload.data?.docs,
+        data: action.payload.data.data?.docs,
+        isFetching: action.payload.isFetching,
       };
     case FETCH_FEATURED_LISTINGS:
       return {
         results: action.payload.results,
-        data: action.payload.data?.docs,
+        data: action.payload.data.data?.docs,
+        isFetching: action.payload.isFetching,
       };
     case FETCH_ONE_LISTING:
-      return { data: action.payload.data?.doc };
+      return {
+        data: action.payload.data.data?.doc,
+        isFetching: action.payload.isFetching,
+      };
     case IS_LISTING_LIKED:
       return {
         data: { ...state.data, favorite: action.payload.data.favorite },

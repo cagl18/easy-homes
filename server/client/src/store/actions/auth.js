@@ -6,8 +6,9 @@ import {
   USER_PROFILE_UPDATE_SUCCESS,
   DELETE_ME_SUCCESS,
 } from './actionTypes';
+// import { fetchListings } from './listings';
 import easyHomesAxios from '../../shared/APIs/easyHomes';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 const updateUserSession = (user_profile, jwt = null) => {
   localStorage.removeItem('user_profile');
@@ -83,6 +84,7 @@ export const logoutUser = () => async (dispatch) => {
     // updateUserSession(null, ' ');
     deleteCurrentUserSession();
     dispatch(recieveLogOut());
+    // dispatch(fetchListings()); //refreshing listing data after logout
   } catch (err) {
     console.log('logout error', err);
     const errorMessage = err.response?.data.message || err.message;
@@ -170,18 +172,6 @@ export const isJWTValid = (token) => {
     const tokenIssueAt = new Date(payload.iat * 1000);
     const now = new Date();
 
-    console.log(
-      'tokenExpiresAt.getTime()',
-      tokenExpiresAt.getTime(),
-      'now.getTime()',
-      now.getTime()
-    );
-    console.log(
-      'tokenExpiresAt',
-      tokenExpiresAt.toString(),
-      'now.toString()',
-      now.toString()
-    );
     if (tokenExpiresAt.getTime() > now.getTime()) {
       return true;
     }

@@ -9,11 +9,16 @@ const listings = (props) => {
         data={props.data}
         itemsShownPerPage={props.itemsShownPerPage}
         listName="listings"
+        loading={props.loading}
       >
-        <Listing
-          requestUserAuth={props.requestUserAuth}
-          show_fav_btn={props.show_fav_btn}
-        />
+        {!props.data ? (
+          'You dont have any listings saved as favorite.'
+        ) : (
+          <Listing
+            requestUserAuth={props.requestUserAuth}
+            show_fav_btn={props.show_fav_btn}
+          />
+        )}
       </ItemsGridList>
     </div>
   );

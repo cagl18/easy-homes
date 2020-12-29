@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Listings from '../../components/listing/listings';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
+import Loader from '../../components/UI/loader';
 
 class FavoriteListing extends Component {
   async componentDidMount() {
@@ -9,11 +10,12 @@ class FavoriteListing extends Component {
     await this.props.getUserFavorties();
   }
   render() {
-    return (
-      <div>
-        <Listings data={this.props.listings} show_fav_btn={true} />
-      </div>
+    const pageBody = !this.props.listings ? (
+      <Loader />
+    ) : (
+      <Listings data={this.props.listings} show_fav_btn={true} />
     );
+    return <div>{pageBody}</div>;
   }
 }
 

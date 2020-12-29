@@ -6,69 +6,57 @@ import {
   UNSET_LISTING_LIKED,
   IS_LISTING_LIKED,
   LISTING_FAILURE_REQUEST,
+  LISTING_START_REQUEST,
 } from './actionTypes';
 
 import easyHomesAxios from '../../shared/APIs/easyHomes';
 import { getUser } from './index';
 
 export const setLikedForListingCollection = (data, favorites) => {
-  let newData = [...data];
-  if (favorites) {
-    newData = newData.map((l, i) => {
-      if (favorites[l.id] === true) {
-        l.favorite = true;
-      } else {
-        l.favorite = false;
-      }
+  let newData = data.length ? [...data] : [data];
+  // if (favorites) {
+  newData = newData.map((l, i) => {
+    if (favorites && favorites[l.id] === true) {
+      l.favorite = true;
+    } else {
+      l.favorite = false;
+    }
 
-      return l;
-    });
-  }
+    return l;
+  });
+  // }
   return newData;
 };
 
-// export const setLikedForListingCollection = (data, favorites) => {
-//   let newData = [...data];
-//   if (favorites) {
-//     newData = newData.map((l, i) => {
-//       const index = favorites.indexOf(l.id);
-
-//       if (index > -1) {
-//         l.favorite = true;
-//       } else {
-//         l.favorite = false;
-//       }
-
-//       return l;
-//     });
-//   }
-//   return newData;
-// };
-
 export const fetchListings = () => async (dispatch) => {
+  dispatch(startListingRequest());
   const res = await easyHomesAxios.get(`/api/v1/listings`);
+  const { data } = res;
   return dispatch({
     type: FETCH_LISTINGS,
-    payload: res.data,
+    payload: { data, isFetching: false },
   });
 };
 
 export const fetchOneListing = (listingId) => async (dispatch) => {
+  dispatch(startListingRequest());
   const res = await easyHomesAxios.get(`/api/v1/listings/${listingId}`);
+  const { data } = res;
   return dispatch({
     type: FETCH_ONE_LISTING,
-    payload: res.data,
+    payload: { data, isFetching: false },
   });
 };
 
 export const fetchFeaturedListings = () => async (dispatch) => {
+  dispatch(startListingRequest());
   const res = await easyHomesAxios.get(
     `/api/v1/listings?limit=6&sort=-createdAt`
   );
-
+  const { data } = res;
   return dispatch({
     type: FETCH_FEATURED_LISTINGS,
-    payload: res.data,
+    payload: { data, isFetching: false },
   });
 };
 
@@ -113,12 +101,13 @@ export const isListingLiked = (listingId) => async (dispatch) => {
 
 export const getUserFavorties = () => async (dispatch) => {
   try {
+    dispatch(startListingRequest());
     const res = await easyHomesAxios.get('/api/v1/users/me/favorties');
-    console.log('res', res);
+    const { data } = res;
 
     return dispatch({
       type: FETCH_LISTINGS,
-      payload: res.data,
+      payload: { data, isFetching: false },
     });
     // updateUserSession(user);
     // dispatch(receiveLogin(user, null));
@@ -136,6 +125,18 @@ const listingError = (message) => {
       isFetching: false,
       message,
       error: true,
+    },
+  };
+};
+
+const startListingRequest = () => {
+  return {
+    type: LISTING_START_REQUEST,
+    payload: {
+      isFetching: true,
+      message: null,
+      error: false,
+      data: null,
     },
   };
 };

@@ -34,8 +34,8 @@ class Filter extends Component {
     this.populateUIFilterFieldsFromURLParams();
   }
   populateUIFilterFieldsFromURLParams = () => {
-    const updatedFields = JSON.parse(JSON.stringify(this.state.fields));
     const URLparams = getAllUrlParams();
+    const updatedFields = JSON.parse(JSON.stringify(this.state.fields));
 
     for (let key in URLparams) {
       if (updatedFields[key]) {
@@ -147,29 +147,62 @@ class Filter extends Component {
 
   getPriceOptions = () => {
     const price_value_options = [];
-    let price_label = '';
-    for (let i = 100; i <= 25000; ) {
-      if (i < 500) {
-        price_label = `$${i}k`;
+    let price_label = '',
+      min_price,
+      max_price,
+      price_increment,
+      inc_index = 0;
+
+    if (
+      this.props?.filtersParams &&
+      this.props?.filtersParams?.type === 'for-rent'
+    ) {
+      min_price = 0.75;
+      max_price = 15;
+      price_increment = [0.25, 0.5, 1];
+    } else {
+      min_price = 100;
+      max_price = 25500;
+      price_increment = [25, 50, 250, 1000, 2500];
+    }
+
+    for (let i = min_price; i <= max_price; ) {
+      //price for rental listings
+      if (i < 20) {
+        price_label = `$${i * 1000}`;
         price_value_options.push({ value: i * 1000, label: price_label });
-        i += 25;
-      }
-      if (i < 1000) {
-        price_label = `$${i}k`;
+        i += price_increment[inc_index];
+        if (price_increment.length - 1 - inc_index > 0 && i % 2 === 0) {
+          inc_index++;
+        }
+      } else {
+        //price for sale listings
+        if (i < 500) {
+          price_label = `$${i}k`;
+        }
+        if (i < 1000) {
+          price_label = `$${i}k`;
+          if (price_increment.length - 1 - inc_index > 0 && i % 500 === 0) {
+            inc_index++;
+          }
+        } else if (i < 5000) {
+          price_label = `$${i / 1000}M`;
+          if (inc_index < 2 && i % 1000 === 0) {
+            inc_index++;
+          }
+        } else if (i < 1000 * min_price) {
+          price_label = `$${i / 1000}M`;
+          if (price_increment.length - 1 - inc_index > 0 && i % 5000 === 0) {
+            inc_index++;
+          }
+        } else if (i <= max_price) {
+          price_label = `$${i / 1000}M`;
+          if (price_increment.length - 1 - inc_index > 0 && i % 10000 === 0) {
+            inc_index++;
+          }
+        }
         price_value_options.push({ value: i * 1000, label: price_label });
-        i += 50;
-      } else if (i < 5000) {
-        price_label = `$${i / 1000}M`;
-        price_value_options.push({ value: i * 1000, label: price_label });
-        i += 250;
-      } else if (i < 10000) {
-        price_label = `$${i / 1000}M`;
-        price_value_options.push({ value: i * 1000, label: price_label });
-        i += 1000;
-      } else if (i <= 25000) {
-        price_label = `$${i / 1000}M`;
-        price_value_options.push({ value: i * 1000, label: price_label });
-        i += 2500;
+        i += price_increment[inc_index];
       }
     }
     return price_value_options;

@@ -16,6 +16,14 @@ class itemsGridList extends Component {
   componentDidMount() {
     ReactDOM.findDOMNode(this).scrollIntoView();
   }
+  componentDidUpdate() {
+    if (
+      this.state.currentPage > 1 &&
+      this.props.data.length < this.props.itemsShownPerPage
+    ) {
+      this.setState({ currentPage: 1 });
+    } // resetting paginating to first page if the dataset can fit in 1 page
+  }
 
   paginate = (currentPage) => {
     // Change page

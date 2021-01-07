@@ -28,7 +28,7 @@ class UserAccount extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <>
+      <div style={{ marginBottom: '-30px' }}>
         <Nav className="sticky">
           <SearchBar onSearch={() => this.redirectToSearchPage()} />
         </Nav>
@@ -45,7 +45,7 @@ class UserAccount extends Component {
             <Banner success={!auth.error}>{auth.message}</Banner>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -16,7 +16,7 @@ class SavedItems extends Component {
     return (
       <>
         <Nav className="sticky"></Nav>
-        <div className="account">
+        <div className="account" style={{ height: '91vh' }}>
           <h2 className="heading-secondary u-padding-top-medium u-margin-bottom-small">
             My Saves Homes <div className="heading-divider"></div>
           </h2>

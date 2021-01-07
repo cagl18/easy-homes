@@ -11,9 +11,9 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
   if (!totalItems || totalPages === 1) return null;
 
   return (
-    <nav className='pagination'>
+    <nav className="pagination">
       <ul>
-        {pageNumbers.map(number => {
+        {pageNumbers.map((number) => {
           const is_active = currentPage === number ? 'active' : '';
           return (
             <li key={number} className={`page-item`}>

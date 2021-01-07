@@ -219,6 +219,7 @@ class Search extends Component {
               </header>
               <ListingsFilter
                 filteredData={this.props.filteredData}
+                filtersParams={this.props.filtersParams}
                 onFiltersSelected={this.filterData}
                 itemsShownPerPage={itemsShownPerPage}
               />

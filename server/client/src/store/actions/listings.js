@@ -7,12 +7,14 @@ import {
   IS_LISTING_LIKED,
   LISTING_FAILURE_REQUEST,
   LISTING_START_REQUEST,
+  GET_FAVORITE_LISTINGS,
 } from './actionTypes';
 
 import easyHomesAxios from '../../shared/APIs/easyHomes';
 import { getUser } from './index';
 
-export const setLikedForListingCollection = (data, favorites) => {
+export const setLikedForListingCollection = (data = [], favorites = {}) => {
+  if (!data.length) return [];
   let newData = data.length ? [...data] : [data];
   // if (favorites) {
   newData = newData.map((l, i) => {
@@ -73,7 +75,7 @@ export const setListingLiked = (listingId) => async (dispatch) => {
   dispatch(getUser());
   return dispatch({
     type: SET_LISTING_LIKED,
-    payload: { data: { ...res.data.data, listingId } },
+    payload: { data: { ...res.data.data, id: listingId } },
   });
 };
 
@@ -84,7 +86,7 @@ export const unSetListingLiked = (listingId) => async (dispatch) => {
   dispatch(getUser());
   return dispatch({
     type: UNSET_LISTING_LIKED,
-    payload: { data: { ...res.data.data, listingId } },
+    payload: { data: { ...res.data.data, id: listingId } },
   });
 };
 
@@ -106,7 +108,7 @@ export const getUserFavorties = () => async (dispatch) => {
     const { data } = res;
 
     return dispatch({
-      type: FETCH_LISTINGS,
+      type: GET_FAVORITE_LISTINGS,
       payload: { data, isFetching: false },
     });
     // updateUserSession(user);
@@ -136,7 +138,7 @@ const startListingRequest = () => {
       isFetching: true,
       message: null,
       error: false,
-      data: null,
+      // data: null,
     },
   };
 };

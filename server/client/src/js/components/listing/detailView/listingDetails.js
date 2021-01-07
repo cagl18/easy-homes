@@ -36,6 +36,7 @@ class listingDetail extends Component {
       return;
     }
     // toogle listing from user favorites array
+    // console.log('this.props.listing.data', this.props.listing.data);
     if (this.props.listing.data?.favorite) {
       await this.props.unSetListingLiked(this.listingId);
     } else {

@@ -9,11 +9,18 @@ class FavoriteListing extends Component {
     //get data from API endPoint
     await this.props.getUserFavorties();
   }
+  onFavoriteHandler = async () => {
+    await this.props.getUserFavorties();
+  };
   render() {
     const pageBody = !this.props.listings ? (
       <Loader />
     ) : (
-      <Listings data={this.props.listings} show_fav_btn={true} />
+      <Listings
+        data={this.props.listings}
+        show_fav_btn={true}
+        onFavoriteHandler={this.onFavoriteHandler}
+      />
     );
     return <div>{pageBody}</div>;
   }
@@ -22,7 +29,7 @@ class FavoriteListing extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    listings: state.listings.data,
+    listings: state.listings.favorites,
   };
 };
 

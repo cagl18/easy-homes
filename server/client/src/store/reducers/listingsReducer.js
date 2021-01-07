@@ -6,19 +6,22 @@ import {
   SET_LISTING_LIKED,
   UNSET_LISTING_LIKED,
   LISTING_START_REQUEST,
+  GET_FAVORITE_LISTINGS,
 } from '../actions/actionTypes';
-
 // import updateObject from '../../shared/utility';
 
 // const setFilteredListingData = (state, action) => {
 //   return updateObject(state, { filteredData: action.filteredData });
 // };
+import { setLikedForListingCollection } from '../actions/listings';
 
-export default function (state = {}, action) {
+export default function (state = { data: null }, action) {
+  let newData, favoriteArr;
   switch (action.type) {
     case LISTING_START_REQUEST:
       return action.payload;
     case FETCH_LISTINGS:
+      // console.log('FETCH_LISTINGS', 'action', action, 'state', state);
       return {
         results: action.payload.results,
         data: action.payload.data.data?.docs,
@@ -40,27 +43,55 @@ export default function (state = {}, action) {
         data: { ...state.data, favorite: action.payload.data.favorite },
       };
     case SET_LISTING_LIKED:
-      if (!state.results) {
-        //adding favorities property to single listing
+      if (!state.data) return { ...state };
+      favoriteArr = {
+        [action.payload.data.id]: action.payload.data.favorite,
+      };
+      newData = !state.data.length ? [state.data] : [...state.data]; //copying state for single or multiple dataset
+      newData = setLikedForListingCollection(newData, favoriteArr);
+      newData = !state.data.length ? newData[0] : newData;
+      // state for listing detail page
+      if (!state.data.length) {
         return {
-          data: {
-            ...state.data,
-            favorite: action.payload.data.favorite,
-          },
+          ...state,
+          newData,
         };
       }
-      return { ...state };
+      // state for listing search / filter page
+      return {
+        ...state,
+        data: newData,
+        results: newData.length,
+      };
+
     case UNSET_LISTING_LIKED:
-      if (!state.results) {
-        //adding favorities property to single listing
+      if (!state.data) return { ...state };
+      favoriteArr = {
+        [action.payload.data.id]: action.payload.data.favorite,
+      };
+      newData = !state.data.length ? [state.data] : [...state.data]; //copying state for single or multiple dataset
+      newData = setLikedForListingCollection(newData, favoriteArr);
+      newData = !state.data.length ? newData[0] : newData;
+      // state for listing detail page
+      if (!state.data.length) {
         return {
-          data: {
-            ...state.data,
-            favorite: action.payload.data.favorite,
-          },
+          ...state,
+          newData,
         };
       }
-      return { ...state };
+      // state for listing search / filter page
+      return {
+        ...state,
+        data: newData,
+        results: newData.length,
+      };
+    case GET_FAVORITE_LISTINGS:
+      console.log('GET_FAVORITE_LISTINGS', state, action);
+      return {
+        ...state,
+        favorites: action.payload.data.data?.docs,
+        isFetching: false,
+      };
     default:
       return state;
   }

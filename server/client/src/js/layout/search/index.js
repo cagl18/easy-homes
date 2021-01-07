@@ -25,9 +25,11 @@ class Search extends Component {
     // this.props.getUser(); // getting lastest user profile to unsure favorites arr is up to date
   }
 
-  componentDidUpdate() {
+  async componentDidUpdate(prevProps) {
     this.autoFilterURLData();
   }
+
+  // shouldComponentUpdate(prevProps, prevState, snapshot) {}
 
   autoFilterURLData = async () => {
     const URLParmsObj = getAllUrlParams(this.props.location.search);

@@ -18,7 +18,11 @@ class Listing extends Component {
     } else {
       await this.props.setListingLiked(this.props.data.id);
     }
-    this.props.getUserFavorties();
+    // this.props.getUserFavorties();
+    if (this.props?.onFavoriteHandler) {
+      console.log('Listing- onSavedListing was called ');
+      this.props.onFavoriteHandler();
+    }
   };
   render() {
     if (!this.props.data?._id) return null;

@@ -4,11 +4,14 @@ const slug = require('slug');
 const { Schema } = mongoose;
 
 const User = require('./userModel');
+// const Image = require('./imageModel');
 
 const listingSchema = mongoose.Schema(
   {
     agents: [{ type: Schema.Types.ObjectId, ref: 'Agent' }],
-    img: String,
+    coverImage: String,
+    images: [String],
+    // images: [{ type: Schema.Types.ObjectId, ref: 'Images' }],
     slug: String,
     type: { type: String, enum: ['for-sale', 'for-rent'], default: 'for-rent' },
     keyDetails: {
@@ -57,6 +60,9 @@ listingSchema.methods.slugify = function () {
 listingSchema.pre('validate', function (next) {
   if (!this.slug) {
     this.slugify();
+  }
+  if (!this.img) {
+    this.img = this.images[0];
   }
   return next();
 });

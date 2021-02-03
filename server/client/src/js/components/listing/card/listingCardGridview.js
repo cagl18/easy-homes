@@ -1,6 +1,8 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import Button from '../../UI/button';
 import { Link } from 'react-router-dom';
+// import LazyBackground from '../../UI/lazyBackground';
 
 const card = (props) => {
   const cardImageStyling = {

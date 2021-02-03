@@ -21,7 +21,6 @@ export default function (state = { data: null }, action) {
     case LISTING_START_REQUEST:
       return action.payload;
     case FETCH_LISTINGS:
-      // console.log('FETCH_LISTINGS', 'action', action, 'state', state);
       return {
         results: action.payload.results,
         data: action.payload.data.data?.docs,
@@ -86,7 +85,6 @@ export default function (state = { data: null }, action) {
         results: newData.length,
       };
     case GET_FAVORITE_LISTINGS:
-      console.log('GET_FAVORITE_LISTINGS', state, action);
       return {
         ...state,
         favorites: action.payload.data.data?.docs,

@@ -33,7 +33,7 @@ export const loginUser = (credentials) => async (dispatch) => {
   dispatch(startUserRequest());
   try {
     const res = await easyHomesAxios.post('/api/v1/users/login', credentials);
-    console.log('res', res);
+    // console.log('res', res);
     // If login was successful, set the token in local storage and dispatch success notification to reducer
     const user = res.data.data?.user || null;
     const jwt = res.data.token;

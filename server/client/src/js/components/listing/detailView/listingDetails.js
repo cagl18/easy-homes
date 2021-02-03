@@ -12,6 +12,7 @@ import AgentCard from '../../agent/card/listRow';
 import AgentContact from '../../agent/agentContact';
 import Agents from '../../agent/agents/agentsListRow';
 import Loader from '../../UI/loader';
+import Slider from '../../UI/slider';
 import { withRouter } from 'react-router-dom';
 
 class listingDetail extends Component {
@@ -154,7 +155,7 @@ class listingDetail extends Component {
           <a href="#morehomes">Similar Homes</a>
         </div>
         <div className="listingDetails__slider">
-          <div
+          {/* <div
             className="card-img slider__container"
             style={{
               backgroundImage: `url(${listing.img})`,
@@ -179,13 +180,21 @@ class listingDetail extends Component {
               ) : (
                 ''
               )}
-            </div>
+            </div> */}
 
-            {/* <img
-          className='listingDetails__slider--wrapper'
-          src={listing.img}
-        ></img> */}
-          </div>
+          <img
+            className="listingDetails__slider--wrapper"
+            src={listing.img}
+          ></img>
+          {/* </div>
+          {/* <Slider
+            data={{
+              images: listing.images,
+              comingsoon: listing.comingsoon,
+              openhouse: listing.openhouse,
+              status: keyDetails.status,
+            }}
+          /> */}
         </div>
 
         <div className="listingDetails__sidebar">

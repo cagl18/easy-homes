@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { fetchOneAgent } from '../../../store/actions';
 import Loader from '../../components/UI/loader';
 
+import LazyImg from '../../components/UI/lazyImg';
+
 class AgentDetails extends Component {
   componentDidMount() {
     const agentID = this.props.match.params.id;
@@ -32,7 +34,12 @@ class AgentDetails extends Component {
       <Loader />
     ) : (
       <div className="agentDetails container">
-        <img className="agentDetails--img" src={agent.photo} alt="" />
+        <LazyImg
+          effect="blur"
+          className="agentDetails--img"
+          src={agent.photo}
+          alt=""
+        />
 
         <div className="agentCard">
           <h1 className="agentCard--name">{agent.name}</h1>

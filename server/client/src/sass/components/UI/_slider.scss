@@ -1,0 +1,164 @@
+.slider {
+  &__container {
+    & .container {
+      position: absolute;
+      z-index: 100;
+    }
+  }
+  &__viewport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #333333;
+    max-height: 50rem;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    // cursor: grab;
+
+    &--images {
+      width: 100%;
+      // max-height: 45rem;
+      // transition: all 0.3s ease-in-out;
+
+      &-container {
+        height: 50rem;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+      }
+      &-list {
+        display: flex;
+        position: relative;
+        // transition: 0.4s all ease-in;
+        transition: all 0.6s ease 0s;
+        left: 0%;
+        transform: translateX(0%);
+      }
+    }
+
+    &--image {
+      display: flex;
+      // min-width: 700px;
+      width: 100%;
+
+      &--container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &--button {
+    position: absolute;
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 9;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+  &-button-icon {
+    height: 60%;
+    width: 60%;
+    fill: $color-white;
+    filter: drop-shadow(0 2px 2px rgba($color-black, 0.6));
+  }
+  &__preview {
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    cursor: grab;
+
+    &--container {
+      overflow: hidden;
+      z-index: 9;
+      background-color: #2f2f2f;
+      width: 100%;
+    }
+
+    &--image {
+      height: 65px;
+      width: 65px;
+      opacity: 0.4;
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        opacity: 1;
+      }
+
+      &-list {
+        display: flex;
+        flex: 1 1 0%;
+
+        border-top: 1px solid $color-white;
+        position: relative;
+        height: 100%;
+        transition: 0.8s all ease-in-out;
+
+        // &.end {
+        //   justify-content: flex-end;
+        // }
+        // &.start {
+        //   justify-content: flex-start;
+        // }
+      }
+      &--container {
+        border-right: 1px solid $color-white;
+      }
+    }
+
+    &--button {
+      background-color: black;
+      color: $color-white;
+      min-width: 32px;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+      &:not(:last-child) {
+        border-right: 1px solid white;
+      }
+
+      &:hover {
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 647px) {
+    &__viewport {
+      height: 100%;
+      max-height: 100%;
+      &--image {
+        &-container {
+          max-height: 40rem;
+          height: 50rem;
+        }
+      }
+    }
+    &__preview {
+      display: none;
+    }
+  }
+  @include respond(phone) {
+    &__viewport {
+      // height: 50rem;
+    }
+  }
+}

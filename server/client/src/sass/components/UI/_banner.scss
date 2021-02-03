@@ -8,6 +8,13 @@
   text-transform: uppercase;
   padding: 0rem 1rem;
 
+  &__container {
+    padding: 8px;
+    z-index: 9;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+  }
   &__content {
     position: fixed;
     bottom: 15px;

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import ItemsGridList from '../UI/ItemsGridList';
-import Listing from './listing';
 import { connect } from 'react-redux';
 import { fetchFeaturedListings } from '../../../store/actions';
+
+import Listing from './listing';
 
 class FeaturedListings extends Component {
   componentDidMount() {
@@ -10,9 +11,9 @@ class FeaturedListings extends Component {
     this.props.fetchFeaturedListings();
   }
   render() {
-    if (!this.props.featuredListings) {
-      return '';
-    }
+    // if (!this.props.featuredListings) {
+    //   return '';
+    // }
     return (
       <div className="featured__listings">
         <div className="container">

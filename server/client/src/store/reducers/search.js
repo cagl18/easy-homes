@@ -21,7 +21,6 @@ const initialState = {
 
 const setListingsFilters = (state, action) => {
   const updatedFilters = updateObject(state.filtersParams, action.filters);
-  //   console.log('redux state', updatedFilters, 'action', action);
   return updateObject(state, { filtersParams: updatedFilters });
 };
 
@@ -33,7 +32,6 @@ const fetchSearchResults = (state, action) => {
 };
 
 const reducer = (state = initialState, action) => {
-  // console.log('redux state', state);
   switch (action.type) {
     case actionTypes.SET_LISTINGS_FILTER:
       return setListingsFilters(state, action);

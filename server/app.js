@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -69,6 +70,9 @@ app.use('/api/v1/agents', agentRouter); //mounting a new router on a route. usin
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/listings', listingRouter);
 app.use('/api/v1/search', searchRouter);
+
+//Compress all HTTP responses, including static files before sending them over the network to the client/browser
+app.use(compression());
 
 // handles static files and routes defined by the client (react router)
 if (process.env.NODE_ENV === 'production') {

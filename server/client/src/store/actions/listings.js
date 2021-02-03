@@ -16,7 +16,6 @@ import { getUser } from './index';
 export const setLikedForListingCollection = (data = [], favorites = {}) => {
   if (!data.length) return [];
   let newData = data.length ? [...data] : [data];
-  // if (favorites) {
   newData = newData.map((l, i) => {
     if (favorites && favorites[l.id] === true) {
       l.favorite = true;
@@ -26,7 +25,6 @@ export const setLikedForListingCollection = (data = [], favorites = {}) => {
 
     return l;
   });
-  // }
   return newData;
 };
 
@@ -111,8 +109,6 @@ export const getUserFavorties = () => async (dispatch) => {
       type: GET_FAVORITE_LISTINGS,
       payload: { data, isFetching: false },
     });
-    // updateUserSession(user);
-    // dispatch(receiveLogin(user, null));
   } catch (err) {
     console.log('logout error', err);
     const errorMessage = err.response?.data.message || err.message;

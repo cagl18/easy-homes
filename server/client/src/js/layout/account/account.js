@@ -1,17 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import Nav from '../../components/UI/navbar';
 import { Redirect } from 'react-router-dom';
 import SearchBar from '../../components/searchBar';
 
 import { redirectToURL, getURLParams } from '../../../shared/utility';
 import { connect } from 'react-redux';
+import Loader from '../../components/UI/loader';
+
 // import AccountCard from './card/card';
-import AccountProfile from './accountProfile';
-import NotificationSettings from './notificationSettings';
-import SignOut from './signOut';
-import DeleteAccount from './deleteAccount';
-import ChangePassword from './changePassword';
-import Banner from '../../components/UI/banner.js';
+// import AccountProfile from './accountProfile';
+// import NotificationSettings from './notificationSettings';
+// import SignOut from './signOut';
+// import DeleteAccount from './deleteAccount';
+// import ChangePassword from './changePassword';
+// import Banner from '../../components/UI/banner.js';
+
+const AccountProfile = lazy(() => import('./accountProfile'));
+const NotificationSettings = lazy(() => import('./notificationSettings'));
+const SignOut = lazy(() => import('./signOut'));
+const DeleteAccount = lazy(() => import('./deleteAccount'));
+const ChangePassword = lazy(() => import('./changePassword'));
+const Banner = lazy(() => import('../../components/UI/banner.js'));
 
 class UserAccount extends Component {
   redirectToSearchPage = () => {
@@ -37,12 +46,14 @@ class UserAccount extends Component {
             Account <div className="heading-divider"></div>
           </h2>
           <div className="container account__body">
-            <AccountProfile />
-            <NotificationSettings />
-            <ChangePassword />
-            <DeleteAccount />
-            <SignOut />
-            <Banner success={!auth.error}>{auth.message}</Banner>
+            <Suspense fallback={<Loader />}>
+              <AccountProfile />
+              <NotificationSettings />
+              <ChangePassword />
+              <DeleteAccount />
+              <SignOut />
+              <Banner success={!auth.error}>{auth.message}</Banner>
+            </Suspense>
           </div>
         </div>
       </div>

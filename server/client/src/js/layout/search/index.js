@@ -204,6 +204,7 @@ class Search extends Component {
             />
           </Nav>
         </div>
+
         <div className="searchpage__content">
           <Map
             zoom={14}

@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 
 import { updateURLParams, getURLParams } from '../../../shared/utility';
 
+// loading component into 2nd part of main JS file. So that page will load faster
+
 const defaultType = 'for-sale';
 
 class Header extends Component {
@@ -76,6 +78,7 @@ class Header extends Component {
               {/* End of header Content  */}
             </div>
           </div>
+
           {/* End of header  */}
         </div>
       </header>

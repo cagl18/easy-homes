@@ -11,14 +11,22 @@ import noFound from './js/layout/noFound';
 import Loader from './js/components/UI/loader';
 import './sass/main.scss';
 
-{
-  /* <Suspense fallback={<Loader />}></Suspense>; */
-}
+// const home = lazy(() => import('./js/layout/home'));
+// const search = lazy(() => import('./js/layout/search'));
+// const account = lazy(() => import('./js/layout/account/account'));
+// const savedItems = lazy(() => import('./js/layout/savedItems/SavedItems'));
+// const agents = lazy(() => import('./js/layout/agents'));
+// const agentDetails = lazy(() => import('./js/components/agent/agentDetails'));
+// const listingDetails = lazy(() =>
+//   import('./js/components/listing/detailView/listingDetails')
+// );
+
 function App() {
   return (
     <div className="App">
       <div>
         <Switch>
+          {/* <Suspense fallback={<Loader />}> */}
           <Route path="/" exact component={home} />
 
           <Route path="/search/" exact component={search} />
@@ -31,6 +39,7 @@ function App() {
           <Route path="/agents/:slug/:id" exact component={agentDetails} />
           <Route path="/account/" exact component={account} />
           <Route path="/workspace/" exact component={savedItems} />
+          {/* </Suspense> */}
           <Route component={noFound} />
 
           {/* <Route path='/streams/new' exact component={streams.streamCreate} />

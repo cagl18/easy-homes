@@ -182,19 +182,19 @@ class listingDetail extends Component {
               )}
             </div> */}
 
-          <img
+          {/* <img
             className="listingDetails__slider--wrapper"
             src={listing.img}
-          ></img>
-          {/* </div>
-          {/* <Slider
+          ></img> */}
+          {/* </div> */}
+          <Slider
             data={{
               images: listing.images,
               comingsoon: listing.comingsoon,
               openhouse: listing.openhouse,
               status: keyDetails.status,
             }}
-          /> */}
+          />
         </div>
 
         <div className="listingDetails__sidebar">

@@ -163,7 +163,7 @@ class Slider extends Component {
                             ?.offsetWidth
                       )
                       ? `translateX(-${Math.floor(
-                          (this.state.currentImageIndex * 65 + 65) /
+                          (this.state.currentImageIndex * 65) /
                             this.imagePreviewListRef.current?.parentElement
                               ?.offsetWidth
                         )}00%)`

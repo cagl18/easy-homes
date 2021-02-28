@@ -22,7 +22,7 @@ const initialState = {
   error: false,
 };
 
-export default function (state = initialState, action) {
+function authReducer(state = initialState, action) {
   // console.log('Auth reducer state', state, 'Action ', action);
   const newState = {
     ...state,
@@ -49,3 +49,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default authReducer;

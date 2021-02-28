@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => {
+const loader = (props) => {
   return (
     <div
       style={{
@@ -19,3 +19,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default loader;

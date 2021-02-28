@@ -3,7 +3,6 @@
   font-size: inherit;
   font-family: inherit;
   letter-spacing: 3px;
-  // height: 5.15rem;
   height: 5.3rem;
   padding: 1rem;
   z-index: 5;
@@ -47,11 +46,11 @@
     &.btn {
       border-bottom: 2px solid transparent;
       border-radius: 0;
-      // border: 0;
-      &:hover,
-      &:active {
-        // border-bottom: 2px solid $color-secondary;
-      }
+
+      // &:hover,
+      // &:active {
+      //   border-bottom: 2px solid $color-secondary;
+      // }
     }
   }
 
@@ -190,12 +189,12 @@
     }
   }
 
-  & .nav__menu {
-    & .nav__link:hover,
-    & .nav__menu--user--item--btn:hover {
-      color: $color-white;
-    }
-  }
+  // & .nav__menu {
+  //   & .nav__link:hover,
+  //   & .nav__menu--user--item--btn:hover {
+  //     // color: $color-white;
+  //   }
+  // }
 
   & .nav__menu--user--item--btn {
     &.btn {
@@ -274,6 +273,10 @@
                   border-radius: 2px;
                   border: 0;
 
+                  &:hover {
+                    color: $color-white;
+                  }
+
                   &:link,
                   &:visited {
                     border-bottom: 2px solid transparent;
@@ -344,11 +347,11 @@
   }
 
   @include respond(tab-port) {
-    &.header {
-      &__nav {
-        // border-bottom: none;
-      }
-    }
+    // &.header {
+    //   &__nav {
+    //     // border-bottom: none;
+    //   }
+    // }
   }
 
   @include respond(phone) {
@@ -358,26 +361,27 @@
         & .search--input {
           &-box {
             margin: 0 !important;
-            margin-left: 6rem !important;
+            padding-left: 5.5rem !important;
             width: 100%;
             position: relative;
+            height: 7rem !important;
             // border-left: 0.5px solid $color-grey-dark-4;
 
             & input {
-              // height: 6.1rem !important;
               height: 5.3rem !important;
               border: none;
-              width: 75%;
+              width: 100%;
             }
           }
           &-btn {
-            right: 13% !important;
-            height: 52.5px !important;
-            width: 52.5px !important;
+            position: absolute;
+            right: 0% !important;
+            // height: 52.5px;
+            // width: 52.5px !important;
+            height: 48px;
+            width: 48px;
             background-color: $color-primary !important;
-            & i {
-              color: $color-primary;
-            }
+            color: white !important;
           }
         }
       }

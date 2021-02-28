@@ -1,12 +1,11 @@
 .btn {
   position: relative;
   padding: 1rem;
-  // margin-left: 1rem;
   border: 1px solid transparent;
   border-radius: 2px;
   outline: none;
   user-select: none;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 
   &:disabled {
     background-color: $color-grey-light-3 !important;
@@ -72,10 +71,10 @@
     &.fav {
       &.active {
         background-color: $color-primary;
-        & i {
-          // background-color: #ffcc00;
-          // color: #ffcc00;
-        }
+        // & i {
+        //   // background-color: #ffcc00;
+        //   // color: #ffcc00;
+        // }
       }
     }
   }

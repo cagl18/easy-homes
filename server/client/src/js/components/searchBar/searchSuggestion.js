@@ -5,8 +5,8 @@ const searchSuggestion = ({ data }) => {
   const collectionName = data.collection.toLowerCase();
 
   const link = data.slug
-    ? `/${data.collection}/${data.slug}/${data._id}`
-    : `/${data.collection}/${data._id}`;
+    ? `/${collectionName}/${data.slug}/${data._id}`
+    : `/${collectionName}/${data._id}`;
 
   return (
     <li>
@@ -17,7 +17,7 @@ const searchSuggestion = ({ data }) => {
         ></div>
         <div className="infoContainer">
           <p>{data.name || data.address}</p>
-          {data.collection.toLowerCase() === 'agents' ? <p>NYC</p> : ''}
+          {collectionName === 'agents' ? <p>NYC</p> : ''}
         </div>
       </Link>
     </li>

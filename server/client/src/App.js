@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import home from './js/layout/home';
 import search from './js/layout/search';
@@ -8,8 +8,9 @@ import agents from './js/layout/agents';
 import agentDetails from './js/components/agent/agentDetails';
 import listingDetails from './js/components/listing/detailView/listingDetails';
 import noFound from './js/layout/noFound';
-import Loader from './js/components/UI/loader';
 import './sass/main.scss';
+// import React, { Component, Suspense, lazy } from 'react';
+// import Loader from './js/components/UI/loader';
 
 // const home = lazy(() => import('./js/layout/home'));
 // const search = lazy(() => import('./js/layout/search'));

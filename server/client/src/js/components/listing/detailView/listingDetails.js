@@ -155,38 +155,6 @@ class listingDetail extends Component {
           <a href="#morehomes">Similar Homes</a>
         </div>
         <div className="listingDetails__slider">
-          {/* <div
-            className="card-img slider__container"
-            style={{
-              backgroundImage: `url(${listing.img})`,
-              height: '50rem',
-            }}
-          >
-            <div className="container">
-              {listing.comingsoon ? (
-                <div className="banner banner-message">
-                  {listing.comingsoon}
-                </div>
-              ) : (
-                ''
-              )}
-              {listing.openhouse ? (
-                <div className="banner open-house">{listing.openhouse}</div>
-              ) : (
-                ''
-              )}
-              {keyDetails.status !== 'Active' ? (
-                <div className="banner status">{keyDetails.status}</div>
-              ) : (
-                ''
-              )}
-            </div> */}
-
-          {/* <img
-            className="listingDetails__slider--wrapper"
-            src={listing.img}
-          ></img> */}
-          {/* </div> */}
           <Slider
             data={{
               images: listing.images,

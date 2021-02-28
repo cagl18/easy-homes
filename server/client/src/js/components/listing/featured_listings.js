@@ -1,4 +1,5 @@
-import React, { Component, Suspense, lazy } from 'react';
+// import React, { Component, Suspense, lazy } from 'react';
+import React, { Component } from 'react';
 import ItemsGridList from '../UI/ItemsGridList';
 import { connect } from 'react-redux';
 import { fetchFeaturedListings } from '../../../store/actions';

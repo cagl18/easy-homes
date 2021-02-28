@@ -1,6 +1,6 @@
 import { FETCH_AGENTS, FETCH_ONE_AGENT } from '../actions/actionTypes';
 
-export default function (state = {}, action) {
+function agentsReducer(state = {}, action) {
   switch (action.type) {
     case FETCH_AGENTS:
       return {
@@ -13,3 +13,5 @@ export default function (state = {}, action) {
       return state;
   }
 }
+
+export default agentsReducer;

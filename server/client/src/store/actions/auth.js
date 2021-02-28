@@ -51,7 +51,7 @@ export const loginUser = (credentials) => async (dispatch) => {
 export const signUpUser = (user) => async (dispatch) => {
   dispatch(startUserRequest());
   try {
-    const res = await easyHomesAxios.post('/api/v1/users/signup', user);
+    const res = await easyHomesAxios.post('/api/v1/users/signup', this.user);
     // If login was successful, set the token in local storage and dispatch success notification to reducer
     console.log('res', res);
     const user = res.data.data?.user;
@@ -169,7 +169,7 @@ export const isJWTValid = (token) => {
     const payload = JSON.parse(atob(token.split('.')[1]));
 
     const tokenExpiresAt = new Date(payload.exp * 1000);
-    const tokenIssueAt = new Date(payload.iat * 1000);
+    // const tokenIssueAt = new Date(payload.iat * 1000);
     const now = new Date();
 
     if (tokenExpiresAt.getTime() > now.getTime()) {

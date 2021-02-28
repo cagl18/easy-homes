@@ -28,10 +28,10 @@ class Slider extends Component {
   };
 
   render() {
-    console.log(
-      'this.imageListRef.current?.parentElement?.offsetWidth',
-      this.imageListRef.current?.parentElement?.offsetWidth
-    );
+    // console.log(
+    //   'this.imageListRef.current?.parentElement?.offsetWidth',
+    //   this.imageListRef.current?.parentElement?.offsetWidth
+    // );
     if (!this.props.data.images) return <div></div>;
     return (
       <div className="slider" style={{ color: 'black' }}>
@@ -111,6 +111,7 @@ class Slider extends Component {
                     <img
                       className="slider__viewport--image"
                       src={img ? img : ''}
+                      alt=""
                     />
                   </div>
                 ))}
@@ -183,7 +184,10 @@ class Slider extends Component {
               > */}
                 {this.props.data?.images.map((p, index) => {
                   return (
-                    <div className="slider__preview--image--container">
+                    <div
+                      key={index}
+                      className="slider__preview--image--container"
+                    >
                       <img
                         className={`slider__preview--image ${
                           this.state.currentImageIndex === index ? 'active' : ''
@@ -192,6 +196,7 @@ class Slider extends Component {
                         onClick={() =>
                           this.setState({ currentImageIndex: index })
                         }
+                        alt=""
                       />
                     </div>
                   );

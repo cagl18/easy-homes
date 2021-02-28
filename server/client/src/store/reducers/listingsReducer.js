@@ -15,7 +15,7 @@ import {
 // };
 import { setLikedForListingCollection } from '../actions/listings';
 
-export default function (state = { data: null }, action) {
+function listingReducer(state = { data: null }, action) {
   let newData, favoriteArr;
   switch (action.type) {
     case LISTING_START_REQUEST:
@@ -94,3 +94,5 @@ export default function (state = { data: null }, action) {
       return state;
   }
 }
+
+export default listingReducer;

@@ -8,17 +8,18 @@ const agentCard = (props) => {
   const photoStyle = {
     background: `url(${props.agent.photo})`,
   };
+  const agentLink = `/agents/${props.agent.slug}/${props.agent.id}`;
   return (
     <div className="agent_card">
       <h3 className="agent_card--title">{props.title}</h3>
       <div className="agent_card__container">
-        <Link to={`/agents/${props.agent.slug}`}>
+        <Link to={agentLink}>
           <div className="agent__photo" style={photoStyle}></div>
         </Link>
         <div className="agent__info">
           <div>
             <h4 className="agent__info--name">
-              <Link to={`/agents/${props.agent.slug}`}>{props.agent.name}</Link>
+              <Link to={agentLink}>{props.agent.name}</Link>
             </h4>
 
             {props.agent_type ? (

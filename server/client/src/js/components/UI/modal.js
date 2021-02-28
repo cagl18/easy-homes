@@ -9,19 +9,9 @@ class Modal extends Component {
     isModalOpened: false,
   };
 
-  componentDidMount() {
-    // console.log('modal state is_opened', this.state.isModalOpened);
-    // if (this.props.position === 'open') {
-    //   this.closeModal();
-    // }
-  }
-  componentDidUpdate() {
-    // console.log('modal state is_opened', this.state.isModalOpened);
-    // console.log('modal props', this.props);
-  }
   closeModal = () => {
-    this.props.onClose();
     this.setState({ isModalOpened: false });
+    this.props.onClose();
   };
 
   openModal = () => {
@@ -36,9 +26,11 @@ class Modal extends Component {
   // };
 
   render() {
+    console.log('this.state.isModalOpened', this.state.isModalOpened);
     let is_active = {};
     is_active.className = this.state.isModalOpened ? 'is-active' : '';
-    is_active.onClick = this.state.isModalOpened ? this.closeModal : null;
+    is_active.onClick =
+      this.state.isModalOpened === true ? this.closeModal : null;
 
     return (
       <div className="modal">

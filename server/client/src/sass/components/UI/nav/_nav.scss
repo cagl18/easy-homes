@@ -22,8 +22,42 @@
 
   &--box {
     &:not(.is-active) {
+      //styling for sticky and non sticky nav when drawer is closed
+
       & .nav__link {
         display: inline-block;
+      }
+      & .logo {
+        margin: 1.2rem 0 0 0.4rem;
+      }
+
+      & .nav__link {
+        &-active {
+          cursor: pointer;
+          border-bottom: 2px solid $color-primary;
+          color: $color-primary !important;
+
+          &:hover {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+    &.is-active {
+      //styling for sticky and non sticky nav when drawer is OPENED
+      padding-right: 2px;
+      & .nav__link {
+        &-active {
+          cursor: pointer;
+          background-color: #f7b7b1;
+          color: white !important;
+          // background-color: #ff8478;
+          // color: $color-primary !important;
+
+          &:hover {
+            border-bottom: none;
+          }
+        }
       }
     }
   }
@@ -108,15 +142,15 @@
       display: block;
     }
 
-    &-active {
-      cursor: pointer;
-      border-bottom: 2px solid $color-primary;
-      color: $color-primary !important;
+    // &-active {
+    //   cursor: pointer;
+    //   border-bottom: 2px solid $color-primary;
+    //   color: $color-primary !important;
 
-      &:hover {
-        border-bottom: none;
-      }
-    }
+    //   &:hover {
+    //     border-bottom: none;
+    //   }
+    // }
   }
 
   &__menu--user {
@@ -213,11 +247,7 @@
         color: $color-black;
       }
       margin: -1.1rem;
-      &:not(.is-active) {
-        & .logo {
-          margin: 1.2rem 0 0 0.4rem;
-        }
-      }
+
       &__item {
         margin: 0rem;
         padding: 0.8rem;

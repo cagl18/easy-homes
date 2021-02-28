@@ -18,7 +18,7 @@ const menuItems = {
 
 class navbar extends Component {
   state = {
-    isModalOpened: false,
+    isDrawerOpen: false,
     activeMenuItem: null,
   };
 
@@ -31,27 +31,12 @@ class navbar extends Component {
     this.handleNavActiveItem(menuItemName.type);
   }
 
-  // componentDidUpdate() {
-  //   // this.setState({
-  //   //   location: {
-  //   //     pathname: window.location.pathname,
-  //   //     search: window.location.search,
-  //   //   },
-  //   // });
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return (
-  //     nextState.activeMenuItem !== this.state.activeMenuItem ||
-  //     nextProps !== this.props
-  //   );
-  // }
-
   closeDrawer = () => {
-    this.setState({ isModalOpened: false });
+    this.setState({ isDrawerOpen: false });
   };
+
   toogleDrawer = () => {
-    this.setState((prevState) => ({ isModalOpened: !prevState.isModalOpened }));
+    this.setState((prevState) => ({ isDrawerOpen: !prevState.isDrawerOpen }));
   };
 
   render() {
@@ -66,7 +51,7 @@ class navbar extends Component {
             <Drawer
               toogleDrawer={this.toogleDrawer}
               closeDrawer={this.closeDrawer}
-              active={this.state.isModalOpened}
+              active={this.state.isDrawerOpen}
               brand="Easy Homes"
             >
               <Logo brand="Easy Homes" iconClass="fas fa-home" />

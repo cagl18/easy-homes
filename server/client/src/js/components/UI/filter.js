@@ -21,6 +21,8 @@ const defaultFields = {
   maxsqft: { value: 8000, label: 'No Max' },
 };
 
+const filterName = 'More Filters';
+
 class Filter extends Component {
   state = {
     fields: { ...JSON.parse(JSON.stringify(defaultFields)) }, //Deep copying defaultFields Obj
@@ -277,7 +279,7 @@ class Filter extends Component {
     return (
       <div className={`filters ${is_active['className']}`}>
         <div className="filters__wrapper">
-          <h2 className="heading">Filters</h2>
+          <h2 className="heading">{filterName}</h2>
           <div className="basicFilters__section">
             <div className="filters__item prices">
               <div className="price_filter">
@@ -310,9 +312,7 @@ class Filter extends Component {
                 />
               </div>
               <Button onClick={this.toogleDrawer}>
-                {`${
-                  this.state.isAdvancedFiltersOpened ? 'Close' : ''
-                } Filters `}
+                {this.state.isAdvancedFiltersOpened ? 'Close' : `${filterName}`}
 
                 {this.state.selectedFiltersCounter > 0 ? (
                   <span className="activeFilters-count">

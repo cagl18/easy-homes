@@ -1,31 +1,51 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Drawer from './drawer';
 import Logo from './logo';
 import Auth from '../../layout/auth';
 import * as actions from '../../../store/actions';
+import { getAllUrlParams } from '../../../shared/utility';
 
 // Note button does not work properly in this component <Button></Button> */}
+
+const menuItems = {
+  buy: 'Buy',
+  rent: 'Rent',
+  agents: 'Agents',
+  user: 'Account',
+};
 
 class navbar extends Component {
   state = {
     isModalOpened: false,
+    activeMenuItem: null,
   };
 
-  // componentDidUpdate() {
-  //   console.log(
-  //     'navbar auth props user:',
-  //     this.props.user,
-  //     'isAuth',
-  //     this.props.isAuthenticated
-  //   );
-  // }
+  handleNavActiveItem = (menuItemName) => {
+    this.setState({ activeMenuItem: menuItemName });
+  };
 
   componentDidMount() {
-    // this.triggerClickOnLogin();
-    // console.log('loginBtnRef', this.loginBtnRef.current);
+    const menuItemName = getAllUrlParams(window.location.search);
+    this.handleNavActiveItem(menuItemName.type);
   }
+
+  // componentDidUpdate() {
+  //   // this.setState({
+  //   //   location: {
+  //   //     pathname: window.location.pathname,
+  //   //     search: window.location.search,
+  //   //   },
+  //   // });
+  // }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return (
+  //     nextState.activeMenuItem !== this.state.activeMenuItem ||
+  //     nextProps !== this.props
+  //   );
+  // }
 
   closeDrawer = () => {
     this.setState({ isModalOpened: false });
@@ -45,7 +65,7 @@ class navbar extends Component {
           <nav className={`nav `}>
             <Drawer
               toogleDrawer={this.toogleDrawer}
-              closeDrawer={this.C}
+              closeDrawer={this.closeDrawer}
               active={this.state.isModalOpened}
               brand="Easy Homes"
             >
@@ -53,7 +73,7 @@ class navbar extends Component {
               {this.props.children}
               <div className="nav__menu">
                 <ul className="nav__menu--main" onClick={this.closeDrawer}>
-                  <Link
+                  <NavLink
                     className="nav__link"
                     to="#exclusives"
                     style={{ cursor: 'not-allowed' }}
@@ -61,14 +81,52 @@ class navbar extends Component {
                     <li className="nav__item" style={{ cursor: 'not-allowed' }}>
                       Exclusives
                     </li>
-                  </Link>
-                  <Link className="nav__link" to="/search?type=for-sale">
-                    <li className="nav__item">Buy</li>
-                  </Link>
-                  <Link className="nav__link" to="/search?type=for-rent">
-                    <li className="nav__item">Rent</li>
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    className="nav__link"
+                    activeClassName={`${
+                      `${this.state.activeMenuItem}` === 'for-sale'
+                        ? 'nav__link-active'
+                        : ''
+                    }`}
+                    exact
+                    to={{
+                      pathname: '/search',
+                      search: '?type=for-sale',
+                    }}
+                  >
+                    <li
+                      onClick={() => this.handleNavActiveItem('for-sale')}
+                      className={`nav__item`}
+                    >
+                      {menuItems.buy}
+                    </li>
+                  </NavLink>
+                  <NavLink
+                    className="nav__link"
+                    exact
+                    activeClassName={`${
+                      `${this.state.activeMenuItem}` === 'for-rent'
+                        ? 'nav__link-active'
+                        : ''
+                    }`}
+                    to={{
+                      pathname: '/search',
+                      search: '?type=for-rent',
+                    }}
+                  >
+                    <li
+                      className={`nav__item ${
+                        this.state.activeMenuItem === menuItems.rent
+                          ? 'active'
+                          : ''
+                      }`}
+                      onClick={() => this.handleNavActiveItem('for-rent')}
+                    >
+                      {menuItems.rent}
+                    </li>
+                  </NavLink>
+                  <NavLink
                     className="nav__link"
                     to="#sell"
                     style={{ cursor: 'not-allowed' }}
@@ -76,17 +134,36 @@ class navbar extends Component {
                     <li className="nav__item" style={{ cursor: 'not-allowed' }}>
                       Sell
                     </li>
-                  </Link>
-                  <Link className="nav__link" to="/agents">
-                    <li className="nav__item">Agents</li>
-                  </Link>
+                  </NavLink>
+                  <NavLink
+                    className="nav__link"
+                    activeClassName="nav__link-active"
+                    exact
+                    to="/agents"
+                  >
+                    <li
+                      className={`nav__item ${
+                        this.state.activeMenuItem === menuItems.agents
+                          ? 'active'
+                          : ''
+                      }`}
+                      onClick={() => this.handleNavActiveItem('agents')}
+                    >
+                      {menuItems.agents}
+                    </li>
+                  </NavLink>
                   {this.props.isAuthenticated ? (
-                    <Link className="nav__link" to="/workspace">
+                    <NavLink
+                      className="nav__link"
+                      activeClassName="nav__link-active"
+                      exact
+                      to="/workspace"
+                    >
                       <li className="nav__item">
                         {`Saved Items `}
                         <i className="fas fa-angle-down"></i>
                       </li>
-                    </Link>
+                    </NavLink>
                   ) : (
                     ''
                   )}
@@ -96,9 +173,19 @@ class navbar extends Component {
                   {this.props.isAuthenticated ? (
                     <>
                       <div className="nav__menu--user--item ">
-                        <Link className="userProfileLink" to="/account">
+                        <NavLink
+                          className="userProfileLink"
+                          activeClassName="active"
+                          exact
+                          to="/account"
+                          onClick={() => this.handleNavActiveItem('Account')}
+                        >
                           <div
-                            className="nav__menu--user--item--btn btn active"
+                            className={`nav__menu--user--item--btn btn ${
+                              this.state.activeMenuItem === menuItems.user
+                                ? 'active'
+                                : ''
+                            } `}
                             style={{
                               padding: '1rem',
                               textTransform: 'capitalize',
@@ -108,7 +195,7 @@ class navbar extends Component {
 
                             {this.props.user?.name.split(' ')[0]}
                           </div>
-                        </Link>
+                        </NavLink>
                       </div>
 
                       <div className="nav__menu--user--item ">

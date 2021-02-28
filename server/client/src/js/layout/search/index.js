@@ -10,6 +10,9 @@ import ListingsFilter from '../../components/UI/filter';
 import * as actions from '../../../store/actions';
 import { getAllUrlParams } from '../../../shared/utility';
 
+// Todo: increase price filter to 1 million. Change the max price to be at least the min price.
+// highlight active navbar
+
 class Search extends Component {
   loginBtnRef = React.createRef();
   requestUserAuth = () => {
@@ -26,7 +29,7 @@ class Search extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    this.autoFilterURLData();
+    await this.autoFilterURLData();
   }
 
   // shouldComponentUpdate(prevProps, prevState, snapshot) {}
